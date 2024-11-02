@@ -15,7 +15,7 @@ Accounts.registerLoginHandler('saml', async (loginRequest) => {
 	if (!loginRequest.saml || !loginRequest.credentialToken || typeof loginRequest.credentialToken !== 'string') {
 		return undefined;
 	}
-
+	
 	const loginResult = await SAML.retrieveCredential(loginRequest.credentialToken);
 	SAMLUtils.log({ msg: 'RESULT', loginResult });
 

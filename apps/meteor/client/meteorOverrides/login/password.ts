@@ -64,4 +64,5 @@ Meteor.loginWithPassword = (
 	callback?: LoginCallback,
 ) => {
 	overrideLoginMethod(loginWithPassword, [userDescriptor, password], callback, loginWithPasswordAndTOTP);
+	console.debug("TESTTTTT");
 };
