@@ -14,16 +14,16 @@ function randomColor() {
   return 'rgb(' + r + ',' + g + ',' + b + ')';
 } 
 
-function extractRcUid(cookieString : string ) {
-  const cookies = cookieString.split(';');
-  for (let cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    if (name === 'rc_uid') {
-      return value;
-    }
-  }
-  return null; // Return null if rc_uid is not found
-}
+// function extractRcUid(cookieString : string ) {
+//   const cookies = cookieString.split(';');
+//   for (let cookie of cookies) {
+//     const [name, value] = cookie.trim().split('=');
+//     if (name === 'rc_uid') {
+//       return value;
+//     }
+//   }
+//   return null; // Return null if rc_uid is not found
+// }
 
 Meteor.methods({
   generateCaptcha() {
@@ -33,7 +33,7 @@ Meteor.methods({
     //const captchaText = Random.id(6).toUpperCase();
     //const canvas = getImgValiCode() ;//canvas.getContext('2d');
 
-    const userId = extractRcUid(this.connection?.httpHeaders.cookie);
+    const userId = this.connection?.clientAddress;
     
     //const userId = this.connection?.httpHeaders.cookie.split(';')[0].trim().split('=')[1] || "nothing";
 
@@ -145,7 +145,7 @@ Meteor.methods({
     //const storedCaptcha = global.captchas[this.connection.id];
 
     //const userId = this.connection?.httpHeaders.cookie.split(';')[0].trim().split('=')[1]  || "nothing";
-    const userId = extractRcUid(this.connection?.httpHeaders.cookie);
+    const userId = this.connection?.clientAddress;
 
     // Find the stored CAPTCHA for this user/session
     const storedCaptcha = Captchas.findOne({ userId });
