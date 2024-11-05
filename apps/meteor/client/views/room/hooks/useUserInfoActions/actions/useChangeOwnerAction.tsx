@@ -32,7 +32,7 @@ const getWarningModalForFederatedRooms = (
 	</GenericModal>
 );
 
-export const useChangeOwnerAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useChangeOwnerAction = (user: Pick<IUser, '_id' | 'nickname'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
 	const room = useUserRoom(rid);
 	const { _id: uid } = user;
@@ -55,7 +55,7 @@ export const useChangeOwnerAction = (user: Pick<IUser, '_id' | 'username'>, rid:
 	const changeOwnerEndpoint = isOwner ? 'removeOwner' : 'addOwner';
 	const changeOwnerMessage = isOwner ? 'User__username__removed_from__room_name__owners' : 'User__username__is_now_an_owner_of__room_name_';
 	const changeOwner = useEndpointAction('POST', `${endpointPrefix}.${changeOwnerEndpoint}`, {
-		successMessage: t(changeOwnerMessage, { username: user.username, room_name: roomName }),
+		successMessage: t(changeOwnerMessage, { username: user.nickname, room_name: roomName }),
 	});
 
 	const handleConfirm = useCallback(() => {

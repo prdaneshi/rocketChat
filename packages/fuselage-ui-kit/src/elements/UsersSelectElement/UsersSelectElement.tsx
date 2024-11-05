@@ -41,7 +41,7 @@ const UsersSelectElement = ({ block, context }: UsersSelectElementProps) => {
       setFilter={setFilter}
       renderSelected={({ selected: { value, label } }) => (
         <Chip height='x20' value={value} mie={4}>
-          <UserAvatar size='x20' username={value} />
+          <UserAvatar size='x20' nickname={value} />
           <Box verticalAlign='middle' is='span' margin='none' mi={4}>
             {label}
           </Box>
@@ -52,7 +52,7 @@ const UsersSelectElement = ({ block, context }: UsersSelectElementProps) => {
           key={value}
           {...props}
           label={label}
-          avatar={<UserAvatar username={value} size='x20' />}
+          avatar={<UserAvatar nickname={value} size='x20' />}
         />
       )}
     />

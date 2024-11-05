@@ -222,7 +222,7 @@ const CallPage = ({
 							margin: 'auto',
 						}}
 					>
-						<UserAvatar username={localAvatar} size={isLocalMobileDevice || callInIframe ? 'x32' : 'x48'} />
+						<UserAvatar nickname={localAvatar} size={isLocalMobileDevice || callInIframe ? 'x32' : 'x48'} />
 					</Box>
 				</Box>
 				<Box
@@ -299,7 +299,7 @@ const CallPage = ({
 							margin: 'auto',
 						}}
 					>
-						<UserAvatar username={remoteAvatar} size={!callInIframe ? 'x124' : avatarSize} />
+						<UserAvatar nickname={remoteAvatar} size={!callInIframe ? 'x124' : avatarSize} />
 					</Box>
 
 					<Box color='white' fontSize={callInIframe ? 12 : 18} textAlign='center' margin={3}>
@@ -342,7 +342,7 @@ const CallPage = ({
 									margin: 'auto',
 								}}
 							>
-								<UserAvatar username={agentName} size={isLocalMobileDevice ? 'x32' : 'x48'} />
+								<UserAvatar nickname={agentName} size={isLocalMobileDevice ? 'x32' : 'x48'} />
 							</Box>
 						</Box>
 						<Box
@@ -362,7 +362,7 @@ const CallPage = ({
 									margin: 'auto',
 								}}
 							>
-								<UserAvatar username={visitorName} size='x124' />
+								<UserAvatar nickname={visitorName} size='x124' />
 							</Box>
 							<Box color='white' fontSize={16} margin={15}>
 								Calling...

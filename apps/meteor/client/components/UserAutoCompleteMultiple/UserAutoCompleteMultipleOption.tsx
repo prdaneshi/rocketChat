@@ -7,23 +7,23 @@ import React from 'react';
 type UserAutoCompleteMultipleOptionProps = {
 	label: {
 		_federated?: boolean;
-	} & Pick<IUser, 'username' | 'name'>;
+	} & Pick<IUser, 'nickname' | 'name'>;
 };
 
 const UserAutoCompleteMultipleOption = ({ label, ...props }: UserAutoCompleteMultipleOptionProps): ReactElement => {
-	const { name, username, _federated } = label;
+	const { name, nickname, _federated } = label;
 
 	return (
 		<Option
 			{...props}
 			data-qa-type='autocomplete-user-option'
-			avatar={_federated ? undefined : <UserAvatar username={username || ''} size='x20' />}
+			avatar={_federated ? undefined : <UserAvatar nickname={nickname || ''} size='x20' />}
 			icon={_federated ? 'globe' : undefined}
-			key={username}
+			key={nickname}
 			label={
 				(
 					<>
-						{name || username} {!_federated && <OptionDescription>({username})</OptionDescription>}
+						{name || nickname} {!_federated && <OptionDescription>({nickname})</OptionDescription>}
 					</>
 				) as any
 			}

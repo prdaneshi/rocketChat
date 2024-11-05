@@ -105,15 +105,15 @@ const UserAutoCompleteMultipleFederated = ({
 
 					return (
 						<Chip key={value} height='x20' onMouseDown={onMouseDown} mie={4} mb={2}>
-							{currentCachedOption._federated ? <Icon size='x20' name='globe' /> : <UserAvatar size='x20' username={value} />}
+							{currentCachedOption._federated ? <Icon size='x20' name='globe' /> : <UserAvatar size='x20' nickname={value} />}
 							<Box is='span' margin='none' mis={4}>
-								{currentCachedOption.name || currentCachedOption.username || value}
+								{currentCachedOption.name|| value} 
 							</Box>
 						</Chip>
 					);
 				}}
 				renderOptions={AutocompleteOptions}
-				options={options.concat(Object.entries(selectedCache)).map(([, item]) => [item.username, item.name || item.username])}
+				options={options.concat(Object.entries(selectedCache)).map(([, item]) => [item.name, item.name || item.name])}
 				data-qa='create-channel-users-autocomplete'
 			/>
 		</OptionsContext.Provider>

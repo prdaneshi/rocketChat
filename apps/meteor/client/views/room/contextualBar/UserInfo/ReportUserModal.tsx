@@ -12,14 +12,14 @@ type ReportUserModalProps = {
 	onConfirm: (reasonForReport: string) => void;
 	onClose: () => void;
 	displayName: string;
-	username: string;
+	//username: string;
 };
 
 type ReportUserModalsFields = {
 	reasonForReport: string;
 };
 
-const ReportUserModal = ({ username, displayName, onConfirm, onClose }: ReportUserModalProps) => {
+const ReportUserModal = ({ displayName, onConfirm, onClose }: ReportUserModalProps) => {
 	const {
 		register,
 		handleSubmit,
@@ -49,7 +49,7 @@ const ReportUserModal = ({ username, displayName, onConfirm, onClose }: ReportUs
 				<Field>
 					<FieldLabel htmlFor={reasonForReportId}>
 						<Box mbe='x12' display='flex' alignItems='center'>
-							<UserAvatar username={username} />
+							<UserAvatar nickname={"U"} />
 							<Box mis='x12' fontScale='p1' fontWeight='700'>
 								{displayName}
 							</Box>

@@ -17,7 +17,7 @@ const UserColumn = ({ name, username, fontSize, size }: UserColumnProps) => {
 		<Box display='flex' alignItems='center'>
 			{username && (
 				<Box>
-					<UserAvatar size={size} username={username} />
+					<UserAvatar size={size} username={"U"} />
 				</Box>
 			)}
 			<Box display='flex' mi={8} withTruncatedText>

@@ -64,7 +64,7 @@ export const VoipInfo = ({ room, onClickClose /* , onClickReport  */ }: VoipInfo
 						<InfoPanelField>
 							<InfoPanelLabel>{t('Contact')}</InfoPanelLabel>
 							<Box display='flex'>
-								<UserAvatar size='x28' username={_name} />
+								<UserAvatar size='x28' nickname={_name} />
 								<AgentInfoDetails mis={8} name={parseOutboundPhoneNumber(_name)} status={<UserStatus status={v?.status} />} />
 							</Box>
 						</InfoPanelField>
