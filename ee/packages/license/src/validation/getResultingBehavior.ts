@@ -10,7 +10,7 @@ export const getResultingBehavior = (
 		case 'disable_modules':
 			return {
 				behavior,
-				modules: ('modules' in data && data.modules) || [],
+				// modules: ('modules' in data && data.modules) || [], #???
 				reason,
 				limit,
 			};

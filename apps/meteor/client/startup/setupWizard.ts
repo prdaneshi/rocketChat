@@ -13,8 +13,8 @@ Meteor.startup(() => {
 		const isWizardInProgress = userId && hasRole(userId, 'admin') && setupWizardState === 'in_progress';
 		const mustRedirect = (!userId && setupWizardState === 'pending') || isWizardInProgress;
 
-		if (mustRedirect) {
-			router.navigate('/setup-wizard');
-		}
+		// if (mustRedirect) { //#???
+		// 	router.navigate('/setup-wizard');
+		// }
 	});
 });

@@ -27,8 +27,8 @@ export const startLicense = async () => {
 	});
 
 	License.onInvalidateLicense(async () => {
-		(await Settings.updateValueById('Enterprise_License_Status', 'Invalid')).modifiedCount &&
-			void notifyOnSettingChangedById('Enterprise_License_Status');
+		// (await Settings.updateValueById('Enterprise_License_Status', 'Invalid')).modifiedCount &&
+		// 	void notifyOnSettingChangedById('Enterprise_License_Status'); #???
 	});
 
 	License.onRemoveLicense(async () => {

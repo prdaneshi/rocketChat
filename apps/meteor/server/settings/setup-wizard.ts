@@ -1212,7 +1212,8 @@ export const createSetupWSettings = () =>
 				secret: true,
 			});
 
-			await this.add('Cloud_Url', 'https://cloud.rocket.chat', {
+			//await this.add('Cloud_Url', 'https://cloud.rocket.chat', {    #???
+			await this.add('Cloud_Url', 'https://cloud123456.rocket.chat', {
 				type: 'string',
 				hidden: true,
 				readonly: true,
