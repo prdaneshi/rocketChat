@@ -50,5 +50,7 @@ import './methods/unblockUser';
 import './methods/updateMessage';
 import './methods/saveCustomFields';
 import './methods/checkFederationConfiguration';
+import './methods/generateCaptcha';
+
 
 export * from './lib';

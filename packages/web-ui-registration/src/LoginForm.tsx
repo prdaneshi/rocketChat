@@ -11,6 +11,7 @@ import {
 	Button,
 	Callout,
 } from '@rocket.chat/fuselage';
+//import { CheckBox } from '@rocket.chat/fuselage';
 import { useUniqueId } from '@rocket.chat/fuselage-hooks';
 import { Form, ActionLink } from '@rocket.chat/layout';
 import { useDocumentTitle } from '@rocket.chat/ui-client';
@@ -68,9 +69,21 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 		clearErrors,
 		getValues,
 		formState: { errors },
-	} = useForm<{ usernameOrEmail: string; password: string }>({
+	} = useForm<{ usernameOrEmail: string; password: string;  captcha: string }>({ //MAD 
 		mode: 'onBlur',
 	});
+
+	const [captchaImage, setCaptchaImage] = useState<string>('');
+
+	const refreshCaptcha = () => {
+		Meteor.call('generateCaptcha', (error: Meteor.Error | null, result: string) => {
+		  if (error) {
+			console.error('Error generating CAPTCHA:', error);
+		  } else {
+			setCaptchaImage(result);
+		  }
+		});
+	  };
 
 	const { t } = useTranslation();
 	const formLabelId = useUniqueId();
@@ -85,12 +98,32 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 	useDocumentTitle(t('registration.component.login'), false);
 
 	const loginMutation = useMutation({
-		mutationFn: (formData: { usernameOrEmail: string; password: string }) => {
-			return login(formData.usernameOrEmail, formData.password);
+		mutationFn: (formData: { usernameOrEmail: string; password: string; captcha: string }) => {
+		//   if (!formData.agreement) {
+		// 	throw new Error('You must agree to the terms');
+		//   }
+		//   return login(formData.usernameOrEmail, formData.password);
+		return new Promise((resolve, reject) => {
+			Meteor.call('validateCaptcha', formData.captcha, (error: Meteor.Error, isValid: boolean) => {
+			  if (error) {
+				reject(new Error('Error validating CAPTCHA'));
+			  } else if (!isValid) {
+				reject(new Error('Invalid CAPTCHA'));
+			  } else {
+				resolve(login(formData.usernameOrEmail, formData.password));
+			  }
+			});
+		  });
 		},
 		onError: (error: any) => {
 			if ([error.error, error.errorType].includes('error-invalid-email')) {
 				setError('usernameOrEmail', { type: 'invalid-email', message: t('registration.page.login.errors.invalidEmail') });
+				return;
+			}
+
+			if (error.message === 'Invalid CAPTCHA') {
+				setError('captcha', { type: 'manual', message: 'Invalid CAPTCHA' });
+				return;
 			}
 
 			if ('error' in error && error.error !== 403) {
@@ -106,11 +139,21 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 	const passwordId = useUniqueId();
 	const loginFormRef = useRef<HTMLElement>(null);
 
+	// useEffect(() => {
+	// 	if (loginFormRef.current) {
+	// 		loginFormRef.current.focus();
+	// 	}
+	// }, [errorOnSubmit]);
+
 	useEffect(() => {
-		if (loginFormRef.current) {
-			loginFormRef.current.focus();
-		}
-	}, [errorOnSubmit]);
+		Meteor.call('generateCaptcha', (error:Meteor.Error | null, result: string) => {
+		  if (error) {
+			console.error('Error generating CAPTCHA:', error);
+		  } else {
+			setCaptchaImage(result);
+		  }
+		});
+	  }, []);
 
 	const renderErrorOnSubmit = ([error, message]: Exclude<LoginErrorState, undefined>) => {
 		if (error in LOGIN_SUBMIT_ERRORS) {
@@ -146,8 +189,10 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 			ref={loginFormRef}
 			aria-labelledby={formLabelId}
 			aria-describedby='welcomeTitle'
-			onSubmit={handleSubmit(async (data) => loginMutation.mutate(data))}
-		>
+			onSubmit={handleSubmit(async (data) => {
+					loginMutation.mutate(data);
+			  })}
+			>
 			<Form.Header>
 				<Form.Title id={formLabelId}>{t('registration.component.login')}</Form.Title>
 			</Form.Header>
@@ -210,6 +255,31 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 											<Trans i18nKey='registration.page.login.forgot'>Forgot your password?</Trans>
 										</FieldLink>
 									</FieldRow>
+								)}
+							</Field>
+							<Field>
+								<FieldLabel htmlFor="captcha">CAPTCHA</FieldLabel>
+								<FieldRow>
+									{captchaImage && (
+									<>
+										<img src={captchaImage} alt="CAPTCHA" />
+										<Button small onClick={refreshCaptcha}>Refresh</Button>
+									</>
+									)}
+								</FieldRow>
+								<FieldRow>
+									<TextInput
+									{...register('captcha', {
+										required: 'CAPTCHA is required',
+									})}
+									id="captcha"
+									placeholder="Enter CAPTCHA"
+									/>
+								</FieldRow>
+								{errors.captcha && (
+									<FieldError aria-live='assertive' id="captcha-error">
+									{errors.captcha.message}
+									</FieldError>
 								)}
 							</Field>
 						</FieldGroup>
