@@ -23,7 +23,7 @@ const UserAvatarWithStatus = () => {
 	const user = useUser();
 	const presenceDisabled = useSetting<boolean>('Presence_broadcast_disabled');
 
-	const { status = !user ? 'online' : 'offline', username, avatarETag } = user || anon;
+	const { status = !user ? 'online' : 'offline', nickname, avatarETag } = user || anon;
 
 	return (
 		<Box
@@ -32,7 +32,7 @@ const UserAvatarWithStatus = () => {
 				cursor: pointer;
 			`}
 		>
-			{username && <UserAvatar size='x24' username={username} etag={avatarETag} />}
+			{nickname && <UserAvatar size='x24' nickname={nickname} etag={avatarETag} />}
 			<Box
 				className={css`
 					bottom: 0;

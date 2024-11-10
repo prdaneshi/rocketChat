@@ -15,6 +15,8 @@ export const overrideLoginMethod = <TArgs extends any[]>(
 			callback?.(error);
 			return;
 		}
+		
+		console.debug("TTTESSSTTT2222");
 
 		const { process2faReturn } = await import('./process2faReturn');
 

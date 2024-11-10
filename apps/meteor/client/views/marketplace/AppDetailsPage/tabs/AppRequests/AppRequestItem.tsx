@@ -11,10 +11,10 @@ type AppRequestItemProps = {
 	name: string;
 	createdDate: string;
 	message: string;
-	username: string;
+	// username: string;
 };
 
-const AppRequestItem = ({ seen, name, createdDate, message, username }: AppRequestItemProps): ReactElement => {
+const AppRequestItem = ({ seen, name, createdDate, message }: AppRequestItemProps): ReactElement => {
 	const formatDateAndTime = useFormatDateAndTime();
 	const isAdminUser = usePermission('manage-apps');
 
@@ -24,7 +24,7 @@ const AppRequestItem = ({ seen, name, createdDate, message, username }: AppReque
 				<Box mie={16} alignSelf='center' height='100%' width='x8'>
 					{!seen && isAdminUser && <Badge small variant='primary' />}
 				</Box>
-				{username && <UserAvatar size='x36' username={username} />}
+				{name && <UserAvatar size='x36' nickname={"U"} />}
 			</Box>
 			<Box display='flex' flexDirection='column'>
 				<Box display='flex' flexDirection='row' alignItems='flex-start' mbe={4}>

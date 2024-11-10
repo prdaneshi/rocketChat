@@ -56,7 +56,7 @@ const ContextMessage = ({
 			<Message.Divider>{formatDate(message._updatedAt)}</Message.Divider>
 			<Message>
 				<Message.LeftContainer>
-					<UserAvatar username={message.u.username} />
+					<UserAvatar username={"U"} />
 				</Message.LeftContainer>
 				<Message.Container>
 					<Message.Header>

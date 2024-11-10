@@ -146,7 +146,7 @@ injectIntoBody(
 	'react-root',
 	`
 <noscript style="color: white; text-align:center">
-	You need to enable JavaScript to run this app.
+	You need to enable JavaScript to run this app. jest testing
 </noscript>
 <div id="react-root">
 	<div class="page-loading" role="alert" aria-busy="true" aria-live="polite" aria-label="loading">

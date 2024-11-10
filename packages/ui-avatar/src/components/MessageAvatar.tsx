@@ -6,11 +6,11 @@ import UserAvatar from './UserAvatar';
 type MessageAvatarProps = {
 	emoji?: ReactElement;
 	avatarUrl?: string;
-	username: string;
+	nickname: string;
 	size?: ComponentProps<typeof UserAvatar>['size'];
 } & Omit<HTMLAttributes<HTMLElement>, 'is'>;
 
-const MessageAvatar: VFC<MessageAvatarProps> = ({ emoji, avatarUrl, username, size = 'x36', ...props }) => {
+const MessageAvatar: VFC<MessageAvatarProps> = ({ emoji, avatarUrl, nickname, size = 'x36', ...props }) => {
 	if (emoji) {
 		return (
 			<AvatarContainer size={size} {...props}>
@@ -19,7 +19,7 @@ const MessageAvatar: VFC<MessageAvatarProps> = ({ emoji, avatarUrl, username, si
 		);
 	}
 
-	return <UserAvatar url={avatarUrl} username={username} size={size} {...props} />;
+	return <UserAvatar url={avatarUrl} nickname={nickname} size={size} {...props} />;
 };
 
 export default MessageAvatar;

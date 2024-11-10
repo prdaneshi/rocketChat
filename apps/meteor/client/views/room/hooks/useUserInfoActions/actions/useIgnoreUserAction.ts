@@ -13,7 +13,7 @@ import { useMemo } from 'react';
 import { getRoomDirectives } from '../../../lib/getRoomDirectives';
 import type { UserInfoAction, UserInfoActionType } from '../useUserInfoActions';
 
-export const useIgnoreUserAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useIgnoreUserAction = (user: Pick<IUser, '_id' | 'nickname'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
 	const room = useUserRoom(rid);
 	const { _id: uid } = user;

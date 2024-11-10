@@ -19,26 +19,26 @@ import { getRoomDirectives } from '../../../lib/getRoomDirectives';
 import type { UserInfoAction, UserInfoActionType } from '../useUserInfoActions';
 
 const getUserIsMuted = (
-	user: Pick<IUser, '_id' | 'username'>,
+	user: Pick<IUser, '_id' | 'nickname'>,
 	room: IRoom | undefined,
 	userCanPostReadonly: boolean,
 ): boolean | undefined => {
 	if (room?.ro) {
-		if (Array.isArray(room.unmuted) && room.unmuted.indexOf(user.username ?? '') !== -1) {
+		if (Array.isArray(room.unmuted) && room.unmuted.indexOf(user.nickname ?? '') !== -1) {
 			return false;
 		}
 
 		if (userCanPostReadonly) {
-			return Array.isArray(room.muted) && room.muted.indexOf(user.username ?? '') !== -1;
+			return Array.isArray(room.muted) && room.muted.indexOf(user.nickname ?? '') !== -1;
 		}
 
 		return true;
 	}
 
-	return room && Array.isArray(room.muted) && room.muted.indexOf(user.username ?? '') > -1;
+	return room && Array.isArray(room.muted) && room.muted.indexOf(user.nickname ?? '') > -1;
 };
 
-export const useMuteUserAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useMuteUserAction = (user: Pick<IUser, '_id' | 'nickname'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
 	const room = useUserRoom(rid);
 	const userCanMute = usePermission('mute-user', rid);
@@ -68,16 +68,16 @@ export const useMuteUserAction = (user: Pick<IUser, '_id' | 'username'>, rid: IR
 		const action = (): Promise<void> | void => {
 			const onConfirm = async (): Promise<void> => {
 				try {
-					if (!user.username) {
-						throw new Error('User without username');
+					if (!user.nickname) {
+						throw new Error('User without nickname');
 					}
 
-					await muteUser({ roomId: rid, username: user.username });
+					await muteUser({ roomId: rid, username: user.nickname });
 
 					return dispatchToastMessage({
 						type: 'success',
 						message: t(mutedMessage, {
-							username: user.username,
+							username: user.nickname,
 							roomName,
 						}),
 					});
@@ -118,7 +118,7 @@ export const useMuteUserAction = (user: Pick<IUser, '_id' | 'username'>, rid: IR
 		roomName,
 		setModal,
 		t,
-		user.username,
+		user.nickname,
 		userCanMute,
 	]);
 

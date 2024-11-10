@@ -299,7 +299,7 @@ export async function onServerVersionChange(cb: () => Promise<void>): Promise<vo
 		},
 		{
 			$set: {
-				hash: Info.commit.hash,
+				hash: '' //Info.commit.hash,
 			},
 		},
 		{
@@ -307,7 +307,7 @@ export async function onServerVersionChange(cb: () => Promise<void>): Promise<vo
 		},
 	);
 
-	if (result.value?.hash === Info.commit.hash) {
+	if (result.value?.hash === '') {
 		return;
 	}
 

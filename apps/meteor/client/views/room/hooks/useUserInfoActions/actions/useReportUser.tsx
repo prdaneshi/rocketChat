@@ -8,14 +8,14 @@ import { useUserDisplayName } from '../../../../../hooks/useUserDisplayName';
 import ReportUserModal from '../../../contextualBar/UserInfo/ReportUserModal';
 import type { UserInfoAction } from '../useUserInfoActions';
 
-export const useReportUser = (user: Pick<IUser, '_id' | 'username' | 'name'>): UserInfoAction | undefined => {
-	const { _id: uid, username, name } = user;
+export const useReportUser = (user: Pick<IUser, '_id' | 'nickname' | 'name'>): UserInfoAction | undefined => {
+	const { _id: uid, nickname, name } = user;
 	const ownUserId = useUserId();
 	const setModal = useSetModal();
 
 	const { t } = useTranslation();
 	const dispatchToastMessage = useToastMessageDispatch();
-	const displayName = useUserDisplayName({ username, name });
+	const displayName = useUserDisplayName({ nickname, name });
 
 	const reportUser = useEndpoint('POST', '/v1/moderation.reportUser');
 	const reportUserMutation = useMutation(
@@ -37,7 +37,7 @@ export const useReportUser = (user: Pick<IUser, '_id' | 'username' | 'name'>): U
 					onConfirm={reportUserMutation.mutate}
 					onClose={() => setModal()}
 					displayName={displayName || ''}
-					username={username || ''}
+					//username={nickname || ''}
 				/>,
 			);
 
@@ -50,7 +50,7 @@ export const useReportUser = (user: Pick<IUser, '_id' | 'username' | 'name'>): U
 					variant: 'danger' as const,
 			  }
 			: undefined;
-	}, [ownUserId, uid, t, setModal, username, reportUserMutation.mutate, displayName]);
+	}, [ownUserId, uid, t, setModal, nickname, reportUserMutation.mutate, displayName]);
 
 	return openReportUserModal;
 };

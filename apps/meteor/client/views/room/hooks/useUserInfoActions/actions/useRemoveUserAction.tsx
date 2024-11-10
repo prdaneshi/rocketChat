@@ -14,7 +14,7 @@ import { getRoomDirectives } from '../../../lib/getRoomDirectives';
 import type { UserInfoAction } from '../useUserInfoActions';
 
 export const useRemoveUserAction = (
-	user: Pick<IUser, '_id' | 'username'>,
+	user: Pick<IUser, '_id' | 'nickname'>,
 	rid: IRoom['_id'],
 	reload?: () => void,
 ): UserInfoAction | undefined => {

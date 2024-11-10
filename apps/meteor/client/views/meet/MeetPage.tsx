@@ -96,7 +96,7 @@ const MeetPage = () => {
 								margin: 'auto',
 							}}
 						>
-							<UserAvatar username={visitorToken ? visitorName : agentName} size={isMobileDevice() ? 'x32' : 'x48'} />
+							<UserAvatar nickname={visitorToken ? visitorName : agentName} size={isMobileDevice() ? 'x32' : 'x48'} />
 						</Box>
 					</Box>
 					<Box
@@ -116,7 +116,7 @@ const MeetPage = () => {
 								margin: 'auto',
 							}}
 						>
-							<UserAvatar username={visitorToken ? agentName : visitorName} size='x124' />
+							<UserAvatar nickname={visitorToken ? agentName : visitorName} size='x124' />
 						</Box>
 						<p style={{ color: 'white', fontSize: 16, margin: 15 }}>Call Ended!</p>
 						<p

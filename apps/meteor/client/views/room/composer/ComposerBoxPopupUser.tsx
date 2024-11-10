@@ -10,7 +10,7 @@ export type ComposerBoxPopupUserProps = {
 	system?: boolean;
 	outside?: boolean;
 	suggestion?: boolean;
-	username: string;
+	// username: string;
 	name?: string;
 	nickname?: string;
 	status?: string;
@@ -18,7 +18,7 @@ export type ComposerBoxPopupUserProps = {
 	variant?: 'small' | 'large';
 };
 
-function ComposerBoxPopupUser({ _id, system, username, name, nickname, outside, suggestion, variant }: ComposerBoxPopupUserProps) {
+function ComposerBoxPopupUser({ _id, system, name, nickname, outside, suggestion, variant }: ComposerBoxPopupUserProps) {
 	const t = useTranslation();
 
 	return (
@@ -26,21 +26,21 @@ function ComposerBoxPopupUser({ _id, system, username, name, nickname, outside, 
 			{!system && (
 				<>
 					<OptionAvatar>
-						<UserAvatar size='x28' username={username} />
+						<UserAvatar size='x28' nickname={"U"} />
 					</OptionAvatar>
 					<OptionColumn>
 						<ReactiveUserStatus uid={_id} />
 					</OptionColumn>
 					<OptionContent>
-						<strong>{name ?? username}</strong> {name && name !== username && username}
-						{nickname && <span className='popup-user-nickname'>({nickname})</span>}
+						<strong>{name ?? nickname}</strong> {name && name !== nickname && nickname}
+						
 					</OptionContent>
 				</>
 			)}
 
 			{system && (
 				<OptionContent>
-					<strong>{username}</strong> {name}
+					<strong>{nickname}</strong> {name}
 				</OptionContent>
 			)}
 

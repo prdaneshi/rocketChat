@@ -8,7 +8,7 @@ import { getRoomDirectives } from '../../../lib/getRoomDirectives';
 import { useUserHasRoomRole } from '../../useUserHasRoomRole';
 import type { UserInfoAction, UserInfoActionType } from '../useUserInfoActions';
 
-export const useChangeLeaderAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useChangeLeaderAction = (user: Pick<IUser, '_id' | 'nickname'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
 	const room = useUserRoom(rid);
 	const { _id: uid } = user;
@@ -26,7 +26,7 @@ export const useChangeLeaderAction = (user: Pick<IUser, '_id' | 'username'>, rid
 	const changeLeaderEndpoint = isLeader ? 'removeLeader' : 'addLeader';
 	const changeLeaderMessage = isLeader ? 'removed__username__as__role_' : 'set__username__as__role_';
 	const changeLeader = useEndpointAction('POST', `${endpointPrefix}.${changeLeaderEndpoint}`, {
-		successMessage: t(changeLeaderMessage, { username: user.username, role: 'leader' }),
+		successMessage: t(changeLeaderMessage, { username: user.nickname, role: 'leader' }),
 	});
 	const changeLeaderAction = useMutableCallback(() => changeLeader({ roomId: rid, userId: uid }));
 	const changeLeaderOption = useMemo(

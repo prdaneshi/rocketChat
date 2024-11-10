@@ -29,7 +29,7 @@ const VideoConfListItem = ({
 
 	const {
 		_id: callId,
-		createdBy: { name, username, _id },
+		createdBy: { name, _id },
 		users,
 		createdAt,
 		endedAt,
@@ -65,10 +65,10 @@ const VideoConfListItem = ({
 			pb={8}
 		>
 			<Message {...props}>
-				<Message.LeftContainer>{username && <UserAvatar username={username} size='x36' />}</Message.LeftContainer>
+				<Message.LeftContainer>{name && <UserAvatar nickname={name} size='x36' />}</Message.LeftContainer>
 				<Message.Container>
 					<Message.Header>
-						<Message.Name title={username}>{showRealName ? name : username}</Message.Name>
+						<Message.Name title={name}>{showRealName ? name : name}</Message.Name>
 						<Message.Timestamp>{formatDate(createdAt)}</Message.Timestamp>
 					</Message.Header>
 					<Message.Body clamp={2} />
@@ -93,12 +93,12 @@ const VideoConfListItem = ({
 								<Avatar.Stack>
 									{joinedUsers.map(
 										(user, index) =>
-											user.username &&
+											user.name &&
 											index + 1 <= VIDEOCONF_STACK_MAX_USERS && (
 												<UserAvatar
-													data-tooltip={user.username}
-													key={user.username}
-													username={user.username}
+													data-tooltip={user.name}
+													key={user.name}
+													nickname={user.name}
 													etag={user.avatarETag}
 													size='x28'
 												/>
