@@ -9,9 +9,9 @@ import { useUserCard } from '../../../contexts/UserCardContext';
 import { useVideoConfWarning } from '../../../contextualBar/VideoConference/hooks/useVideoConfWarning';
 import type { UserInfoAction, UserInfoActionType } from '../useUserInfoActions';
 
-export const useCallAction = (user: Pick<IUser, '_id' | 'username'>): UserInfoAction | undefined => {
+export const useCallAction = (user: Pick<IUser, '_id' | 'nickname'>): UserInfoAction | undefined => {
 	const t = useTranslation();
-	const usernameSubscription = useUserSubscriptionByName(user.username ?? '');
+	const usernameSubscription = useUserSubscriptionByName(user.nickname ?? '');
 	const room = useUserRoom(usernameSubscription?.rid || '');
 	const { closeUserCard } = useUserCard();
 

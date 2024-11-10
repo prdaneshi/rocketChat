@@ -13,7 +13,7 @@ type IntegrationRowProps = {
 
 const IntegrationRow = ({ integration, onClick, isMobile }: IntegrationRowProps) => {
 	const formatDateAndTime = useFormatDateAndTime();
-	const { _id, name, type, username, _createdAt, _createdBy, channel } = integration;
+	const { _id, name, type, _createdAt, _createdBy, channel } = integration;
 
 	return (
 		<GenericTableRow key={_id} onKeyDown={onClick(_id, type)} onClick={onClick(_id, type)} tabIndex={0} role='link' action>
@@ -24,7 +24,7 @@ const IntegrationRow = ({ integration, onClick, isMobile }: IntegrationRowProps)
 				<Box withTruncatedText>{channel.join(', ')}</Box>
 			</GenericTableCell>
 			<GenericTableCell>
-				<Box withTruncatedText>{_createdBy?.username}</Box>
+				<Box withTruncatedText>{_createdBy?.nickname}</Box>
 			</GenericTableCell>
 			{!isMobile && (
 				<GenericTableCell>
@@ -32,7 +32,7 @@ const IntegrationRow = ({ integration, onClick, isMobile }: IntegrationRowProps)
 				</GenericTableCell>
 			)}
 			<GenericTableCell>
-				<Box withTruncatedText>{username}</Box>
+				<Box withTruncatedText>{name}</Box>
 			</GenericTableCell>
 		</GenericTableRow>
 	);

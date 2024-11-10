@@ -47,7 +47,7 @@ const SystemMessage = ({ message, showUserAvatar, ...props }: SystemMessageProps
 
 	const showRealName = useMessageListShowRealName();
 	const user: UserPresence = { ...message.u, roles: [], ...useUserData(message.u._id) };
-	const usernameAndRealNameAreSame = !user.name || user.username === user.name;
+	const usernameAndRealNameAreSame = !user.name || user.nickname === user.name;
 	const showUsername = useMessageListShowUsername() && showRealName && !usernameAndRealNameAreSame;
 
 	const messageType = MessageTypes.getType(message);
@@ -70,7 +70,7 @@ const SystemMessage = ({ message, showUserAvatar, ...props }: SystemMessageProps
 			{...props}
 		>
 			<MessageSystemLeftContainer>
-				{!isSelecting && showUserAvatar && <UserAvatar username={message.u.username} size='x18' />}
+				{!isSelecting && showUserAvatar && <UserAvatar nickname={message.u.nickname} size='x18' />}
 				{isSelecting && <CheckBox checked={isSelected} onChange={toggleSelected} />}
 			</MessageSystemLeftContainer>
 			<MessageSystemContainer>
@@ -78,18 +78,18 @@ const SystemMessage = ({ message, showUserAvatar, ...props }: SystemMessageProps
 					<MessageNameContainer
 						tabIndex={0}
 						role='button'
-						onClick={(e) => user.username && openUserCard(e, user.username)}
+						onClick={(e) => user.nickname && openUserCard(e, user.nickname)}
 						onKeyDown={(e: KeyboardEvent<HTMLSpanElement>) => {
-							(e.code === 'Enter' || e.code === 'Space') && openUserCard(e, message.u.username);
+							(e.code === 'Enter' || e.code === 'Space') && openUserCard(e, message.u.nickname);
 						}}
 						style={{ cursor: 'pointer' }}
 						{...triggerProps}
 					>
-						<MessageSystemName>{getUserDisplayName(user.name, user.username, showRealName)}</MessageSystemName>
+						<MessageSystemName>{getUserDisplayName(user.name, user.nickname, showRealName)}</MessageSystemName>
 						{showUsername && (
 							<>
 								{' '}
-								<MessageUsername data-username={user.username}>@{user.username}</MessageUsername>
+								<MessageUsername data-username={user.nickname}>@{user.nickname}</MessageUsername>
 							</>
 						)}
 					</MessageNameContainer>

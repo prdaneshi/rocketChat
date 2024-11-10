@@ -53,7 +53,7 @@ const MultiUsersSelectElement = ({
         ...props
       }): ReactElement => (
         <Chip {...props} height='x20' value={value} onClick={onRemove} mie={4}>
-          <UserAvatar size='x20' username={value} />
+          <UserAvatar size='x20' nickname={value} />
           <Box is='span' margin='none' mis={4}>
             {label}
           </Box>
@@ -62,7 +62,7 @@ const MultiUsersSelectElement = ({
       renderItem={({ value, label, ...props }): ReactElement => (
         <Option key={value} {...props}>
           <OptionAvatar>
-            <UserAvatar username={value} size='x20' />
+            <UserAvatar nickname={value} size='x20' />
           </OptionAvatar>
           <OptionContent>
             {label} <OptionDescription>({value})</OptionDescription>
