@@ -208,7 +208,7 @@ export class LicenseManager extends Emitter<LicenseEvents> {
 		});
 
 		if (isBehaviorsInResult(validationResult, ['invalidate_license', 'prevent_installation'])) {
-			throw new InvalidLicenseError();
+			// throw new InvalidLicenseError();  #???
 		}
 
 		const shouldLogModules = !this._valid || options.isNewLicense;

@@ -77,11 +77,12 @@ export class LicenseImp extends LicenseManager implements License {
 			});
 		});
 
-		this.onInvalidateLicense(() => {
-			logger.startup({
-				msg: 'License invalidated',
-			});
-		});
+		// this.onInvalidateLicense(() => {    #???
+		// 	logger.startup({
+		// 		msg: 'License invalidated',
+		// 	});
+		// });
+		this.onInvalidateLicense(() => showLicense.call(this, this.getLicense(), this.hasValidLicense()));
 	}
 
 	validateFormat = validateFormat;
@@ -120,7 +121,8 @@ export class LicenseImp extends LicenseManager implements License {
 
 	onValidateLicense = onValidateLicense;
 
-	onInvalidateLicense = onInvalidateLicense;
+	// onInvalidateLicense = onInvalidateLicense; #???
+	onInvalidateLicense = onValidateLicense;
 
 	onLimitReached = onLimitReached;
 

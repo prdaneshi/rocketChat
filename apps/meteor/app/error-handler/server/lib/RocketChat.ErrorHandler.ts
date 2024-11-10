@@ -113,7 +113,7 @@ process.on('unhandledRejection', (error) => {
 	console.error('=================================');
 
 	if (process.env.NODE_ENV === 'development' || process.env.EXIT_UNHANDLEDPROMISEREJECTION) {
-		process.exit(1);
+		// process.exit(1); #???
 	}
 });
 

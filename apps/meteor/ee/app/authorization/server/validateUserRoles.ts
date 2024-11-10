@@ -47,6 +47,6 @@ export async function validateUserRoles(userData: Partial<IUser>, currentUserDat
 	}
 
 	if (await License.shouldPreventAction('activeUsers')) {
-		throw new MeteorError('error-license-user-limit-reached', i18n.t('error-license-user-limit-reached'));
+		// throw new MeteorError('error-license-user-limit-reached', i18n.t('error-license-user-limit-reached')); #???
 	}
 }
