@@ -3,11 +3,13 @@ import { Accounts } from 'meteor/accounts-base';
 import { Meteor } from 'meteor/meteor';
 
 const { _runLoginHandlers } = Accounts;
-Accounts._runLoginHandlers = function (methodInvocation, options) {
-	const result = _runLoginHandlers.call(Accounts, methodInvocation, options);
 
-	if (result.error && result.error.reason === 'Incorrect password') {
-		result.error = new Meteor.Error(403, 'User not found');
+Accounts._options.ambiguousErrorMessages = true;
+Accounts._runLoginHandlers = async function (methodInvocation, options) {
+	const result = await _runLoginHandlers.call(Accounts, methodInvocation, options);
+
+	if (result.error instanceof Meteor.Error) {
+		result.error = new Meteor.Error(401, 'User not found');
 	}
 
 	return result;
