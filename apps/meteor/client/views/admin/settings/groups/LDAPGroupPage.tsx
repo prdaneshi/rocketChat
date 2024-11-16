@@ -139,7 +139,7 @@ function LDAPGroupPage({ _id, i18nLabel, onClickBack, ...group }: LDAPGroupPageP
 					<Button children={t('Test_Connection')} disabled={!ldapEnabled || changed} onClick={handleTestConnectionButtonClick} />
 					<Button children={t('Test_LDAP_Search')} disabled={!ldapEnabled || changed} onClick={handleSearchTestButtonClick} />
 					<Button children={t('LDAP_Sync_Now')} disabled={!ldapEnabled || changed} onClick={handleSyncNowButtonClick} />
-					<Button role='link' onClick={() => handleLinkClick('https://go.rocket.chat/i/ldap-docs')}>
+					<Button role='link' onClick={() => handleLinkClick('https://sina.co/i/ldap-docs')}>
 						{t('LDAP_Documentation')}
 					</Button>
 				</>
