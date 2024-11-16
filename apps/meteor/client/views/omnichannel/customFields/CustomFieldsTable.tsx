@@ -92,7 +92,7 @@ const CustomFieldsTable = () => {
 					description={t('No_custom_fields_yet_description')}
 					buttonAction={handleAddNew}
 					buttonTitle={t('Create_custom_field')}
-					linkHref='https://go.rocket.chat/i/omnichannel-docs'
+					linkHref='https://sina.co/i/omnichannel-docs'
 					linkText={t('Learn_more_about_custom_fields')}
 				/>
 			)}

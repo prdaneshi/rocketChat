@@ -6,7 +6,7 @@ import { getURL } from '../../../utils/server/getURL';
 import { getWorkspaceAccessTokenOrThrow } from './getWorkspaceAccessToken';
 import { syncWorkspace } from './syncWorkspace';
 
-export const fallback = `https://go.rocket.chat/i/contact-sales`;
+export const fallback = `https://sina.co/i/contact-sales`;
 
 export const getCheckoutUrl = async (): Promise<{
 	url: string;

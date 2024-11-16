@@ -1387,7 +1387,7 @@
   "Error_sending_livechat_offline_message": "Při odesílání offline zprávy Omnichannel došlo k chybě",
   "Error_sending_livechat_transcript": "Při odesílání přepisu Omnichannel došlo k chybě",
   "Error_Site_URL": "Chybné Site_Url",
-  "Error_Site_URL_description": "Prosím aktualizujte nastavení \"Site_Url\", více informací naleznete [zde](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "Prosím aktualizujte nastavení \"Site_Url\", více informací naleznete [zde](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} není povolena",
   "error-agent-offline": "Operátor je offline",
   "error-application-not-found": "Aplikace nenalezena",

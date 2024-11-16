@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 
 export type Item = {
 	i18nLabel: string;
-	href?: LocationPathname | `https://go.rocket.chat/i/${string}`;
+	href?: LocationPathname | `https://sina.co/i/${string}`;
 	icon?: IconName;
 	tag?: 'Alpha' | 'Beta';
 	permissionGranted?: () => boolean;
@@ -17,8 +17,8 @@ export type SidebarDivider = { divider: boolean; i18nLabel: string };
 export type SidebarItem = Item | SidebarDivider;
 export const isSidebarItem = (item: SidebarItem): item is Item => !('divider' in item);
 
-export const isGoRocketChatLink = (link: string): link is `https://go.rocket.chat/i/${string}` =>
-	link.startsWith('https://go.rocket.chat/i/');
+export const isGoRocketChatLink = (link: string): link is `https://sina.co/i/${string}` =>
+	link.startsWith('https://sina.co/i/');
 
 export const createSidebarItems = (
 	initialItems: SidebarItem[] = [],

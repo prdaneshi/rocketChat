@@ -106,7 +106,7 @@ function Setting({ className = undefined, settingId, sectionChanged }: SettingPr
 
 	const shouldDisableEnterprise = setting.enterprise && !isEnterprise;
 
-	const PRICING_URL = 'https://go.rocket.chat/i/see-paid-plan-customize-homepage';
+	const PRICING_URL = 'https://sina.co/i/see-paid-plan-customize-homepage';
 
 	const showUpgradeButton = useMemo(
 		() =>

@@ -21,8 +21,8 @@ import { VersionTag } from './components/VersionTag';
 import { getVersionStatus } from './getVersionStatus';
 import RegisterWorkspaceModal from './modals/RegisterWorkspaceModal';
 
-const SUPPORT_EXTERNAL_LINK = 'https://go.rocket.chat/i/version-support';
-const RELEASES_EXTERNAL_LINK = 'https://go.rocket.chat/i/update-product';
+const SUPPORT_EXTERNAL_LINK = 'https://sina.co/i/version-support';
+const RELEASES_EXTERNAL_LINK = 'https://sina.co/i/update-product';
 
 type VersionCardProps = {
 	serverInfo: IWorkspaceInfo;
