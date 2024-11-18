@@ -5,7 +5,7 @@ import React, { memo } from 'react';
 import RoomMembersItem from './RoomMembersItem';
 
 type RoomMembersRowProps = {
-	user: Pick<IUser, 'federated' | 'nickname' | 'name' | '_id'>;
+	user: Pick<IUser, 'federated' | 'username' | 'name' | '_id'>;
 	data: {
 		onClickView: (e: MouseEvent<HTMLElement>) => void;
 		rid: IRoom['_id'];
@@ -24,7 +24,7 @@ const RoomMembersRow = ({ user, data: { onClickView, rid }, index, reload, useRe
 		<RoomMembersItem
 			key={index}
 			useRealName={useRealName}
-			nickname={user.nickname}
+			username={user.username}
 			_id={user._id}
 			rid={rid}
 			name={user.name}

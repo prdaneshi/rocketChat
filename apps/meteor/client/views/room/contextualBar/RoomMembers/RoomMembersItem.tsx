@@ -25,9 +25,9 @@ type RoomMembersItemProps = {
 	rid: IRoom['_id'];
 	reload: () => void;
 	useRealName: boolean;
-} & Pick<IUser, 'federated' | 'nickname' | 'name' | '_id'>;
+} & Pick<IUser, 'federated' | 'username' | 'name' | '_id'>;
 
-const RoomMembersItem = ({ _id, name, nickname, federated, onClickView, rid, reload, useRealName }: RoomMembersItemProps): ReactElement => {
+const RoomMembersItem = ({ _id, name, username, federated, onClickView, rid, reload, useRealName }: RoomMembersItemProps): ReactElement => {
 	const [showButton, setShowButton] = useState();
 
 	const isReduceMotionEnabled = usePrefersReducedMotion();
@@ -37,20 +37,20 @@ const RoomMembersItem = ({ _id, name, nickname, federated, onClickView, rid, rel
 
 	const preventPropagation = usePreventPropagation();
 
-	const [nameOrUsername, displayUsername] = getUserDisplayNames(name, nickname, useRealName);
+	const [nameOrUsername, displayUsername] = getUserDisplayNames(name, username, useRealName);
 
 	return (
-		<Option data-username={nickname} data-userid={_id} onClick={onClickView} {...handleMenuEvent}>
+		<Option data-username={username} data-userid={_id} onClick={onClickView} {...handleMenuEvent}>
 			<OptionAvatar>
-				<UserAvatar nickname={"U"} size='x28' />
+				<UserAvatar username={username || ''} size='x28' />
 			</OptionAvatar>
 			<OptionColumn>{federated ? <Icon name='globe' size='x16' /> : <ReactiveUserStatus uid={_id} />}</OptionColumn>
-			<OptionContent data-qa={`MemberItem-${nickname}`}>
+			<OptionContent data-qa={`MemberItem-${username}`}>
 				{nameOrUsername} {displayUsername && <OptionDescription>({displayUsername})</OptionDescription>}
 			</OptionContent>
 			<OptionMenu onClick={preventPropagation}>
 				{showButton ? (
-					<UserActions username={nickname} name={name} rid={rid} _id={_id} reload={reload} />
+					<UserActions username={username} name={name} rid={rid} _id={_id} reload={reload} />
 				) : (
 					<IconButton tiny icon='kebab' />
 				)}

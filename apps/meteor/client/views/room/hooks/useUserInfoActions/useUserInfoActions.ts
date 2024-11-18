@@ -36,7 +36,7 @@ type UserMenuAction = {
 }[];
 
 export const useUserInfoActions = (
-	user: Pick<IUser, '_id' | 'nickname' | 'name'>,
+	user: Pick<IUser, '_id' | 'username' | 'name'>,
 	rid: IRoom['_id'],
 	reload?: () => void,
 	size = 2,

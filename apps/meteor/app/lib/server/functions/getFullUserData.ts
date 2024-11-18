@@ -9,7 +9,7 @@ const logger = new Logger('getFullUserData');
 
 const defaultFields = {
 	name: 1,
-	// username: 1,
+	username: 1,
 	nickname: 1,
 	status: 1,
 	utcOffset: 1,
@@ -25,7 +25,6 @@ const defaultFields = {
 } as const;
 
 const fullFields = {
-	username: 1,
 	emails: 1,
 	phone: 1,
 	statusConnection: 1,

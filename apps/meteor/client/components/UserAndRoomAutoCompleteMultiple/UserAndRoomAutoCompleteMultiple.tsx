@@ -59,7 +59,7 @@ const UserAndRoomAutoCompleteMultiple = ({ value, onChange, ...props }: UserAndR
 			renderSelected={({ selected: { value, label }, onRemove, ...props }): ReactElement => (
 				<Chip {...props} height='x20' value={value} onClick={onRemove} mie={4}>
 					{label.t === 'd' ? (
-						<UserAvatar size='x20' nickname={value} />
+						<UserAvatar size='x20' username={value} />
 					) : (
 						<RoomAvatar size='x20' room={{ type: label?.type, _id: value, ...label }} />
 					)}
@@ -72,7 +72,7 @@ const UserAndRoomAutoCompleteMultiple = ({ value, onChange, ...props }: UserAndR
 				<Option key={value} {...props}>
 					<OptionAvatar>
 						{label.t === 'd' ? (
-							<UserAvatar size='x20' nickname={value} />
+							<UserAvatar size='x20' username={value} />
 						) : (
 							<RoomAvatar size='x20' room={{ type: label?.type, _id: value, ...label }} />
 						)}

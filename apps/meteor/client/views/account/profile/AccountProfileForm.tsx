@@ -149,8 +149,8 @@ const AccountProfileForm = (props: AllHTMLAttributes<HTMLFormElement>): ReactEle
 						render={({ field: { onChange } }) => (
 							<UserAvatarEditor
 								etag={user?.avatarETag}
-								currentUsername={user?.nickname}
-								username={"U"}
+								currentUsername={user?.username}
+								username={username}
 								setAvatarObj={onChange}
 								disabled={!allowUserAvatarChange}
 							/>

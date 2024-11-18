@@ -24,7 +24,7 @@ type ContactHistoryItemProps = {
 function ContactHistoryItem({ history, setChatId, ...props }: ContactHistoryItemProps): ReactElement {
 	const t = useTranslation();
 	const formatDate = useFormatDateAndTime();
-	const nickname = history.servedBy?.nickname;
+	const username = history.servedBy?.username;
 	const hasClosingMessage = !!history.closingMessage?.msg?.trim();
 	const onClick = (): void => {
 		setChatId(history._id);
@@ -32,10 +32,10 @@ function ContactHistoryItem({ history, setChatId, ...props }: ContactHistoryItem
 
 	return (
 		<Box pbs={16} is={Message} onClick={onClick} data-qa='chat-history-item' {...props}>
-			<Message.LeftContainer>{nickname && <UserAvatar nickname={"U"} size='x36' />}</Message.LeftContainer>
+			<Message.LeftContainer>{username && <UserAvatar username={username} size='x36' />}</Message.LeftContainer>
 			<Message.Container>
 				<Message.Header>
-					<Message.Name title={nickname}>{nickname}</Message.Name>
+					<Message.Name title={username}>{username}</Message.Name>
 					{history.closingMessage?.ts && <Message.Timestamp>{formatDate(history.closingMessage?.ts)}</Message.Timestamp>}
 				</Message.Header>
 				<Message.Body>

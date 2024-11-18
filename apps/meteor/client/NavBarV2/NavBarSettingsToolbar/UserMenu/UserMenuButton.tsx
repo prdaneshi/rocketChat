@@ -30,7 +30,7 @@ const UserMenuButton = forwardRef(function UserMenuButton(props: UserMenuButtonP
 			display='flex'
 			flexDirection='column'
 			overflow='visible'
-			icon={username ? <UserAvatar size='x28' nickname={username} etag={avatarETag} /> : 'user'}
+			icon={username ? <UserAvatar size='x28' username={username} etag={avatarETag} /> : 'user'}
 		>
 			<Box
 				position='absolute'

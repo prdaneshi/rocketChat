@@ -31,7 +31,7 @@ const Template: ComponentStory<typeof Condensed> = (args) => (
 				<Status.Online />
 			</Box>
 		}
-		avatar={<UserAvatar nickname='john.doe' size='x16' url='https://via.placeholder.com/16' />}
+		avatar={<UserAvatar username='john.doe' size='x16' url='https://via.placeholder.com/16' />}
 	/>
 );
 

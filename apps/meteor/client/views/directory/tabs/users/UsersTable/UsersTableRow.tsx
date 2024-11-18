@@ -29,16 +29,16 @@ const UsersTableRow = ({
 			<GenericTableCell>
 				<Flex.Container>
 					<Box>
-						<Flex.Item>{name && <UserAvatar size='x40' title={name} nickname={"U"} etag={avatarETag} />}</Flex.Item>
+						<Flex.Item>{username && <UserAvatar size='x40' title={username} username={username} etag={avatarETag} />}</Flex.Item>
 						<Box withTruncatedText mi={8}>
 							<Box display='flex'>
 								<Box fontScale='p2m' withTruncatedText>
-									{name}
+									{name || username}
 									{nickname && ` (${nickname})`}
 								</Box>{' '}
 								<Box mi={4} />{' '}
 								<Box fontScale='p2' color='hint' withTruncatedText>
-									{name}
+									{username}
 								</Box>
 							</Box>
 							<MarkdownText variant='inline' fontScale='p2' color='hint' content={bio} />

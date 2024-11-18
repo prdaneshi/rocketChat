@@ -6,17 +6,17 @@ import type { BaseAvatarProps } from './BaseAvatar';
 import BaseAvatar from './BaseAvatar';
 
 type UserAvatarProps = Omit<BaseAvatarProps, 'url' | 'title'> & {
-	nickname: string;
+	username: string;
 	etag?: string;
 	url?: string;
 	title?: string;
 };
 
-const UserAvatar: FC<UserAvatarProps> = ({ nickname, etag, ...rest }) => {
+const UserAvatar: FC<UserAvatarProps> = ({ username, etag, ...rest }) => {
 	const getUserAvatarPath = useUserAvatarPath();
-	const { url = getUserAvatarPath(nickname, etag), ...props } = rest;
+	const { url = getUserAvatarPath(username, etag), ...props } = rest;
 
-	return <BaseAvatar url={url} data-username={nickname} title={nickname} {...props} />;
+	return <BaseAvatar url={url} data-username={username} title={username} {...props} />;
 };
 
 export default memo(UserAvatar);

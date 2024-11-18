@@ -96,7 +96,7 @@ const ContactInfo = ({ id: contactId, rid: roomId = '', route }: ContactInfoProp
 		return <Box mbs={16}>{t('Contact_not_found')}</Box>;
 	}
 
-	const { name, visitorEmails, phone, ts, livechatData, lastChat, contactManager, status } = contact;
+	const { username, visitorEmails, phone, ts, livechatData, lastChat, contactManager, status } = contact;
 
 	const showContactHistory = currentRouteName === 'live' && lastChat;
 
@@ -122,12 +122,12 @@ const ContactInfo = ({ id: contactId, rid: roomId = '', route }: ContactInfoProp
 		<>
 			<ContextualbarScrollableContent p={24}>
 				<Margins block={4}>
-					{name && (
+					{username && (
 						<Field>
-							<Label>{`${t('Name')}`}</Label>
+							<Label>{`${t('Name')} / ${t('Username')}`}</Label>
 							<Info style={{ display: 'flex' }}>
-								<UserAvatar size='x40' title={name} nickname={name} />
-								<AgentInfoDetails mis={10} name={name} shortName={name} status={<UserStatus status={status} />} />
+								<UserAvatar size='x40' title={username} username={username} />
+								<AgentInfoDetails mis={10} name={username} shortName={username} status={<UserStatus status={status} />} />
 							</Info>
 						</Field>
 					)}
@@ -165,7 +165,7 @@ const ContactInfo = ({ id: contactId, rid: roomId = '', route }: ContactInfoProp
 					{contactManager && (
 						<Field>
 							<Label>{t('Contact_Manager')}</Label>
-							<ContactManagerInfo nickname ={contactManager.nickname} />
+							<ContactManagerInfo username={contactManager.username} />
 						</Field>
 					)}
 				</Margins>

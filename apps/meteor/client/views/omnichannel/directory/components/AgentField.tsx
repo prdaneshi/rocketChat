@@ -18,9 +18,9 @@ type AgentFieldProps = {
 
 const AgentField = ({ agent, isSmall = false }: AgentFieldProps) => {
 	const t = useTranslation();
-	const { nickname = '' } = agent ?? {};
+	const { username = '' } = agent ?? {};
 	const getUserInfo = useEndpoint('GET', '/v1/users.info');
-	const { data, isLoading } = useQuery(['/v1/users.info', nickname], () => getUserInfo({ nickname }));
+	const { data, isLoading } = useQuery(['/v1/users.info', username], () => getUserInfo({ username }));
 
 	if (isLoading) {
 		return <FormSkeleton />;
@@ -30,14 +30,14 @@ const AgentField = ({ agent, isSmall = false }: AgentFieldProps) => {
 		user: { name, status },
 	} = data ?? { user: {} };
 
-	const displayName = name || nickname;
+	const displayName = name || username;
 
 	return (
 		<Field>
 			<Label>{t('Agent')}</Label>
 			<Info style={{ display: 'flex' }}>
-				<UserAvatar size={isSmall ? 'x28' : 'x40'} title={nickname} nickname={nickname || ''} />
-				<AgentInfoDetails mis={isSmall ? 'x8' : 'x10'} name={displayName} shortName={nickname} status={<UserStatus status={status} />} />
+				<UserAvatar size={isSmall ? 'x28' : 'x40'} title={username} username={username || ''} />
+				<AgentInfoDetails mis={isSmall ? 'x8' : 'x10'} name={displayName} shortName={username} status={<UserStatus status={status} />} />
 			</Info>
 		</Field>
 	);

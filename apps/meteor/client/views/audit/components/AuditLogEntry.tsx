@@ -9,7 +9,6 @@ import React, { memo, useMemo } from 'react';
 import { GenericTableRow, GenericTableCell } from '../../../components/GenericTable';
 import { useFormatDateAndTime } from '../../../hooks/useFormatDateAndTime';
 import AuditFiltersDisplay from './AuditFiltersDisplay';
-import { Nickname } from '/client/components/UserCard/UserCard.stories';
 
 type AuditLogEntryProps = { value: IAuditLog };
 
@@ -29,16 +28,16 @@ const AuditLogEntry = ({ value: { u, results, ts, _id, fields } }: AuditLogEntry
 		<GenericTableRow key={_id} tabIndex={0} role='link'>
 			<GenericTableCell withTruncatedText>
 				<Box display='flex' alignItems='center'>
-					{name && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={name} nickname={"U"} etag={avatarETag} />}
+					{username && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={username} username={username} etag={avatarETag} />}
 					<Box display='flex' withTruncatedText marginInline={8}>
 						<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 							<Box fontScale='p2m' withTruncatedText color='default'>
-								{name}
+								{name || username}
 							</Box>
 							{name && (
 								<Box fontScale='p2' color='hint' withTruncatedText>
 									{' '}
-									{`@${name}`}{' '}
+									{`@${username}`}{' '}
 								</Box>
 							)}
 						</Box>
