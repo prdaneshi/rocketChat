@@ -377,7 +377,6 @@ Accounts.insertUserDoc = function (...args) {
 const validateLoginAttemptAsync = async function (login) {
 	login = await callbacks.run('beforeValidateLogin', login);
 	// console.debug(login);
-	// console.debug("=============================");
 	// console.debug(login.methodArguments[0]);
 	// MAD checking if user is logging in by email or not
 	if(login.type == 'password') {
