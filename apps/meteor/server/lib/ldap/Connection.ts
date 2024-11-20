@@ -379,7 +379,7 @@ export class LDAPConnection {
 
 		this.addUserFilters(filter, username);
 
-		const usernameFilter = this.options.userSearchField.split(',').map((item) => `(${item}=${username})`);
+		const usernameFilter = this.options.userSearchField.split(',').map((item) => `(${item}=${name})`);
 
 		if (usernameFilter.length === 0) {
 			logger.error('LDAP_LDAP_User_Search_Field not defined');
@@ -458,7 +458,7 @@ export class LDAPConnection {
 		const searchOptions: ldapjs.SearchOptions = {
 			filter: filter
 				.join('')
-				.replace(/#{username}/g, username)
+				.replace(/#{name}/g, username)
 				.replace(/#{userdn}/g, userdn),
 			scope: 'sub',
 		};

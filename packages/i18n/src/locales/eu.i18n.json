@@ -1,7 +1,7 @@
 {
   "500": "Zerbitzariaren Barne Errorea",
-  "__username__is_no_longer__role__defined_by__user_by_": "{{username}} is no longer {{role}} by {{user_by}}",
-  "__username__was_set__role__by__user_by_": "{{username}} was set {{role}} by {{user_by}}",
+  "__username__is_no_longer__role__defined_by__user_by_": "{{name}} is no longer {{role}} by {{user_by}}",
+  "__username__was_set__role__by__user_by_": "{{name}} was set {{role}} by {{user_by}}",
   "@username": "@erabiltzailea",
   "@username_message": "@erabiltzailea <message>",
   "#channel": "#kanala",

@@ -56,11 +56,11 @@ const ThreadListMessage = ({
 		<Box className={[className, !following && followStyle].flat()}>
 			<Box pbs={16} is={Message} {...props}>
 				<Message.LeftContainer>
-					<MessageAvatar emoji={emoji ? <Emoji emojiHandle={emoji} fillContainer /> : undefined} username={username} size='x36' />
+					<MessageAvatar emoji={emoji ? <Emoji emojiHandle={emoji} fillContainer /> : undefined} username={name} size='x36' />
 				</Message.LeftContainer>
 				<Message.Container>
 					<Message.Header>
-						<Message.Name title={username}>{name}</Message.Name>
+						<Message.Name title={name}>{name}</Message.Name>
 						<Message.Timestamp>{formatDate(ts)}</Message.Timestamp>
 					</Message.Header>
 					<Message.Body clamp={2}>{msg}</Message.Body>

@@ -9,15 +9,15 @@ test.use({ storageState: Users.admin.state });
 
 const getMentionText = (username: string, kind?: number): string => {
 	if (kind === 1) {
-		return `You mentioned ${username}, but they're not in this room.`;
+		return `You mentioned ${name}, but they're not in this room.`;
 	}
 	if (kind === 2) {
-		return `You mentioned ${username}, but they're not in this room. You can ask a room admin to add them.`;
+		return `You mentioned ${name}, but they're not in this room. You can ask a room admin to add them.`;
 	}
 	if (kind === 3) {
-		return `You mentioned ${username}, but they're not in this room. You let them know via DM.`;
+		return `You mentioned ${name}, but they're not in this room. You let them know via DM.`;
 	}
-	return `Hello @${username}, how are you`;
+	return `Hello @${name}, how are you`;
 };
 
 test.describe.serial('Should not allow to send @all mention if permission to do so is disabled', () => {

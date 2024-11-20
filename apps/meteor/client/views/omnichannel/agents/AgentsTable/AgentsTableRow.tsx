@@ -30,11 +30,11 @@ const AgentsTableRow = ({
 		<GenericTableRow data-qa-id={name} action onClick={() => router.navigate(`/omnichannel/agents/info/${_id}`)}>
 			<GenericTableCell>
 				<Box display='flex' alignItems='center'>
-					{name && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={name} nickname={"U"} etag={avatarETag} />}
+					{username && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={name} username={name} etag={avatarETag} />}
 					<Box display='flex' withTruncatedText mi={8}>
 						<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 							<Box fontScale='p2m' withTruncatedText color='default'>
-								{name }
+								{name || username}
 							</Box>
 							{!mediaQuery && name && (
 								<Box fontScale='p2' color='hint' withTruncatedText>
@@ -48,7 +48,7 @@ const AgentsTableRow = ({
 			{mediaQuery && (
 				<GenericTableCell>
 					<Box fontScale='p2m' withTruncatedText color='hint'>
-						{username}
+						{name}
 					</Box>
 					<Box mi={4} />
 				</GenericTableCell>

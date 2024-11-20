@@ -362,7 +362,7 @@ export class CustomOAuth {
 				}
 
 				if (this.mergeUsers !== true) {
-					throw new Meteor.Error('CustomOAuth', `User with username ${user.username} already exists`);
+					throw new Meteor.Error('CustomOAuth', `User with username ${user.name} already exists`);
 				}
 
 				const serviceIdKey = `services.${serviceName}.id`;

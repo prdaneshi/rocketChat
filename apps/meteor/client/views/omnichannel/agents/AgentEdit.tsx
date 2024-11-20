@@ -134,7 +134,7 @@ const AgentEdit = ({ agentData, userDepartments, availableDepartments }: AgentEd
 					<form id={formId} onSubmit={handleSubmit(handleSave)}>
 						{username && (
 							<Box display='flex' flexDirection='column' alignItems='center'>
-								<UserInfoAvatar data-qa-id='agent-edit-avatar' username={username} />
+								<UserInfoAvatar data-qa-id='agent-edit-avatar' username={name} />
 							</Box>
 						)}
 						<FieldGroup>

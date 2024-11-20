@@ -264,7 +264,7 @@ export class FederationRoomServiceSender extends AbstractFederationApplicationSe
 
 		const federatedInviteeUser = inviteeUser || (await this.internalUserAdapter.getFederatedUserByInternalUsername(username));
 		if (!federatedInviteeUser) {
-			throw new Error(`User with internalUsername ${username} not found`);
+			throw new Error(`User with internalUsername ${name} not found`);
 		}
 
 		if (isInviteeFromTheSameHomeServer) {

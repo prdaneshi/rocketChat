@@ -82,7 +82,7 @@ const UserInfo = ({
 			<InfoPanel>
 				{username && (
 					<InfoPanelAvatar>
-						<UserInfoAvatar username={username} etag={avatarETag} />
+						<UserInfoAvatar username={name} etag={avatarETag} />
 					</InfoPanelAvatar>
 				)}
 
@@ -123,7 +123,7 @@ const UserInfo = ({
 					{username && username !== name && (
 						<InfoPanelField>
 							<InfoPanelLabel>{t('Username')}</InfoPanelLabel>
-							<InfoPanelText data-qa='UserInfoUserName'>{username}</InfoPanelText>
+							<InfoPanelText data-qa='UserInfoUserName'>{name}</InfoPanelText>
 						</InfoPanelField>
 					)}
 

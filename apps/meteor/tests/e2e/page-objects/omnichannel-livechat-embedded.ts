@@ -72,7 +72,7 @@ export class OmnichannelLiveChatEmbedded {
 	}
 
 	imgAvatar(username: string): Locator {
-		return this.page.frameLocator('#rocketchat-iframe').locator(`img[alt="${username}"]`).last();
+		return this.page.frameLocator('#rocketchat-iframe').locator(`img[alt="${name}"]`).last();
 	}
 
 	async closeChat(): Promise<void> {

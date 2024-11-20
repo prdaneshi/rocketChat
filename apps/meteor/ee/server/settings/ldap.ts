@@ -173,7 +173,7 @@ export function addSettings(): Promise<void> {
 						invalidValue: 'each_group',
 					});
 
-					await this.add('LDAP_Sync_User_Data_Roles_Filter', '(&(cn=#{groupName})(memberUid=#{username}))', {
+					await this.add('LDAP_Sync_User_Data_Roles_Filter', '(&(cn=#{groupName})(memberUid=#{name}))', {
 						type: 'string',
 						enableQuery: syncRolesQuery,
 						invalidValue: '',
@@ -220,7 +220,7 @@ export function addSettings(): Promise<void> {
 						invalidValue: 'each_group',
 					});
 
-					await this.add('LDAP_Sync_User_Data_Channels_Filter', '(&(cn=#{groupName})(memberUid=#{username}))', {
+					await this.add('LDAP_Sync_User_Data_Channels_Filter', '(&(cn=#{groupName})(memberUid=#{name}))', {
 						type: 'string',
 						enableQuery: syncChannelsQuery,
 						invalidValue: '',

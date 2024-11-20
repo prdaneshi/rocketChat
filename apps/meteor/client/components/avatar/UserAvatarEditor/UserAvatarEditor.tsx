@@ -52,7 +52,7 @@ function UserAvatarEditor({ currentUsername, username, setAvatarObj, disabled, e
 	};
 
 	const clickReset = (): void => {
-		setNewAvatarSource(`/avatar/%40${username}`);
+		setNewAvatarSource(`/avatar/%40${name}`);
 		setAvatarObj('reset');
 	};
 
@@ -90,7 +90,7 @@ function UserAvatarEditor({ currentUsername, username, setAvatarObj, disabled, e
 				<Box display='flex' flexDirection='column' flexGrow='1' justifyContent='space-between' mis={4}>
 					<Box display='flex' flexDirection='row' mbs='none'>
 						<Button square disabled={disabled} mi={4} title={t('Accounts_SetDefaultAvatar')} onClick={clickReset}>
-							<Avatar url={`/avatar/%40${username}`} />
+							<Avatar url={`/avatar/%40${name}`} />
 						</Button>
 						<IconButton icon='upload' secondary disabled={disabled} title={t('Upload')} mi={4} onClick={clickUpload} />
 						<IconButton

@@ -1177,7 +1177,7 @@ describe('Meteor.methods', () => {
 
 		before('create test user', (done) => {
 			const username = `user.test.${Date.now()}`;
-			const email = `${username}@rocket.chat`;
+			const email = `${name}@rocket.chat`;
 			void request
 				.post(api('users.create'))
 				.set(credentials)
@@ -3135,7 +3135,7 @@ describe('Meteor.methods', () => {
 
 		before('create test user', async () => {
 			const username = `user.test.${Date.now()}`;
-			const email = `${username}@rocket.chat`;
+			const email = `${name}@rocket.chat`;
 
 			testUser = await createUser({ email, name: username, username, password: username, roles: ['user'] });
 		});

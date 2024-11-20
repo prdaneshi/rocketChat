@@ -31,7 +31,7 @@ const getAllMentionsWithTheirRealNames = (message: string, homeServerDomain: str
 				const [, serverDomain] = username.split(':');
 
 				const withoutServerIdentification = `@${username.split(':').shift()}`;
-				const fullUsername = `@${username}`;
+				const fullUsername = `@${name}`;
 				const isMentioningHimself = senderExternalId === text;
 
 				mentions.push({

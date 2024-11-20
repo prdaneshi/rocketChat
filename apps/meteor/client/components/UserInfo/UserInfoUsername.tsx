@@ -11,7 +11,7 @@ type UserInfoUsernameProps = {
 } & ComponentProps<typeof Box>;
 
 const UserInfoUsername = ({ username, status, ...props }: UserInfoUsernameProps): ReactElement => (
-	<UserCardUsername name={username} status={status} {...props} />
+	<UserCardUsername name={name} status={status} {...props} />
 );
 
 export default UserInfoUsername;

@@ -66,7 +66,7 @@ const PrepareUsers = ({ usersCount, users, setUsers }: PrepareUsersProps) => {
 									}}
 								/>
 							</TableCell>
-							<TableCell>{user.username}</TableCell>
+							<TableCell>{user.name}</TableCell>
 							<TableCell>{user.email}</TableCell>
 							<TableCell align='end'>{user.is_deleted && <Tag variant='danger'>{t('Deleted')}</Tag>}</TableCell>
 						</TableRow>

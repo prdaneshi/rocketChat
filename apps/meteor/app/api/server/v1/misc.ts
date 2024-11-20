@@ -271,7 +271,7 @@ API.v1.addRoute(
 					if (user.name && settings.get('UI_Use_Real_Name')) {
 						text = `${user.name}`;
 					} else {
-						text = `@${user.username}`;
+						text = `@${user.name}`;
 					}
 
 					switch (user.status) {

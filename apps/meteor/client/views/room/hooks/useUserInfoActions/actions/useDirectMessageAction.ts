@@ -9,16 +9,16 @@ const getShouldOpenDirectMessage = (
 	currentSubscription?: ISubscription,
 	usernameSubscription?: ISubscription,
 	canOpenDirectMessage?: boolean,
-	nickname?: IUser['nickname'],
+	username?: IUser['username'],
 ): boolean => {
 	const canOpenDm = canOpenDirectMessage || usernameSubscription;
-	const directMessageIsNotAlreadyOpen = currentSubscription && currentSubscription.name !== nickname;
+	const directMessageIsNotAlreadyOpen = currentSubscription && currentSubscription.name !== username;
 	return (canOpenDm && directMessageIsNotAlreadyOpen) ?? false;
 };
 
-export const useDirectMessageAction = (user: Pick<IUser, '_id' | 'nickname'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useDirectMessageAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
-	const usernameSubscription = useUserSubscriptionByName(user.nickname ?? '');
+	const usernameSubscription = useUserSubscriptionByName(user.username ?? '');
 	const currentSubscription = useUserSubscription(rid);
 	const canOpenDirectMessage = usePermission('create-d');
 	const directRoute = useRoute('direct');
@@ -27,14 +27,14 @@ export const useDirectMessageAction = (user: Pick<IUser, '_id' | 'nickname'>, ri
 		currentSubscription,
 		usernameSubscription,
 		canOpenDirectMessage,
-		user.nickname,
+		user.username,
 	);
 
 	const openDirectMessage = useMutableCallback(
 		() =>
-			user.nickname &&
+			user.username &&
 			directRoute.push({
-				rid: user.nickname,
+				rid: user.username,
 			}),
 	);
 

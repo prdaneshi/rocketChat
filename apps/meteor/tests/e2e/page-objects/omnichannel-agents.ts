@@ -83,11 +83,11 @@ export class OmnichannelAgents {
 
 	async selectUsername(username: string) {
 		await this.inputUsername.fill(username);
-		await this.page.locator(`role=option[name="${username}"]`).click();
+		await this.page.locator(`role=option[name="${name}"]`).click();
 	}
 
 	findRowByUsername(username: string) {
-		return this.page.locator(`[data-qa-id="${username}"]`);
+		return this.page.locator(`[data-qa-id="${name}"]`);
 	}
 
 	findRowByName(name: string) {

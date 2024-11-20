@@ -35,8 +35,8 @@ test.describe('avatar-settings', () => {
 		const providerUrlPrefix = 'https://example.com/avatar/';
 
 		test.beforeAll(async ({ api }) => {
-			await setSettingValueById(api, 'Accounts_RoomAvatarExternalUrl', `${providerUrlPrefix}{username}`);
-			await setSettingValueById(api, 'Accounts_AvatarExternalUrl', `${providerUrlPrefix}{username}`);
+			await setSettingValueById(api, 'Accounts_RoomAvatarExternalUrl', `${providerUrlPrefix}{name}`);
+			await setSettingValueById(api, 'Accounts_AvatarExternalUrl', `${providerUrlPrefix}{name}`);
 		});
 
 		test.afterAll(async ({ api }) => {

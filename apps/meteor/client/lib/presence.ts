@@ -23,7 +23,7 @@ const emitter = new Emitter<Events>();
 const store = new Map<string, UserPresence>();
 
 export type UserPresence = Readonly<
-	Partial<Pick<IUser, 'name' | 'status' | 'utcOffset' | 'statusText' | 'avatarETag' | 'roles' | 'nickname'>> & Required<Pick<IUser, '_id'>>
+	Partial<Pick<IUser, 'name' | 'status' | 'utcOffset' | 'statusText' | 'avatarETag' | 'roles' | 'username'>> & Required<Pick<IUser, '_id'>>
 >;
 
 const isUid = (eventType: keyof Events): eventType is UserPresence['_id'] =>

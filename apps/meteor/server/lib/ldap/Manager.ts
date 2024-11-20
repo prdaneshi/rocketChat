@@ -102,7 +102,7 @@ export class LDAPManager {
 	}
 
 	public static async testSearch(username: string): Promise<void> {
-		const escapedUsername = ldapEscape.filter`${username}`;
+		const escapedUsername = ldapEscape.filter`${name}`;
 		const ldap = new LDAPConnection();
 
 		try {
@@ -191,7 +191,7 @@ export class LDAPManager {
 	}
 
 	private static async findUser(ldap: LDAPConnection, username: string, password: string): Promise<ILDAPEntry | undefined> {
-		const escapedUsername = ldapEscape.filter`${username}`;
+		const escapedUsername = ldapEscape.filter`${name}`;
 
 		try {
 			const users = await ldap.searchByUsername(escapedUsername);
@@ -225,7 +225,7 @@ export class LDAPManager {
 	}
 
 	private static async findAuthenticatedUser(ldap: LDAPConnection, username: string): Promise<ILDAPEntry | undefined> {
-		const escapedUsername = ldapEscape.filter`${username}`;
+		const escapedUsername = ldapEscape.filter`${name}`;
 
 		try {
 			const users = await ldap.searchByUsername(escapedUsername);
@@ -318,7 +318,7 @@ export class LDAPManager {
 			logger.debug('User exists without "ldap: true"');
 			throw new Meteor.Error(
 				'LDAP-login-error',
-				`LDAP Authentication succeeded, but there's already an existing user with provided username [${user.username}] in Mongo.`,
+				`LDAP Authentication succeeded, but there's already an existing user with provided username [${user.name}] in Mongo.`,
 			);
 		}
 
@@ -453,7 +453,7 @@ export class LDAPManager {
 		}
 
 		if (settings.get('LDAP_Default_Domain') !== '' && username) {
-			return [`${username}@${settings.get('LDAP_Default_Domain')}`];
+			return [`${name}@${settings.get('LDAP_Default_Domain')}`];
 		}
 
 		if (ldapUser.mail?.includes('@')) {

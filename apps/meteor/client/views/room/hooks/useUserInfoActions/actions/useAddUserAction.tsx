@@ -23,7 +23,7 @@ const inviteUserEndpoints = {
 } as const;
 
 export const useAddUserAction = (
-	user: Pick<IUser, '_id' | 'nickname'>,
+	user: Pick<IUser, '_id' | 'username'>,
 	rid: IRoom['_id'],
 	reload?: () => void,
 ): UserInfoAction | undefined => {
@@ -33,7 +33,7 @@ export const useAddUserAction = (
 	const subscription = useUserSubscription(rid);
 	const dispatchToastMessage = useToastMessageDispatch();
 
-	const { nickname, _id: uid } = user;
+	const { username, _id: uid } = user;
 
 	if (!room) {
 		throw Error('Room not provided');
@@ -63,7 +63,7 @@ export const useAddUserAction = (
 
 	const addUserOptionAction = useEffectEvent(async () => {
 		try {
-			const users = [nickname as string];
+			const users = [username as string];
 			if (isRoomFederated(room)) {
 				addClickHandler.mutate({
 					users,

@@ -26,7 +26,7 @@ export class AppUserBridge extends UserBridge {
 	}
 
 	protected async getByUsername(username: string, appId: string): Promise<IUser> {
-		this.orch.debugLog(`The App ${appId} is getting the username: "${username}"`);
+		this.orch.debugLog(`The App ${appId} is getting the username: "${name}"`);
 
 		// #TODO: #AppsEngineTypes - Remove explicit types and typecasts once the apps-engine definition/implementation mismatch is fixed.
 		const promise: Promise<IUser | undefined> = this.orch.getConverters()?.get('users').convertByUsername(username);
@@ -83,7 +83,7 @@ export class AppUserBridge extends UserBridge {
 			case 'bot':
 			case 'app':
 				if (!(await checkUsernameAvailability(user.username as string))) {
-					throw new Error(`The username "${user.username}" is already being used. Rename or remove the user using it to install this App`);
+					throw new Error(`The username "${user.name}" is already being used. Rename or remove the user using it to install this App`);
 				}
 
 				await Users.insertOne(user);

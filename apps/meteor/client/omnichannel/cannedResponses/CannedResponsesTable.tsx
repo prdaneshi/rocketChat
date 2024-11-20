@@ -150,17 +150,17 @@ const CannedResponsesTable = () => {
 					<GenericTable aria-busy={text !== debouncedText}>
 						<GenericTableHeader>{headers}</GenericTableHeader>
 						<GenericTableBody>
-							{data?.cannedResponses.map(({ _id, nickname, shortcut, scope, _createdAt, tags = [] }) => (
+							{data?.cannedResponses.map(({ _id, shortcut, scope, createdBy, _createdAt, tags = [] }) => (
 								<GenericTableRow key={_id} tabIndex={0} role='link' onClick={onRowClick(_id, scope)} action qa-user-id={_id}>
 									<GenericTableCell withTruncatedText>{shortcut}</GenericTableCell>
 									<GenericTableCell withTruncatedText>{defaultOptions[scope as Scope]}</GenericTableCell>
 									<GenericTableCell withTruncatedText>
 										<Box display='flex' alignItems='center'>
-											<UserAvatar size='x24' nickname={nickname} />
+											<UserAvatar size='x24' username={createdBy.username} />
 											<Box display='flex' withTruncatedText mi={8}>
 												<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 													<Box fontScale='p2m' withTruncatedText color='default'>
-														{nickname}
+														{createdBy.username}
 													</Box>
 												</Box>
 											</Box>

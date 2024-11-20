@@ -286,9 +286,9 @@ class RocketChatIntegrationHandler {
 						});
 
 					room.usernames
-						.filter((username) => username !== message?.u?.username && this.triggers[`@${username}`])
+						.filter((username) => username !== message?.u?.username && this.triggers[`@${name}`])
 						.forEach((username) => {
-							for (const trigger of Object.values(this.triggers[`@${username}`])) {
+							for (const trigger of Object.values(this.triggers[`@${name}`])) {
 								triggersToExecute.add(trigger);
 							}
 						});

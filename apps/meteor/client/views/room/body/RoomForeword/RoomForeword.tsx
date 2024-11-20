@@ -38,7 +38,7 @@ const RoomForeword = ({ user, room }: RoomForewordProps): ReactElement | null =>
 				<Box display='flex' alignItems='center' justifyContent='center'>
 					{usernames.map((username, index) => (
 						<Box is='span' mi={4} key={index}>
-							<UserAvatar size='x48' username={username} />
+							<UserAvatar size='x48' username={name} />
 						</Box>
 					))}
 				</Box>

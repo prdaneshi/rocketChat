@@ -25,7 +25,7 @@ const ImageItem = ({ id, url, name, timestamp, username }: ImageItemProps) => {
 				)}
 				{username && (
 					<Box withTruncatedText color='hint' fontScale='p2' className='gallery-item'>
-						@{username}
+						@{name}
 					</Box>
 				)}
 				<Box color='hint' fontScale='micro' className='gallery-item'>

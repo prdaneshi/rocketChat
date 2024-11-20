@@ -8,7 +8,7 @@ export class FederationHomeFlextabMembers {
 	}
 
 	getUserInList(username: string): Locator {
-		return this.page.locator(`[data-qa="MemberItem-${username}"]`);
+		return this.page.locator(`[data-qa="MemberItem-${name}"]`);
 	}
 
 	get addUsersButton(): Locator {
@@ -24,7 +24,7 @@ export class FederationHomeFlextabMembers {
 	}
 
 	getKebabMenuForUser(username: string): Locator {
-		return this.page.locator(`[data-username="${username}"] [data-testid="menu"]`);
+		return this.page.locator(`[data-username="${name}"] [data-testid="menu"]`);
 	}
 
 	async getOptionFromKebabMenuForUser(optionName: string): Promise<Locator> {
@@ -42,8 +42,8 @@ export class FederationHomeFlextabMembers {
 		await this.addUsersButton.click();
 		for await (const username of usernames) {
 			await this.page.locator('//label[contains(text(), "Choose users")]/..//input').type(username);
-			await this.page.locator(`[data-qa-type="autocomplete-user-option"] >> text=${username}`).waitFor();
-			await this.page.locator(`[data-qa-type="autocomplete-user-option"] >> text=${username}`).first().click();
+			await this.page.locator(`[data-qa-type="autocomplete-user-option"] >> text=${name}`).waitFor();
+			await this.page.locator(`[data-qa-type="autocomplete-user-option"] >> text=${name}`).first().click();
 		}
 		await this.addUsersButton.click();
 	}

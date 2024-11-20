@@ -18,7 +18,7 @@ const UserMenuHeader = ({ user }: UserMenuHeaderProps) => {
 	return (
 		<Box display='flex' flexDirection='row' alignItems='center' minWidth='x208' mbe='neg-x4' mbs='neg-x8'>
 			<Box mie={4}>
-				<UserAvatar size='x36' nickname={user?.nickname || ''} etag={user?.avatarETag} />
+				<UserAvatar size='x36' username={user?.username || ''} etag={user?.avatarETag} />
 			</Box>
 			<Box mis={4} display='flex' overflow='hidden' flexDirection='column' fontScale='p2' mb='neg-x4' flexGrow={1} flexShrink={1}>
 				<Box withTruncatedText w='full' display='flex' alignItems='center' flexDirection='row'>

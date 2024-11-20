@@ -27,7 +27,7 @@ const UserAutoComplete = ({ value, onChange, ...props }: UserAutoCompleteProps):
 		usersAutoCompleteEndpoint(query(debouncedFilter, conditions)),
 	);
 
-	const options = useMemo(() => data?.items.map((user) => ({ value: user.username, label: user.name || user.username })) || [], [data]);
+	const options = useMemo(() => data?.items.map((user) => ({ value: user.name, label: user.name || user.name })) || [], [data]);
 
 	return (
 		<AutoComplete
@@ -39,14 +39,14 @@ const UserAutoComplete = ({ value, onChange, ...props }: UserAutoCompleteProps):
 			data-qa-id='UserAutoComplete'
 			renderSelected={({ selected: { value, label } }): ReactElement | null => (
 				<Chip height='x20' value={value} mie={4}>
-					<UserAvatar size='x20' nickname={value} />
+					<UserAvatar size='x20' username={value} />
 					<Box verticalAlign='middle' is='span' margin='none' mi={4}>
 						{label}
 					</Box>
 				</Chip>
 			)}
 			renderItem={({ value, label, ...props }): ReactElement => (
-				<Option key={value} label={label} avatar={<UserAvatar size='x20' nickname={value} />} {...props} />
+				<Option key={value} label={label} avatar={<UserAvatar size='x20' username={value} />} {...props} />
 			)}
 			options={options}
 		/>

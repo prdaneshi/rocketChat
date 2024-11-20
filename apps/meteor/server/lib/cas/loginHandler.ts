@@ -80,12 +80,12 @@ export const loginHandlerCAS = async (options: any): Promise<undefined | Account
 	}
 
 	// Search existing user by its external service id
-	logger.debug(`Looking up user by id: ${username}`);
+	logger.debug(`Looking up user by id: ${name}`);
 	// First, look for a user that has logged in from CAS with this username before
 	const user = await findExistingCASUser(username);
 
 	if (user) {
-		logger.debug(`Using existing user for '${username}' with id: ${user._id}`);
+		logger.debug(`Using existing user for '${name}' with id: ${user._id}`);
 		if (syncEnabled) {
 			logger.debug('Syncing user attributes');
 			// Update name
@@ -107,7 +107,7 @@ export const loginHandlerCAS = async (options: any): Promise<undefined | Account
 
 	if (!userCreationEnabled) {
 		// Should fail as no user exist and can't be created
-		logger.debug(`User "${username}" does not exist yet, will fail as no user creation is enabled`);
+		logger.debug(`User "${name}" does not exist yet, will fail as no user creation is enabled`);
 		throw new Meteor.Error(Accounts.LoginCancelledError.numericError, 'no matching user account found');
 	}
 

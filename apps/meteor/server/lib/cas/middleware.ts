@@ -43,7 +43,7 @@ const casTicket = function (req: IncomingMessageWithUrl, token: string, callback
 			if (err) {
 				logger.error(`error when trying to validate: ${err.message}`);
 			} else if (status) {
-				logger.info(`Validated user: ${username}`);
+				logger.info(`Validated user: ${name}`);
 				const userInfo: Partial<ICredentialToken['userInfo']> = { username: username as string };
 
 				// CAS 2.0 attributes handling

@@ -11,7 +11,7 @@ export default async function handleNickChanged(args) {
 		throw new Error(`Could not find an user with nick ${args.nick}`);
 	}
 
-	this.log(`${user.username} changed nick: ${args.nick} -> ${args.newNick}`);
+	this.log(`${user.name} changed nick: ${args.nick} -> ${args.newNick}`);
 
 	// Update on the database
 	await Users.updateOne(

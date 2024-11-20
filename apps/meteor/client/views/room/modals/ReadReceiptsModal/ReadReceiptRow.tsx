@@ -14,7 +14,7 @@ const ReadReceiptRow = ({ user, ts }: ReadReceipt): ReactElement => {
 	return (
 		<Box role='listitem' display='flex' flexDirection='row' justifyContent='space-between' alignItems='center' mbe={8}>
 			<Box>
-				<UserAvatar nickname={" "} size='x24' />
+				<UserAvatar username={user?.username || ''} size='x24' />
 				<Box is='span' mis={8}>
 					{displayName}
 				</Box>

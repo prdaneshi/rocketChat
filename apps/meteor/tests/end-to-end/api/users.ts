@@ -157,7 +157,7 @@ const registerUser = async (
 	overrideCredentials = credentials,
 ) => {
 	const username = userData.username || `user.test.${Date.now()}`;
-	const email = userData.email || `${username}@rocket.chat`;
+	const email = userData.email || `${name}@rocket.chat`;
 	const result = await request
 		.post(api('users.register'))
 		.set(overrideCredentials)

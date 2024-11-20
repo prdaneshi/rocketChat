@@ -55,9 +55,9 @@ const ContactHistoryMessage = ({ message, sequential, isNewDay, showUserAvatar }
 					{showUserAvatar && (
 						<UserAvatar
 							url={message.avatar}
-							nickname={message.u.nickname}
+							username={message.u.username}
 							size='x18'
-							onClick={(e) => openUserCard(e, message.u.nickname)}
+							onClick={(e) => openUserCard(e, message.u.username)}
 							style={{ cursor: 'pointer' }}
 							role='button'
 							{...triggerProps}
@@ -66,8 +66,8 @@ const ContactHistoryMessage = ({ message, sequential, isNewDay, showUserAvatar }
 				</MessageSystemLeftContainer>
 				<MessageSystemContainer>
 					<MessageSystemBlock>
-						<MessageSystemName data-username={message.u.nickname} data-qa-type='nickname'>
-							@{message.u.nickname}
+						<MessageSystemName data-username={message.u.username} data-qa-type='username'>
+							@{message.u.username}
 						</MessageSystemName>
 						<MessageSystemBody title={message.msg}>{t('Conversation_closed', { comment: message.msg })}</MessageSystemBody>
 						<MessageSystemTimestamp title={formatTime(message.ts)}>{formatTime(message.ts)}</MessageSystemTimestamp>
@@ -82,12 +82,12 @@ const ContactHistoryMessage = ({ message, sequential, isNewDay, showUserAvatar }
 			{isNewDay && <MessageDivider>{format(message.ts)}</MessageDivider>}
 			<MessageTemplate isPending={message.temp} sequential={sequential} role='listitem' data-qa='chat-history-message'>
 				<MessageLeftContainer>
-					{!sequential && message.u.nickname && showUserAvatar && (
+					{!sequential && message.u.username && showUserAvatar && (
 						<UserAvatar
 							url={message.avatar}
-							nickname={message.u.nickname}
+							username={message.u.username}
 							size='x36'
-							onClick={(e) => openUserCard(e, message.u.nickname)}
+							onClick={(e) => openUserCard(e, message.u.username)}
 							style={{ cursor: 'pointer' }}
 							role='button'
 							{...triggerProps}
@@ -99,11 +99,11 @@ const ContactHistoryMessage = ({ message, sequential, isNewDay, showUserAvatar }
 				<MessageContainer>
 					{!sequential && (
 						<MessageHeaderTemplate>
-							<MessageName title={`@${message.u.nickname}`} data-username={message.u.nickname}>
-								{message.alias || getUserDisplayName(message.u.name, message.u.nickname, false)}
+							<MessageName title={`@${message.u.username}`} data-username={message.u.username}>
+								{message.alias || getUserDisplayName(message.u.name, message.u.username, false)}
 							</MessageName>
-							<MessageUsername data-username={message.u.nickname} data-qa-type='nickname'>
-								@{message.u.nickname}
+							<MessageUsername data-username={message.u.username} data-qa-type='username'>
+								@{message.u.username}
 							</MessageUsername>
 							<MessageTimestamp title={formatTime(message.ts)}>{formatTime(message.ts)}</MessageTimestamp>
 							<StatusIndicators message={message} />

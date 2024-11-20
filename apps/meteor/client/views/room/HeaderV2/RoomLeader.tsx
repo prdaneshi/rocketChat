@@ -14,28 +14,28 @@ import { useUserCard } from '../contexts/UserCardContext';
 type RoomLeaderProps = {
 	_id: IUser['_id'];
 	name: IUser['name'];
-	nickname?: IUser['nickname'];
+	username?: IUser['username'];
 };
 
-const RoomLeader = ({ _id, name, nickname }: RoomLeaderProps) => {
+const RoomLeader = ({ _id, name, username }: RoomLeaderProps) => {
 	const t = useTranslation();
 
 	const { openUserCard, triggerProps } = useUserCard();
 
 	const onAvatarClick = useCallback(
-		(event: UIEvent, nickname: IUser['nickname']) => {
-			if (!nickname) {
+		(event: UIEvent, username: IUser['username']) => {
+			if (!username) {
 				return;
 			}
 
-			openUserCard(event, nickname);
+			openUserCard(event, username);
 		},
 		[openUserCard],
 	);
 
-	const chatNowLink = useMemo(() => roomCoordinator.getRouteLink('d', { name: nickname }) || undefined, [nickname]);
+	const chatNowLink = useMemo(() => roomCoordinator.getRouteLink('d', { name: username }) || undefined, [username]);
 
-	if (!nickname) {
+	if (!username) {
 		throw new Error('username is required');
 	}
 
@@ -53,7 +53,7 @@ const RoomLeader = ({ _id, name, nickname }: RoomLeaderProps) => {
 
 	return (
 		<Box className={roomLeaderStyle} mis='x24'>
-			<UserAvatar role='button' nickname={nickname} size='x18' onClick={(event) => onAvatarClick(event, nickname)} {...triggerProps} />
+			<UserAvatar role='button' username={name} size='x18' onClick={(event) => onAvatarClick(event, username)} {...triggerProps} />
 			<ReactiveUserStatus uid={_id} />
 			<HeaderSubtitle>{name}</HeaderSubtitle>
 			<IconButton role='link' is='a' title={t('Chat_with_leader')} icon='message' small href={chatNowLink} />

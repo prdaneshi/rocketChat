@@ -66,7 +66,7 @@ oauth2server.app.get('/oauth/userinfo', async (req: Request, res: Response) => {
 		birthdate: '',
 		preffered_username: user.username,
 		updated_at: user._updatedAt,
-		picture: `${Meteor.absoluteUrl()}avatar/${user.username}`,
+		picture: `${Meteor.absoluteUrl()}avatar/${user.name}`,
 	});
 });
 

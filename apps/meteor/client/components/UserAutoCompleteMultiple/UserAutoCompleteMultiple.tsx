@@ -21,7 +21,7 @@ const UserAutoCompleteMultiple = ({ onChange, ...props }: UserAutoCompleteMultip
 	const usersAutoCompleteEndpoint = useEndpoint('GET', '/v1/users.autocomplete');
 	const { data } = useQuery(['usersAutoComplete', debouncedFilter], async () => usersAutoCompleteEndpoint(query(debouncedFilter)));
 
-	const options = useMemo(() => data?.items.map((user) => ({ value: user.username, label: user.name })) || [], [data]);
+	const options = useMemo(() => data?.items.map((user) => ({ value: user.name, label: user.name })) || [], [data]);
 
 	return (
 		<AutoComplete
@@ -32,7 +32,7 @@ const UserAutoCompleteMultiple = ({ onChange, ...props }: UserAutoCompleteMultip
 			multiple
 			renderSelected={({ selected: { value, label }, onRemove, ...props }): ReactElement => (
 				<Chip {...props} height='x20' value={value} onClick={onRemove} mie={4}>
-					<UserAvatar size='x20' nickname={value} />
+					<UserAvatar size='x20' username={value} />
 					<Box is='span' margin='none' mis={4}>
 						{label}
 					</Box>
@@ -41,7 +41,7 @@ const UserAutoCompleteMultiple = ({ onChange, ...props }: UserAutoCompleteMultip
 			renderItem={({ value, label, ...props }): ReactElement => (
 				<Option data-qa-type='autocomplete-user-option' key={value} {...props}>
 					<OptionAvatar>
-						<UserAvatar nickname={value} size='x20' />
+						<UserAvatar username={value} size='x20' />
 					</OptionAvatar>
 					<OptionContent>
 						{label} <OptionDescription>({value})</OptionDescription>

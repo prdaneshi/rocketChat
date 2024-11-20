@@ -11,7 +11,7 @@ import { useMemberExists } from '../../../hooks/useMemberExists';
 import { useUserInfoActions } from '../../hooks/useUserInfoActions';
 
 type UserInfoActionsProps = {
-	user: Pick<IUser, '_id' | 'nickname' | 'name'>;
+	user: Pick<IUser, '_id' | 'username' | 'name'>;
 	rid: IRoom['_id'];
 	backToList: () => void;
 };
@@ -23,12 +23,12 @@ const UserInfoActions = ({ user, rid, backToList }: UserInfoActionsProps): React
 		refetch,
 		isSuccess: membershipCheckSuccess,
 		isLoading,
-	} = useMemberExists({ roomId: rid, username: user.nickname as string });
+	} = useMemberExists({ roomId: rid, username: user.username as string });
 
 	const isMember = membershipCheckSuccess && isMemberData?.isMember;
 
 	const { actions: actionsDefinition, menuActions: menuOptions } = useUserInfoActions(
-		{ _id: user._id, nickname: user.nickname, name: user.name },
+		{ _id: user._id, username: user.username, name: user.name },
 		rid,
 		() => {
 			backToList?.();

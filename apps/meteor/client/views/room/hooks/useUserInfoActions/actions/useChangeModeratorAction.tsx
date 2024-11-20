@@ -32,7 +32,7 @@ const getWarningModalForFederatedRooms = (
 	</GenericModal>
 );
 
-export const useChangeModeratorAction = (user: Pick<IUser, '_id' | 'nickname'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useChangeModeratorAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
 	const room = useUserRoom(rid);
 	const { _id: uid } = user;
@@ -60,7 +60,7 @@ export const useChangeModeratorAction = (user: Pick<IUser, '_id' | 'nickname'>, 
 		: 'User__username__is_now_a_moderator_of__room_name_';
 
 	const changeModerator = useEndpointAction('POST', `${endpointPrefix}.${changeModeratorEndpoint}`, {
-		successMessage: t(changeModeratorMessage, { username: user.nickname, room_name: roomName }),
+		successMessage: t(changeModeratorMessage, { username: user.username, room_name: roomName }),
 	});
 
 	const handleConfirm = useCallback(() => {

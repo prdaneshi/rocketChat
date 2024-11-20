@@ -63,7 +63,7 @@ const LeaderBar = ({ _id, name, username, visible, onAvatarClick, triggerProps }
 		>
 			<Box display='flex' alignItems='center'>
 				<Box mie={4} onClick={handleAvatarClick} {...triggerProps}>
-					<UserAvatar username={username} />
+					<UserAvatar username={name} />
 				</Box>
 				<Box fontScale='p2' mi={4} display='flex' alignItems='center'>
 					<ReactiveUserStatus uid={_id} />

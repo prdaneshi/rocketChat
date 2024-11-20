@@ -31,7 +31,7 @@ const Reactions = ({ message, ...props }: ReactionsProps): ReactElement => {
 						counter={reactions.usernames.length}
 						hasReacted={hasReacted}
 						name={name}
-						names={reactions.usernames.filter((user) => user !== username).map((username) => `@${username}`)}
+						names={reactions.usernames.filter((user) => user !== username).map((username) => `@${name}`)}
 						messageId={message._id}
 						onKeyDown={(e: KeyboardEvent) =>
 							(e.code === 'Space' || e.code === 'Enter') && toggleReactionMutation.mutate({ mid: message._id, reaction: name })

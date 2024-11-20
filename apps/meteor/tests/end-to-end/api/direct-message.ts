@@ -63,13 +63,13 @@ describe('[Direct Messages]', () => {
 				.set(credentials)
 				.send({
 					roomId: directMessage._id,
-					topic: `a direct message with ${user.username}`,
+					topic: `a direct message with ${user.name}`,
 				})
 				.expect('Content-Type', 'application/json')
 				.expect(200)
 				.expect((res) => {
 					expect(res.body).to.have.property('success', true);
-					expect(res.body).to.have.nested.property('topic', `a direct message with ${user.username}`);
+					expect(res.body).to.have.nested.property('topic', `a direct message with ${user.name}`);
 				})
 				.end(done);
 		});
@@ -476,7 +476,7 @@ describe('[Direct Messages]', () => {
 				.post(api('chat.postMessage'))
 				.set(credentials)
 				.send({
-					channel: `@${username}`,
+					channel: `@${name}`,
 					text: 'This message was sent using the API',
 				})
 				.expect('Content-Type', 'application/json')

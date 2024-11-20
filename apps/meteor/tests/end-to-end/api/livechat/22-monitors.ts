@@ -220,7 +220,7 @@ type TestUser = { user: IUser; credentials: Credentials };
 			await createMonitor(user.username);
 
 			const { body } = await request
-				.get(api(`livechat/monitors/${user.username}`))
+				.get(api(`livechat/monitors/${user.name}`))
 				.set(credentials)
 				.expect(200);
 			expect(body).to.have.property('username', user.username);

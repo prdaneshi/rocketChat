@@ -69,7 +69,7 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 		clearErrors,
 		getValues,
 		formState: { errors },
-	} = useForm<{ usernameOrEmail: string; password: string;  captcha: string }>({ //MAD 
+	} = useForm<{ email: string; password: string;  captcha: string }>({ //MAD 
 		mode: 'onBlur',
 	});
 
@@ -92,13 +92,15 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 	const login = useLoginWithPassword();
 	const showFormLogin = useSetting('Accounts_ShowFormLogin');
 
-	const usernameOrEmailPlaceholder = String(useSetting('Accounts_EmailOrUsernamePlaceholder'));
+	const emailPlaceholder = String(useSetting('Accounts_EmailOrUsernamePlaceholder'));
 	const passwordPlaceholder = String(useSetting('Accounts_PasswordPlaceholder'));
 
 	useDocumentTitle(t('registration.component.login'), false);
 
 	const loginMutation = useMutation({
-		mutationFn: (formData: { usernameOrEmail: string; password: string; captcha: string }) => {
+
+		mutationFn: (formData: { email: string; password: string; captcha: string }) => {
+
 		return new Promise((resolve, reject) => {
 			Meteor.call('validateCaptcha', formData.captcha, (error: Meteor.Error, isValid: boolean) => {
 			  if (error) {
@@ -106,15 +108,15 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 			  } else if (!isValid) {
 				reject(new Error('Invalid CAPTCHA'));
 			  } else {
-				resolve(login(formData.usernameOrEmail, formData.password));
+				resolve(login(formData.email, formData.password));
 			  }
 			});
 		  });
 		},
 		onError: (error: any) => {
 			if ([error.error, error.errorType].includes('error-invalid-email')) {
-				setError('usernameOrEmail', { type: 'invalid-email', message: t('registration.page.login.errors.invalidEmail') });
-				//return;
+				setError('email', { type: 'invalid-email', message: t('registration.page.login.errors.invalidEmail') });
+				return;
 			}
 
 			else if (error.message === 'Invalid CAPTCHA') {
@@ -182,8 +184,8 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 		return null;
 	};
 
-	if (errors.usernameOrEmail?.type === 'invalid-email') {
-		return <EmailConfirmationForm onBackToLogin={() => clearErrors('usernameOrEmail')} email={getValues('usernameOrEmail')} />;
+	if (errors.email?.type === 'invalid-email') {
+		return <EmailConfirmationForm onBackToLogin={() => clearErrors('email')} email={getValues('email')} />;
 	}
 
 	return (
@@ -205,23 +207,23 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 						<FieldGroup disabled={loginMutation.isLoading}>
 							<Field>
 								<FieldLabel required htmlFor={usernameId}>
-									{t('registration.component.form.emailOrUsername')}
+									{t('registration.component.form.email')}
 								</FieldLabel>
 								<FieldRow>
 									<TextInput
-										{...register('usernameOrEmail', {
-											required: t('Required_field', { field: t('registration.component.form.emailOrUsername') }),
+										{...register('email', {
+											required: t('Required_field', { field: t('registration.component.form.email') }),
 										})}
-										placeholder={usernameOrEmailPlaceholder || t('registration.component.form.emailPlaceholder')}
-										error={errors.usernameOrEmail?.message}
-										aria-invalid={errors.usernameOrEmail || errorOnSubmit ? 'true' : 'false'}
+										placeholder={emailPlaceholder || t('registration.component.form.emailPlaceholder')}
+										error={errors.email?.message}
+										aria-invalid={errors.email || errorOnSubmit ? 'true' : 'false'}
 										aria-describedby={`${usernameId}-error`}
 										id={usernameId}
 									/>
 								</FieldRow>
-								{errors.usernameOrEmail && (
+								{errors.email && (
 									<FieldError aria-live='assertive' id={`${usernameId}-error`}>
-										{errors.usernameOrEmail.message}
+										{errors.email.message}
 									</FieldError>
 								)}
 							</Field>

@@ -17,7 +17,7 @@ const UserColumn = ({ name, username, fontSize, size }: UserColumnProps) => {
 		<Box display='flex' alignItems='center'>
 			{username && (
 				<Box>
-					<UserAvatar size={size} username={"U"} />
+					<UserAvatar size={size} username={name} />
 				</Box>
 			)}
 			<Box display='flex' mi={8} withTruncatedText>
@@ -27,7 +27,7 @@ const UserColumn = ({ name, username, fontSize, size }: UserColumnProps) => {
 							<>
 								{name}{' '}
 								<Box display='inline-flex' fontWeight={300} fontSize={fontSize}>
-									(@{username})
+									(@{name})
 								</Box>
 							</>
 						) : (

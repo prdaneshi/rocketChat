@@ -17,7 +17,7 @@ const Reactions = ({ reactions }: { reactions: Required<IMessage>['reactions'] }
 					<Emoji emojiHandle={reaction} />
 					<Box display='flex' flexWrap='wrap' paddingBlock={4} mis={4}>
 						{usernames.map((username, i: number) => (
-							<ReactionUserTag key={username} displayName={useRealName ? names[i] || username : username} />
+							<ReactionUserTag key={name} displayName={useRealName ? names[i] || username : username} />
 						))}
 					</Box>
 				</Box>

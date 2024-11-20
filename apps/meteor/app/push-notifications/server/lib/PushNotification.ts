@@ -63,7 +63,7 @@ class PushNotification {
 		const title = idOnly ? '' : roomName || username;
 
 		// message is being redacted already by 'getPushData' if idOnly is true
-		const text = !idOnly && roomName !== '' ? `${username}: ${message}` : message;
+		const text = !idOnly && roomName !== '' ? `${name}: ${message}` : message;
 
 		return {
 			from: 'push',
