@@ -25,6 +25,7 @@ import * as Mailer from '../../../mailer/server/api';
 import { settings } from '../../../settings/server';
 import { safeGetMeteorUser } from '../../../utils/server/functions/safeGetMeteorUser';
 import { isValidAttemptByUser, isValidLoginAttemptByIp } from '../lib/restrictLoginAttempts';
+//import { console } from 'meteor/tools';
 
 Accounts.config({
 	forbidClientAccountCreation: true,
@@ -375,6 +376,18 @@ Accounts.insertUserDoc = function (...args) {
 
 const validateLoginAttemptAsync = async function (login) {
 	login = await callbacks.run('beforeValidateLogin', login);
+	// console.debug(login);
+	// console.debug("=============================");
+	// console.debug(login.methodArguments[0]);
+	// MAD checking if user is logging in by email or not
+	if(login.type == 'password') {
+		if(login.methodArguments[0].user.username){
+			//console.debug("Login with username ======================================");
+			throw new Meteor.Error('error-login-blocked-for-username', 'User not found', {
+				function: 'Accounts.validateLoginAttempt',
+			});
+		}
+	}
 
 	if (!(await isValidLoginAttemptByIp(getClientAddress(login.connection)))) {
 		throw new Meteor.Error('error-login-blocked-for-ip', 'Login has been temporarily blocked For IP', {
