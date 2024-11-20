@@ -9,6 +9,7 @@ declare module '@rocket.chat/ddp-client' {
 	interface ServerMethods {
 		spotlight(
 			text: string,
+			
 			usernames?: string[],
 			type?: {
 				users?: boolean;
@@ -17,13 +18,14 @@ declare module '@rocket.chat/ddp-client' {
 				includeFederatedRooms?: boolean;
 			},
 			rid?: string,
+			name?: string[],
 		): {
 			rooms: { _id: string; name: string; t: string; uids?: string[] }[];
 			users: {
 				_id: string;
 				status: 'offline' | 'online' | 'busy' | 'away';
 				name: string;
-				username: string;
+				//username: string;
 				outside: boolean;
 				avatarETag?: string;
 				nickname?: string;
@@ -33,9 +35,11 @@ declare module '@rocket.chat/ddp-client' {
 }
 
 Meteor.methods<ServerMethods>({
-	async spotlight(text, usernames = [], type = { users: true, rooms: true, mentions: false, includeFederatedRooms: false }, rid) {
+	async spotlight(text, usernames = [], type = { users: true, rooms: true, mentions: false, includeFederatedRooms: false }, rid, name = []) {
 		const spotlight = new Spotlight();
 		const { mentions, includeFederatedRooms } = type;
+
+		console.debug(type);
 
 		if (text.startsWith('#')) {
 			type.users = false;
@@ -44,13 +48,17 @@ Meteor.methods<ServerMethods>({
 
 		if (text.startsWith('@')) {
 			type.rooms = false;
+			console.debug("============== started with @ ========");
 			text = text.slice(1);
 		}
 
 		const { userId } = this;
 
+		console.debug("==========---- Meteor.methods ----- ==========");
+		console.debug(type.users);
+
 		return {
-			users: type.users ? await spotlight.searchUsers({ userId, rid, text, usernames, mentions }) : [],
+			users: type.users ? await spotlight.searchUsers({ userId, rid, text, usernames, mentions ,name}) : [],
 			rooms: type.rooms ? await spotlight.searchRooms({ userId, text, includeFederatedRooms }) : [],
 		};
 	},
