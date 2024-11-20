@@ -18,8 +18,8 @@ export const useUsersData = ({ filter }: useUsersDataProps) => {
       });
       const options = users.items.map(
         (item): UserAutoCompleteOptionType => ({
-          value: item.username,
-          label: item.name || item.username,
+          value: item.name,
+          label: item.name || item.name,
         })
       );
 

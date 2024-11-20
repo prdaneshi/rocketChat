@@ -27,7 +27,7 @@ const UserAutoComplete = ({ value, onChange, ...props }: UserAutoCompleteProps):
 		usersAutoCompleteEndpoint(query(debouncedFilter, conditions)),
 	);
 
-	const options = useMemo(() => data?.items.map((user) => ({ value: user.username, label: user.name || user.username })) || [], [data]);
+	const options = useMemo(() => data?.items.map((user) => ({ value: user.name, label: user.name || user.name })) || [], [data]);
 
 	return (
 		<AutoComplete
