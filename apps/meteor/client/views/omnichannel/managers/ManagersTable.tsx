@@ -94,7 +94,7 @@ const ManagersTable = () => {
 					icon='shield'
 					title={t('No_managers_yet')}
 					description={t('No_managers_yet_description')}
-					linkHref='https://go.rocket.chat/i/omnichannel-docs'
+					linkHref='https://sina.co/i/omnichannel-docs'
 					linkText={t('Learn_more_about_managers')}
 				/>
 			)}

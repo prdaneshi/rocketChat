@@ -92,7 +92,8 @@ export function onValidateLicense(this: LicenseManager, cb: () => void) {
 }
 
 export function onInvalidateLicense(this: LicenseManager, cb: () => void) {
-	this.on('invalidate', cb);
+	// this.on('invalidate', cb);   #???
+	this.on('validate', cb);
 }
 
 export function onBehaviorTriggered(

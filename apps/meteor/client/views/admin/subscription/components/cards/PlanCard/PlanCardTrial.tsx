@@ -3,7 +3,8 @@ import { Box, Card, CardBody, CardControls, CardRow, Tag } from '@rocket.chat/fu
 import { ExternalLink } from '@rocket.chat/ui-client';
 import differenceInDays from 'date-fns/differenceInDays';
 import type { ReactElement } from 'react';
-import React from 'react';
+//import React from 'react';   #???
+import React, { useEffect } from 'react';   // #???
 import { Trans, useTranslation } from 'react-i18next';
 
 import { useLicenseName } from '../../../../../../hooks/useLicense';
@@ -21,6 +22,10 @@ const PlanCardTrial = ({ licenseInformation }: PlanCardProps): ReactElement => {
 	const planName = useLicenseName();
 	const isSalesAssisted = licenseInformation.grantedBy?.method !== 'self-service' || true;
 	const { visualExpiration } = licenseInformation;
+
+	useEffect(() => {    // #???
+		console.log(`***** Visual Expiration: ${visualExpiration} *****`);
+	}, [visualExpiration]);
 
 	return (
 		<Card height='full'>

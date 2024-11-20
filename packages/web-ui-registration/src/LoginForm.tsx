@@ -98,11 +98,9 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 	useDocumentTitle(t('registration.component.login'), false);
 
 	const loginMutation = useMutation({
+
 		mutationFn: (formData: { email: string; password: string; captcha: string }) => {
-		//   if (!formData.agreement) {
-		// 	throw new Error('You must agree to the terms');
-		//   }
-		//   return login(formData.email, formData.password);
+
 		return new Promise((resolve, reject) => {
 			Meteor.call('validateCaptcha', formData.captcha, (error: Meteor.Error, isValid: boolean) => {
 			  if (error) {
@@ -121,17 +119,20 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 				return;
 			}
 
-			if (error.message === 'Invalid CAPTCHA') {
+			else if (error.message === 'Invalid CAPTCHA') {
 				setError('captcha', { type: 'manual', message: 'Invalid CAPTCHA' });
-				return;
+				//return;
 			}
 
-			if ('error' in error && error.error !== 403) {
+			else if ('error' in error && error.error !== 403) {
 				setErrorOnSubmit([error.error, error.reason]);
-				return;
+				//return;
+			} else {
+				setErrorOnSubmit(['user-not-found']);
 			}
 
-			setErrorOnSubmit(['user-not-found']);
+			refreshCaptcha();
+			return; 
 		},
 	});
 
@@ -145,14 +146,18 @@ export const LoginForm = ({ setLoginRoute }: { setLoginRoute: DispatchLoginRoute
 	// 	}
 	// }, [errorOnSubmit]);
 
-	useEffect(() => {
-		Meteor.call('generateCaptcha', (error:Meteor.Error | null, result: string) => {
-		  if (error) {
-			console.error('Error generating CAPTCHA:', error);
-		  } else {
-			setCaptchaImage(result);
-		  }
-		});
+	// useEffect(() => {
+	// 	Meteor.call('generateCaptcha', (error:Meteor.Error | null, result: string) => {
+	// 	  if (error) {
+	// 		console.error('Error generating CAPTCHA:', error);
+	// 	  } else {
+	// 		setCaptchaImage(result);
+	// 	  }
+	// 	});
+	//   }, []);
+
+	  useEffect(() => {
+		refreshCaptcha();
 	  }, []);
 
 	const renderErrorOnSubmit = ([error, message]: Exclude<LoginErrorState, undefined>) => {

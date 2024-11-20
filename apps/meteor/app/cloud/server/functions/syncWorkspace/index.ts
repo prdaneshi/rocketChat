@@ -13,8 +13,8 @@ import { syncCloudData } from './syncCloudData';
  */
 export async function syncWorkspace() {
 	try {
-		await announcementSync();
-		await syncCloudData();
+		// await announcementSync(); #???
+		// await syncCloudData(); #???
 	} catch (err) {
 		switch (true) {
 			case err instanceof CloudWorkspaceRegistrationError:

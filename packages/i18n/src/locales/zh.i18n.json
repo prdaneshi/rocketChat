@@ -1463,7 +1463,7 @@
   "Error_sending_livechat_offline_message": "发送 omnichannel 离线消息时出错",
   "Error_sending_livechat_transcript": "发送 omnichannel 聊天记录时出错",
   "Error_Site_URL": "无效的 Site_Url",
-  "Error_Site_URL_description": "请更新您的“Site_Url”设置。[在此</>获得更多信息](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "请更新您的“Site_Url”设置。[在此</>获得更多信息](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} 不允许",
   "error-agent-offline": "客服离线",
   "error-application-not-found": "应用程序未找到",

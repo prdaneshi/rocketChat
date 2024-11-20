@@ -1614,7 +1614,7 @@
   "Error_sending_livechat_offline_message": "傳送即時聊天離線訊息失敗",
   "Error_sending_livechat_transcript": "傳送即時聊天副本失敗",
   "Error_Site_URL": "無效的 Site_Url",
-  "Error_Site_URL_description": "請更新您的 \"Site_Url\" 設定且更多資訊在[這裡](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "請更新您的 \"Site_Url\" 設定且更多資訊在[這裡](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}}不允許",
   "error-agent-offline": "代理離線",
   "error-agent-status-service-offline": "客服專員狀態為離線，或 Omnichannel 服務沒有啟動",

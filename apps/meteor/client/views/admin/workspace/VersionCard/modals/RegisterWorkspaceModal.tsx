@@ -12,7 +12,7 @@ type RegisterWorkspaceModalProps = {
 	onStatusChange?: () => void;
 };
 
-const documentationLink = 'https://go.rocket.chat/i/register-info-collected';
+const documentationLink = 'https://sina.co/i/register-info-collected';
 
 const RegisterWorkspaceModal = ({ onClose, onStatusChange, ...props }: RegisterWorkspaceModalProps) => {
 	const setModal = useSetModal();

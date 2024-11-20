@@ -9,7 +9,8 @@ addMigration({
 	name: 'Reset the default value of Login Terms setting and replace by empty string',
 	async up() {
 		const oldLoginTermsValue =
-			'By proceeding you are agreeing to our <a href="terms-of-service">Terms of Service</a>, <a href="privacy-policy">Privacy Policy</a> and <a href="legal-notice">Legal Notice</a>.';
+			//'By proceeding you are agreeing to our <a href="terms-of-service">Terms of Service</a>, <a href="privacy-policy">Privacy Policy</a> and <a href="legal-notice">Legal Notice</a>.';
+			'Wellcome to Sina company';
 
 		const loginTermsValue = settings.get('Layout_Login_Terms');
 

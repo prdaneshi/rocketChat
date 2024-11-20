@@ -1440,7 +1440,7 @@
   "Error_sending_livechat_offline_message": "실시간상담 오프라인 메시지를 보내는 중 오류가 발생했습니다.",
   "Error_sending_livechat_transcript": "실시간상담 사본을 보내는 중 오류가 발생했습니다.",
   "Error_Site_URL": "유효하지 않은 Site_Url",
-  "Error_Site_URL_description": "\"Site_Url\"설정을 업데이트하여 자세한 정보를 찾으십시오. [ 여기 ](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "\"Site_Url\"설정을 업데이트하여 자세한 정보를 찾으십시오. [ 여기 ](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} 허용되지 않습니다",
   "error-agent-offline": "상담사가 오프라인입니다",
   "error-application-not-found": "응용 프로그램을 찾을 수 없습니다",

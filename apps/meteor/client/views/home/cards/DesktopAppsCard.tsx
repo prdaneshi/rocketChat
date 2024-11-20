@@ -6,9 +6,9 @@ import React from 'react';
 import { GenericCard, GenericCardButton } from '../../../components/GenericCard';
 import { useExternalLink } from '../../../hooks/useExternalLink';
 
-const WINDOWS_APP_URL = 'https://go.rocket.chat/i/hp-desktop-app-windows';
-const LINUX_APP_URL = 'https://go.rocket.chat/i/hp-desktop-app-linux';
-const MAC_APP_URL = 'https://go.rocket.chat/i/hp-desktop-app-mac';
+const WINDOWS_APP_URL = 'https://sina.co/i/hp-desktop-app-windows';
+const LINUX_APP_URL = 'https://sina.co/i/hp-desktop-app-linux';
+const MAC_APP_URL = 'https://sina.co/i/hp-desktop-app-mac';
 
 const DesktopAppsCard = (props: Omit<ComponentProps<typeof Card>, 'type'>): ReactElement => {
 	const t = useTranslation();

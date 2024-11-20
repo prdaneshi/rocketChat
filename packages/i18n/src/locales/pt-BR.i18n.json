@@ -1687,7 +1687,7 @@
   "Error_sending_livechat_offline_message": "Erro ao enviar mensagem Omnichannel offline",
   "Error_sending_livechat_transcript": "Erro ao enviar transcript do Omnichannel",
   "Error_Site_URL": "Site_Url inválido",
-  "Error_Site_URL_description": "Atualize sua configuração \"Site_Url\". Saiba mais [aqui](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "Atualize sua configuração \"Site_Url\". Saiba mais [aqui](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} não é permitido",
   "error-agent-offline": "Agente está offline",
   "error-agent-status-service-offline": "Status do agente está offline ou serviço omnichannel não está ativado",

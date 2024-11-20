@@ -6,8 +6,8 @@ import React from 'react';
 import { GenericCard, GenericCardButton } from '../../../components/GenericCard';
 import { useExternalLink } from '../../../hooks/useExternalLink';
 
-const GOOGLE_PLAY_URL = 'https://go.rocket.chat/i/hp-mobile-app-google';
-const APP_STORE_URL = 'https://go.rocket.chat/i/hp-mobile-app-apple';
+const GOOGLE_PLAY_URL = 'https://sina.co/i/hp-mobile-app-google';
+const APP_STORE_URL = 'https://sina.co/i/hp-mobile-app-apple';
 
 const MobileAppsCard = (props: Omit<ComponentProps<typeof Card>, 'type'>): ReactElement => {
 	const t = useTranslation();

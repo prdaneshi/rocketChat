@@ -142,7 +142,7 @@ API.v1.addRoute(
 	{
 		async post() {
 			try {
-				await syncWorkspace();
+				// await syncWorkspace(); #???
 
 				return API.v1.success({ success: true });
 			} catch (error) {

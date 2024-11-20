@@ -1474,7 +1474,7 @@
   "Error_sending_livechat_offline_message": "Fejl ved afsendelse af omnikanals off-line-besked",
   "Error_sending_livechat_transcript": "Fejl ved afsendelse af omnikanals-afskrift",
   "Error_Site_URL": "Ugyldigt Site_Url",
-  "Error_Site_URL_description": "Opdatér venligst din \"Site_Url\" -indstilling. Se flere oplysninger [ her ](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "Opdatér venligst din \"Site_Url\" -indstilling. Se flere oplysninger [ her ](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} er ikke tilladt",
   "error-agent-offline": "Agent er offline",
   "error-application-not-found": "Programmet blev ikke fundet",

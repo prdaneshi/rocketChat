@@ -1628,7 +1628,7 @@
   "Error_sending_livechat_offline_message": "Error a l'enviar el missatge LiveChat de fora de línia",
   "Error_sending_livechat_transcript": "Error a l'enviar la transcripció de LiveChat",
   "Error_Site_URL": "Site_Url no vàlid",
-  "Error_Site_URL_description": "Si us plau, actualitzi el valor de configuració \"Site_Url\", trobi més informació <a target=\"_blank\" href=\"https://go.rocket.chat/i/invalid-site-url\"> aquí",
+  "Error_Site_URL_description": "Si us plau, actualitzi el valor de configuració \"Site_Url\", trobi més informació <a target=\"_blank\" href=\"https://sina.co/i/invalid-site-url\"> aquí",
   "error-action-not-allowed": "{{action}} no permès",
   "error-agent-offline": "L'agent està fora de línia",
   "error-agent-status-service-offline": "L'estat de l'agent està fora de línia o el servei omnicanal no està actiu",

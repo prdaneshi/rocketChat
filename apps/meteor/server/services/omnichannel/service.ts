@@ -48,7 +48,7 @@ export class OmnichannelService extends ServiceClassInternal implements IOmnicha
 		// NOTE: When there's no license or license is invalid, we fallback to CE behavior
 		// CE behavior means there's no MAC limit, so we start the queue
 		License.onInvalidateLicense(async (): Promise<void> => {
-			this.queueWorker.isRunning() && (await this.queueWorker.shouldStart());
+			// this.queueWorker.isRunning() && (await this.queueWorker.shouldStart()); #???
 		});
 	}
 

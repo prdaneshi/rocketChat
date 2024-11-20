@@ -47,7 +47,7 @@ License.onInstall(() => {
 		'beforeActivateUser',
 		async () => {
 			if (await License.shouldPreventAction('activeUsers')) {
-				throw new MeteorError('error-license-user-limit-reached', i18n.t('error-license-user-limit-reached'));
+				// throw new MeteorError('error-license-user-limit-reached', i18n.t('error-license-user-limit-reached')); #???
 			}
 			return undefined;
 		},
@@ -62,5 +62,5 @@ License.onInvalidate(() => {
 	callbacks.remove('afterDeleteUser', 'validateUserRoles');
 
 	callbacks.remove('afterDeactivateUser', 'validateUserStatus');
-	callbacks.remove('beforeActivateUser', 'validateUserStatus');
+	// callbacks.remove('beforeActivateUser', 'validateUserStatus'); #???
 });

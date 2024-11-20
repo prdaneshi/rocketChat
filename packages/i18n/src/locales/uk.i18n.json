@@ -1301,7 +1301,7 @@
   "Error_sending_livechat_offline_message": "Помилка надсилання офлайн-повідомлення Livechat",
   "Error_sending_livechat_transcript": "Помилка надсилання протоколу Livechat",
   "Error_Site_URL": "Недійсний Site_Url",
-  "Error_Site_URL_description": "Оновіть будь-ласка Ваші налаштування \"Site_Url\", знайдіть більше інформації [тут](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "Оновіть будь-ласка Ваші налаштування \"Site_Url\", знайдіть більше інформації [тут](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} не дозволено",
   "error-application-not-found": "Додаток не знайдено",
   "error-archived-duplicate-name": "Вже є архівний канал з ім'ям '{{room_name}}'",

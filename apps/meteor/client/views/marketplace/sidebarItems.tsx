@@ -43,7 +43,7 @@ export const {
 	},
 	{ divider: true, i18nLabel: 'marketplace/private', permissionGranted: (): boolean => hasPermission('access-marketplace') },
 	{
-		href: 'https://go.rocket.chat/i/developing-an-app',
+		href: 'https://sina.co/i/developing-an-app',
 		icon: 'new-window',
 		i18nLabel: 'Documentation',
 		externalUrl: true,

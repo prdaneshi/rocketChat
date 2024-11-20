@@ -1316,7 +1316,7 @@
   "Error_sending_livechat_offline_message": "შეცდომა მრავალარხზე ოფლაინ მესიჯის გაგზავნისას",
   "Error_sending_livechat_transcript": "შეცდომა მრავალარხის ტრანსკრიფციის გაგზავნისას",
   "Error_Site_URL": "ვებგვერდის მისამართი არასწორია",
-  "Error_Site_URL_description": "გთხოვთ, განაახლოთ თქვენი \"Site_Url\" პარამეტრები, იხილეთ მეტი ინფორმაცია [ აქ ](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "გთხოვთ, განაახლოთ თქვენი \"Site_Url\" პარამეტრები, იხილეთ მეტი ინფორმაცია [ აქ ](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} არ არის დაშვებული",
   "error-agent-offline": "აგენტი გასულია",
   "error-application-not-found": "აპლიკაცია ვერ მოიძებნა",

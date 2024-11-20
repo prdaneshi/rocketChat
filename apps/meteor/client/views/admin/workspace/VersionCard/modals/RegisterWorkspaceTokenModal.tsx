@@ -55,6 +55,8 @@ const RegisterWorkspaceTokenModal = ({ onClose, onStatusChange, ...props }: Regi
 		}
 	};
 
+// #???   line 71 cloud123456
+
 	return (
 		<Modal {...props}>
 			<Modal.Header>
@@ -68,7 +70,7 @@ const RegisterWorkspaceTokenModal = ({ onClose, onStatusChange, ...props }: Regi
 					<Trans i18nKey='RegisterWorkspace_Token_Step_One'>
 						1. Go to:{' '}
 						<Box is='span' fontWeight={600}>
-							cloud.rocket.chat {'>'} Workspaces
+							cloud123456.rocket.chat {'>'} Workspaces
 						</Box>{' '}
 						and click{' '}
 						<Box is='span' fontWeight={600}>

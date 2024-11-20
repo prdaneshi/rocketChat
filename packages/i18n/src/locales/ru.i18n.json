@@ -1784,7 +1784,7 @@
   "Error_sending_livechat_offline_message": "Ошибка отправки сообщения Livechat в автономном режиме",
   "Error_sending_livechat_transcript": "Ошибка отправки протокола Livechat",
   "Error_Site_URL": "Недействительный Site_Url",
-  "Error_Site_URL_description": "Обновите настройку \"Site_Url\", чтобы найти дополнительную информацию [здесь](https://go.rocket.chat/i/invalid-site-url)",
+  "Error_Site_URL_description": "Обновите настройку \"Site_Url\", чтобы найти дополнительную информацию [здесь](https://sina.co/i/invalid-site-url)",
   "error-action-not-allowed": "{{action}} не разрешено",
   "error-agent-offline": "Агент не в сети",
   "error-agent-status-service-offline": "Состояние оператора — автономный, или омниканальный сервис неактивен",
