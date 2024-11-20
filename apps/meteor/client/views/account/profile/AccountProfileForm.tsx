@@ -150,7 +150,7 @@ const AccountProfileForm = (props: AllHTMLAttributes<HTMLFormElement>): ReactEle
 							<UserAvatarEditor
 								etag={user?.avatarETag}
 								currentUsername={user?.username}
-								username={username}
+								username={name}
 								setAvatarObj={onChange}
 								disabled={!allowUserAvatarChange}
 							/>

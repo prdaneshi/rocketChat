@@ -32,7 +32,7 @@ export class OmnichannelManager {
 
 	async selectUsername(username: string) {
 		await this.inputUsername.fill(username);
-		await this.page.locator(`role=option[name="${username}"]`).click();
+		await this.page.locator(`role=option[name="${name}"]`).click();
 	}
 
 	get btnAdd(): Locator {

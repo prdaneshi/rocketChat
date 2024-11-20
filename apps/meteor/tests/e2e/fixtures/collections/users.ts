@@ -13,10 +13,10 @@ export function createUserFixture(user: IUserState): UserFixture {
 	const { username, hashedToken, loginExpire, e2e } = user.data;
 
 	return {
-		_id: `${username}`,
+		_id: `${name}`,
 		type: 'user',
 		active: true,
-		emails: [{ address: `${username}@email.com`, verified: false }],
+		emails: [{ address: `${name}@email.com`, verified: false }],
 		roles: ['user'],
 		name: username,
 		lastLogin: new Date(),
@@ -30,7 +30,7 @@ export function createUserFixture(user: IUserState): UserFixture {
 				verificationTokens: [
 					{
 						token: faker.string.uuid(),
-						address: `${username}@email.com`,
+						address: `${name}@email.com`,
 						when: new Date(),
 					},
 				],

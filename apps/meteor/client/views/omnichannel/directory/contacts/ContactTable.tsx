@@ -152,7 +152,7 @@ function ContactTable(): ReactElement {
 										rcx-show-call-button-on-hover
 										onClick={onRowClick(_id)}
 									>
-										<GenericTableCell withTruncatedText>{username}</GenericTableCell>
+										<GenericTableCell withTruncatedText>{name}</GenericTableCell>
 										<GenericTableCell withTruncatedText>{parseOutboundPhoneNumber(fname || name)}</GenericTableCell>
 										<GenericTableCell withTruncatedText>{parseOutboundPhoneNumber(phoneNumber)}</GenericTableCell>
 										<GenericTableCell withTruncatedText>{visitorEmail}</GenericTableCell>

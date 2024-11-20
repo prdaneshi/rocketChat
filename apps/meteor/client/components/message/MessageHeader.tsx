@@ -58,16 +58,16 @@ const MessageHeader = ({ message }: MessageHeaderProps): ReactElement => {
 			>
 				<MessageName
 					{...(!showUsername && { 'data-qa-type': 'username' })}
-					title={!showUsername && !usernameAndRealNameAreSame ? `@${user.username}` : undefined}
-					data-username={user.username}
+					title={!showUsername && !usernameAndRealNameAreSame ? `@${user.name}` : undefined}
+					data-username={user.name}
 				>
 					{message.alias || getUserDisplayName(user.name, user.username, showRealName)}
 				</MessageName>
 				{showUsername && (
 					<>
 						{' '}
-						<MessageUsername data-username={user.username} data-qa-type='username'>
-							@{user.username}
+						<MessageUsername data-username={user.name} data-qa-type='username'>
+							@{user.name}
 						</MessageUsername>
 					</>
 				)}

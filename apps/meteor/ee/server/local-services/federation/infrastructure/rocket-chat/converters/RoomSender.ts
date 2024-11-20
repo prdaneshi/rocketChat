@@ -26,7 +26,7 @@ import {
 import type { IFederationInviteeDto } from '../../../application/room/sender/input/RoomSenderDto';
 
 const ensureUserHasAHomeServer = (username: string, localHomeServer: string): string => {
-	return username?.includes(':') ? username : `${username}:${localHomeServer}`;
+	return username?.includes(':') ? username : `${name}:${localHomeServer}`;
 };
 
 const isAnExistentUser = (invitee: IUser | string): boolean => typeof invitee !== 'string';

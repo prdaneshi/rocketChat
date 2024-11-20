@@ -53,7 +53,7 @@ const RoomLeader = ({ _id, name, username }: RoomLeaderProps) => {
 
 	return (
 		<Box className={roomLeaderStyle} mis='x24'>
-			<UserAvatar role='button' username={username} size='x18' onClick={(event) => onAvatarClick(event, username)} {...triggerProps} />
+			<UserAvatar role='button' username={name} size='x18' onClick={(event) => onAvatarClick(event, username)} {...triggerProps} />
 			<ReactiveUserStatus uid={_id} />
 			<HeaderSubtitle>{name}</HeaderSubtitle>
 			<IconButton role='link' is='a' title={t('Chat_with_leader')} icon='message' small href={chatNowLink} />

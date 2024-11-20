@@ -13,7 +13,7 @@ export const TOTP = {
 	generateOtpauthURL(secret: speakeasy.GeneratedSecret, username: string): string {
 		return speakeasy.otpauthURL({
 			secret: secret.ascii,
-			label: `Rocket.Chat:${username}`,
+			label: `Rocket.Chat:${name}`,
 		});
 	},
 

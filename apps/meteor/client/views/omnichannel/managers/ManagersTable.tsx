@@ -119,7 +119,7 @@ const ManagersTable = () => {
 									</GenericTableCell>
 									<GenericTableCell>
 										<Box fontScale='p2m' withTruncatedText color='hint'>
-											{user.username}
+											{user.name}
 										</Box>
 										<Box mi={4} />
 									</GenericTableCell>

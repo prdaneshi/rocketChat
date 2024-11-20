@@ -19,11 +19,11 @@ const UserAutoCompleteMultipleOption = ({ label, ...props }: UserAutoCompleteMul
 			data-qa-type='autocomplete-user-option'
 			avatar={_federated ? undefined : <UserAvatar username={username || ''} size='x20' />}
 			icon={_federated ? 'globe' : undefined}
-			key={username}
+			key={name}
 			label={
 				(
 					<>
-						{name || username} {!_federated && <OptionDescription>({username})</OptionDescription>}
+						{name || username} {!_federated && <OptionDescription>({name})</OptionDescription>}
 					</>
 				) as any
 			}

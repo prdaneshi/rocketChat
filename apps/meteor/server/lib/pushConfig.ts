@@ -21,7 +21,7 @@ export const executePushTest = async (userId: IUser['_id'], username: IUser['use
 
 	await Push.send({
 		from: 'push',
-		title: `@${username}`,
+		title: `@${name}`,
 		text: i18n.t('This_is_a_push_test_messsage'),
 		sound: 'default',
 		userId,

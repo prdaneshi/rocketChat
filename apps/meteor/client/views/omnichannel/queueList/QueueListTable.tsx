@@ -132,9 +132,9 @@ const QueueListTable = (): ReactElement => {
 								<GenericTableRow key={user._id} tabIndex={0}>
 									<GenericTableCell withTruncatedText>
 										<Box display='flex' alignItems='center' mb='5px'>
-											<UserAvatar size={mediaQuery ? 'x28' : 'x40'} username={user.username} />
+											<UserAvatar size={mediaQuery ? 'x28' : 'x40'} username={user.name} />
 											<Box display='flex' mi={8}>
-												{user.username}
+												{user.name}
 											</Box>
 										</Box>
 									</GenericTableCell>

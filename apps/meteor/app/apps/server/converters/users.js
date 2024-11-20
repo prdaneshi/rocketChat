@@ -106,7 +106,7 @@ export class AppUsersConverter {
 				return UserStatusConnection.UNDEFINED;
 			default:
 				console.warn(
-					`The user ${username} (${userId}) does not have a valid status (offline, online, away, or busy). It is currently: "${status}"`,
+					`The user ${name} (${userId}) does not have a valid status (offline, online, away, or busy). It is currently: "${status}"`,
 				);
 				return !status ? UserStatusConnection.OFFLINE : status.toUpperCase();
 		}

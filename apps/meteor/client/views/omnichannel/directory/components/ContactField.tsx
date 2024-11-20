@@ -51,7 +51,7 @@ const ContactField = ({ contact, room }: ContactFieldProps) => {
 					data-qa-id='contactInfo-name'
 					mis={10}
 					name={displayName}
-					shortName={username}
+					shortName={name}
 					status={<UserStatus status={status} />}
 				/>
 			</Info>

@@ -65,7 +65,7 @@ API.v1.addRoute(
 		async get() {
 			const user = await getUserFromParams(this.queryParams);
 
-			const url = getURL(`/avatar/${user.username}`, { cdn: false, full: true });
+			const url = getURL(`/avatar/${user.name}`, { cdn: false, full: true });
 			this.response.setHeader('Location', url);
 
 			return {
@@ -1096,7 +1096,7 @@ API.v1.addRoute(
 		async get() {
 			const { selector: selectorRaw } = this.queryParams;
 
-			const selector: { exceptions: Required<IUser>['username'][]; conditions: Filter<IUser>; term: string } = JSON.parse(selectorRaw);
+			const selector: { exceptions: Required<IUser>['name'][]; conditions: Filter<IUser>; term: string } = JSON.parse(selectorRaw);
 
 			try {
 				if (selector?.conditions && !isValidQuery(selector.conditions, ['*'], ['$or', '$and'])) {

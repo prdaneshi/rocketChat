@@ -32,7 +32,7 @@ const IntegrationRow = ({ integration, onClick, isMobile }: IntegrationRowProps)
 				</GenericTableCell>
 			)}
 			<GenericTableCell>
-				<Box withTruncatedText>{username}</Box>
+				<Box withTruncatedText>{name}</Box>
 			</GenericTableCell>
 		</GenericTableRow>
 	);

@@ -27,10 +27,10 @@ const AgentsTableRow = ({
 	const handleDelete = useRemoveAgent(_id);
 
 	return (
-		<GenericTableRow data-qa-id={username} action onClick={() => router.navigate(`/omnichannel/agents/info/${_id}`)}>
+		<GenericTableRow data-qa-id={name} action onClick={() => router.navigate(`/omnichannel/agents/info/${_id}`)}>
 			<GenericTableCell>
 				<Box display='flex' alignItems='center'>
-					{username && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={username} username={username} etag={avatarETag} />}
+					{username && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={name} username={name} etag={avatarETag} />}
 					<Box display='flex' withTruncatedText mi={8}>
 						<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 							<Box fontScale='p2m' withTruncatedText color='default'>
@@ -38,7 +38,7 @@ const AgentsTableRow = ({
 							</Box>
 							{!mediaQuery && name && (
 								<Box fontScale='p2' color='hint' withTruncatedText>
-									{`@${username}`}
+									{`@${name}`}
 								</Box>
 							)}
 						</Box>
@@ -48,7 +48,7 @@ const AgentsTableRow = ({
 			{mediaQuery && (
 				<GenericTableCell>
 					<Box fontScale='p2m' withTruncatedText color='hint'>
-						{username}
+						{name}
 					</Box>
 					<Box mi={4} />
 				</GenericTableCell>

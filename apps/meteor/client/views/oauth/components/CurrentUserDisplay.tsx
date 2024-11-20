@@ -31,7 +31,7 @@ const CurrentUserDisplay = ({ user }: CurrentUserDisplayProps) => {
 		<>
 			<p>{t('core.You_are_logged_in_as')}</p>
 			<UserCard
-				username={user.username}
+				username={user.name}
 				etag={user.avatarETag}
 				name={showRealNames ? user.name : user.username}
 				nickname={user.nickname}

@@ -17,6 +17,6 @@ export default async function handleLeftChannel(args) {
 		throw new Error(`Could not find a room with name ${args.roomName}`);
 	}
 
-	this.log(`${user.username} left room ${room.name}`);
+	this.log(`${user.name} left room ${room.name}`);
 	await removeUserFromRoom(room._id, user);
 }

@@ -87,7 +87,7 @@ const VoipExtensionsPage = () => {
 									<GenericTableCell withTruncatedText>
 										{username ? (
 											<Box display='flex' alignItems='center'>
-												<UserAvatar size='x28' username={username} />
+												<UserAvatar size='x28' username={name} />
 												<Box display='flex' mi={8}>
 													<Box display='flex' flexDirection='column' alignSelf='center'>
 														<Box fontScale='p2m' color='default'>
@@ -115,7 +115,7 @@ const VoipExtensionsPage = () => {
 										</Box>
 									</GenericTableCell>
 									{username ? (
-										<RemoveAgentButton username={username} reload={refetch} />
+										<RemoveAgentButton username={name} reload={refetch} />
 									) : (
 										<AssignAgentButton extension={extension} reload={refetch} />
 									)}

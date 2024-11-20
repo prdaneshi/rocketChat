@@ -33,7 +33,7 @@ export const userAvatar = async function (req, res) {
 	}
 
 	if (settings.get('Accounts_AvatarExternalProviderUrl')) {
-		const response = await fetch(settings.get('Accounts_AvatarExternalProviderUrl').replace('{username}', requestUsername));
+		const response = await fetch(settings.get('Accounts_AvatarExternalProviderUrl').replace('{name}', requestUsername));
 		response.headers.forEach((value, key) => res.setHeader(key, value));
 		response.body.pipe(res);
 		return;

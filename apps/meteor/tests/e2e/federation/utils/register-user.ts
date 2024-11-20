@@ -8,7 +8,7 @@ export async function registerUser(api: API): Promise<string> {
 
 	await api.post('/users.register', {
 		username,
-		email: `${username}@test-rc.com`,
+		email: `${name}@test-rc.com`,
 		pass: constants.RC_SERVER_2.password,
 		name: username,
 	});

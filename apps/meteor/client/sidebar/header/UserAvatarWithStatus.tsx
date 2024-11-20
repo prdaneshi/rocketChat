@@ -32,7 +32,7 @@ const UserAvatarWithStatus = () => {
 				cursor: pointer;
 			`}
 		>
-			{username && <UserAvatar size='x24' username={username} etag={avatarETag} />}
+			{username && <UserAvatar size='x24' username={name} etag={avatarETag} />}
 			<Box
 				className={css`
 					bottom: 0;

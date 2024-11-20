@@ -60,7 +60,7 @@ export class LDAPEEManager extends LDAPManager {
 					}
 
 					const memberFormat = ldap.options.groupFilterGroupMemberFormat
-						?.replace(/#{username}/g, options?.username || '#{username}')
+						?.replace(/#{name}/g, options?.username || '#{name}')
 						.replace(/#{userdn}/g, options?.dn || '#{userdn}');
 
 					return membersOfGroupFilter.includes(memberFormat);
@@ -181,7 +181,7 @@ export class LDAPEEManager extends LDAPManager {
 		}
 		const searchOptions: ldapjs.SearchOptions = {
 			filter: filter
-				.replace(/#{username}/g, username)
+				.replace(/#{name}/g, username)
 				.replace(/#{groupName}/g, groupName)
 				.replace(/#{userdn}/g, dn.replace(/\\/g, '\\5c')),
 			scope: 'sub',
@@ -190,9 +190,9 @@ export class LDAPEEManager extends LDAPManager {
 		const result = await ldap.searchRaw(baseDN, searchOptions);
 
 		if (!Array.isArray(result) || result.length === 0) {
-			logger.debug(`${username} is not in ${groupName} group!!!`);
+			logger.debug(`${name} is not in ${groupName} group!!!`);
 		} else {
-			logger.debug(`${username} is in ${groupName} group.`);
+			logger.debug(`${name} is in ${groupName} group.`);
 			return true;
 		}
 
@@ -359,10 +359,10 @@ export class LDAPEEManager extends LDAPManager {
 				} else {
 					channelsToAdd.add(room._id);
 					await addUserToRoom(room._id, user);
-					logger.debug(`Synced user channel ${room._id} from LDAP for ${username}`);
+					logger.debug(`Synced user channel ${room._id} from LDAP for ${name}`);
 				}
 			} catch (e) {
-				logger.debug(`Failed to sync user room, user = ${username}, channel = ${userChannelName}`);
+				logger.debug(`Failed to sync user room, user = ${name}, channel = ${userChannelName}`);
 				logger.error(e);
 			}
 		}
@@ -382,7 +382,7 @@ export class LDAPEEManager extends LDAPManager {
 				const subscription = await SubscriptionsRaw.findOneByRoomIdAndUserId(room._id, user._id);
 				if (subscription) {
 					await removeUserFromRoom(room._id, user);
-					logger.debug(`Removed user ${username} from channel ${room._id}`);
+					logger.debug(`Removed user ${name} from channel ${room._id}`);
 				}
 			}
 		}
@@ -463,7 +463,7 @@ export class LDAPEEManager extends LDAPManager {
 		}
 
 		const searchOptions = {
-			filter: filter.replace(/#{username}/g, username).replace(/#{userdn}/g, userDN.replace(/\\/g, '\\5c')),
+			filter: filter.replace(/#{name}/g, username).replace(/#{userdn}/g, userDN.replace(/\\/g, '\\5c')),
 			scope: ldap.options.userSearchScope || 'sub',
 			sizeLimit: ldap.options.searchSizeLimit,
 		};

@@ -28,7 +28,7 @@ const AuditLogEntry = ({ value: { u, results, ts, _id, fields } }: AuditLogEntry
 		<GenericTableRow key={_id} tabIndex={0} role='link'>
 			<GenericTableCell withTruncatedText>
 				<Box display='flex' alignItems='center'>
-					{username && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={username} username={username} etag={avatarETag} />}
+					{username && <UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={name} username={name} etag={avatarETag} />}
 					<Box display='flex' withTruncatedText marginInline={8}>
 						<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 							<Box fontScale='p2m' withTruncatedText color='default'>
@@ -37,7 +37,7 @@ const AuditLogEntry = ({ value: { u, results, ts, _id, fields } }: AuditLogEntry
 							{name && (
 								<Box fontScale='p2' color='hint' withTruncatedText>
 									{' '}
-									{`@${username}`}{' '}
+									{`@${name}`}{' '}
 								</Box>
 							)}
 						</Box>

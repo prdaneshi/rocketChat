@@ -34,7 +34,7 @@ const UsersInRoleTableRow = ({ user, onRemove }: UsersInRoleTableRowProps): Reac
 						</Box>
 						{name && (
 							<Box mis={4} fontScale='p2' color='hint' withTruncatedText>
-								{`@${username}`}
+								{`@${name}`}
 							</Box>
 						)}
 					</Box>

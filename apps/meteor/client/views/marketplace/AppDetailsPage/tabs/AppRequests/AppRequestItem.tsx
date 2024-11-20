@@ -24,7 +24,7 @@ const AppRequestItem = ({ seen, name, createdDate, message, username }: AppReque
 				<Box mie={16} alignSelf='center' height='100%' width='x8'>
 					{!seen && isAdminUser && <Badge small variant='primary' />}
 				</Box>
-				{username && <UserAvatar size='x36' username={username} />}
+				{username && <UserAvatar size='x36' username={name} />}
 			</Box>
 			<Box display='flex' flexDirection='column'>
 				<Box display='flex' flexDirection='row' alignItems='flex-start' mbe={4}>

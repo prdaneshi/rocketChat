@@ -2,7 +2,7 @@
   "500": "অভ্যন্তরীণ সার্ভার ত্রুটি",
   "__count__empty_rooms_will_be_removed_automatically": "{{count}} খালি ঘরগুলি স্বয়ংক্রিয়ভাবে সরানো হবে।",
   "__count__empty_rooms_will_be_removed_automatically__rooms__": "{{count}} খালি ঘরগুলি স্বয়ংক্রিয়ভাবে সরানো হবে: <br/> {{rooms}}।",
-  "This_room_encryption_has_been_disabled_by__username_": "এই ঘরের এনক্রিপশনটি {{username}} দ্বারা বন্ধ করা হয়েছে",
+  "This_room_encryption_has_been_disabled_by__username_": "এই ঘরের এনক্রিপশনটি {{name}} দ্বারা বন্ধ করা হয়েছে",
   "@username": "@ব্যবহারকারীর নাম",
   "@username_message": "@ ব্যবহারকারী নাম <message>",
   "#channel": "# চ্যানেল",

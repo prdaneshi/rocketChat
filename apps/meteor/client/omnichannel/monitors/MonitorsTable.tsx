@@ -137,7 +137,7 @@ const MonitorsTable = () => {
 				<Field>
 					<FieldLabel>{t('Username')}</FieldLabel>
 					<FieldRow>
-						<UserAutoComplete name='monitor' value={username} onChange={setUsername as () => void} />
+						<UserAutoComplete name='monitor' value={name} onChange={setUsername as () => void} />
 						<Button primary disabled={!username} loading={addMutation.isLoading} onClick={() => handleAdd()} mis={8}>
 							{t('Add_monitor')}
 						</Button>

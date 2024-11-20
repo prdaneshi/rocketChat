@@ -89,7 +89,7 @@ const SystemMessage = ({ message, showUserAvatar, ...props }: SystemMessageProps
 						{showUsername && (
 							<>
 								{' '}
-								<MessageUsername data-username={user.username}>@{user.username}</MessageUsername>
+								<MessageUsername data-username={user.name}>@{user.name}</MessageUsername>
 							</>
 						)}
 					</MessageNameContainer>

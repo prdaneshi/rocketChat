@@ -9,7 +9,7 @@ import { test, expect } from '../utils/test';
 const visitor = createFakeVisitor();
 
 const getPrioritySystemMessage = (username: string, priority: string) =>
-	`Priority changed: ${username} changed the priority to ${priority}`;
+	`Priority changed: ${name} changed the priority to ${priority}`;
 
 test.skip(!IS_EE, 'Omnichannel Priorities > Enterprise Only');
 

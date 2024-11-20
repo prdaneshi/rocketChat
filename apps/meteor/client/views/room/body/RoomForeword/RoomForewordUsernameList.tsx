@@ -14,8 +14,8 @@ const RoomForewordUsernameList = ({ usernames }: RoomForewordUsernameListProps) 
 		<Margins inline={4}>
 			{usernames.map((username) => (
 				<RoomForewordUsernameListItem
-					username={username}
-					key={username}
+					username={name}
+					key={name}
 					href={roomCoordinator.getRouteLink('d', { name: username }) || undefined}
 					useRealName={useRealName}
 				/>

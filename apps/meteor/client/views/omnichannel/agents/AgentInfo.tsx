@@ -51,7 +51,7 @@ const AgentInfo = ({ uid }: AgentInfoProps) => {
 			<ContextualbarScrollableContent>
 				{username && (
 					<Box alignSelf='center'>
-						<UserInfoAvatar data-qa='AgentUserInfoAvatar' username={username} />
+						<UserInfoAvatar data-qa='AgentUserInfoAvatar' username={name} />
 					</Box>
 				)}
 				<ButtonGroup align='center'>
@@ -66,7 +66,7 @@ const AgentInfo = ({ uid }: AgentInfoProps) => {
 				</ButtonGroup>
 				<Margins block={4}>
 					<Box mb={2}>
-						<UserInfoUsername data-qa='AgentInfoUserInfoUserName' username={username} status={<UserStatus status={userStatus} />} />
+						<UserInfoUsername data-qa='AgentInfoUserInfoUserName' username={name} status={<UserStatus status={userStatus} />} />
 					</Box>
 					{statusLivechat && (
 						<>

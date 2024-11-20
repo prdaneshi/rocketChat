@@ -18,11 +18,11 @@ API.v1.addRoute(
 
 			const { username, domain } = this.queryParams;
 
-			serverLogger.debug(`federation.users.search => username=${username} domain=${domain}`);
+			serverLogger.debug(`federation.users.search => username=${name} domain=${domain}`);
 
 			const query = {
 				type: 'user',
-				$or: [{ name: username }, { username }, { 'emails.address': `${username}@${domain}` }],
+				$or: [{ name: username }, { username }, { 'emails.address': `${name}@${domain}` }],
 			};
 
 			let users = await Users.find(query, { projection: userFields }).toArray();
@@ -45,7 +45,7 @@ API.v1.addRoute(
 
 			const { username } = this.queryParams;
 
-			serverLogger.debug(`federation.users.getByUsername => username=${username}`);
+			serverLogger.debug(`federation.users.getByUsername => username=${name}`);
 
 			const query = {
 				type: 'user',

@@ -1,7 +1,7 @@
 {
   "500": "Sisemine serveri viga",
-  "__username__is_no_longer__role__defined_by__user_by_": "{{username}} ei ole enam {{role}} poolt {{user_by}}",
-  "__username__was_set__role__by__user_by_": "{{username}} määrati {{role}} poolt {{user_by}}",
+  "__username__is_no_longer__role__defined_by__user_by_": "{{name}} ei ole enam {{role}} poolt {{user_by}}",
+  "__username__was_set__role__by__user_by_": "{{name}} määrati {{role}} poolt {{user_by}}",
   "@username": "@kasutajanimi",
   "@username_message": "@kasutajanimi<message>",
   "#channel": "#kanal",

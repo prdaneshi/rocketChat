@@ -110,10 +110,10 @@ export async function setUserAvatar(
 
 			if (response.status !== 200) {
 				if (response.status !== 404) {
-					SystemLogger.info(`Error while handling the setting of the avatar from a url (${encodeURI(dataURI)}) for ${user.username}`);
+					SystemLogger.info(`Error while handling the setting of the avatar from a url (${encodeURI(dataURI)}) for ${user.name}`);
 					throw new Meteor.Error(
 						'error-avatar-url-handling',
-						`Error while handling avatar setting from a URL (${encodeURI(dataURI)}) for ${user.username}`,
+						`Error while handling avatar setting from a URL (${encodeURI(dataURI)}) for ${user.name}`,
 						{ function: 'RocketChat.setUserAvatar', url: dataURI, username: user.username },
 					);
 				}

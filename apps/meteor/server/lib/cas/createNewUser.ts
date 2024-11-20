@@ -35,7 +35,7 @@ export const createNewUser = async (username: string, { attributes, casVersion, 
 	};
 
 	// Create the user
-	logger.debug(`User "${username}" does not exist yet, creating it`);
+	logger.debug(`User "${name}" does not exist yet, creating it`);
 	const userId = Accounts.insertUserDoc({}, newUser);
 
 	// Fetch and use it
@@ -44,7 +44,7 @@ export const createNewUser = async (username: string, { attributes, casVersion, 
 		throw new Error('Unexpected error: Unable to find user after its creation.');
 	}
 
-	logger.debug(`Created new user for '${username}' with id: ${user._id}`);
+	logger.debug(`Created new user for '${name}' with id: ${user._id}`);
 
 	logger.debug(`Joining user to attribute channels: ${attributes.rooms}`);
 	if (attributes.rooms) {

@@ -8,7 +8,7 @@ const AgentAvatar = ({ name, username, eTag }: { name: string; username: string;
 
 	return (
 		<Box display='flex' alignItems='center'>
-			<UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={username} username={username} etag={eTag} />
+			<UserAvatar size={mediaQuery ? 'x28' : 'x40'} title={name} username={name} etag={eTag} />
 			<Box display='flex' withTruncatedText mi={8}>
 				<Box display='flex' flexDirection='column' alignSelf='center' withTruncatedText>
 					<Box fontScale='p2m' withTruncatedText color='default'>
@@ -17,7 +17,7 @@ const AgentAvatar = ({ name, username, eTag }: { name: string; username: string;
 					{!mediaQuery && name && (
 						<Box fontScale='p2' color='hint' withTruncatedText>
 							{' '}
-							{`@${username}`}{' '}
+							{`@${name}`}{' '}
 						</Box>
 					)}
 				</Box>
