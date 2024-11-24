@@ -16,7 +16,7 @@ const UserAvatar: FC<UserAvatarProps> = ({ username , name, etag, ...rest }) => 
 	const getUserAvatarPath = useUserAvatarPath();
 	const { url = getUserAvatarPath(username, etag), ...props } = rest;
 
-	return <BaseAvatar url={url} data-username={name} title={name} {...props} />; // MAD name  is deprecated
+	return <BaseAvatar url={url} data-username={username} title={name} {...props} />; // MAD name  is deprecated
 };
 
 export default memo(UserAvatar);

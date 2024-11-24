@@ -65,7 +65,7 @@ API.v1.addRoute(
 		async get() {
 			const user = await getUserFromParams(this.queryParams);
 
-			const url = getURL(`/avatar/${user.name}`, { cdn: false, full: true });
+			const url = getURL(`/avatar/${user.username}`, { cdn: false, full: true });
 			this.response.setHeader('Location', url);
 
 			return {
