@@ -20,6 +20,7 @@ const AppRoot = (): ReactElement => (
 				<meta httpEquiv='X-UA-Compatible' content='IE=edge' />
 				<meta name='fragment' content='!' />
 				<meta name='distribution' content='global' />
+				<meta name='version' content='1.0' />
 				<meta name='viewport' content='width=device-width, initial-scale=1, interactive-widget=resizes-content' />
 				<meta name='rating' content='general' />
 				<meta name='mobile-web-app-capable' content='yes' />
