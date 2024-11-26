@@ -56,6 +56,18 @@ type AdminUserFormProps = {
 
 export type UserFormProps = Omit<UserCreateParamsPOST & { avatar: AvatarObject; passwordConfirmation: string }, 'fields'>;
 
+function generateRandomUsername(length = 8) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        result += characters[randomIndex];
+    }
+    return result;
+}
+
+const newUsername = generateRandomUsername(20);
+
 const getInitialValue = ({
 	data,
 	defaultUserRoles,
@@ -72,7 +84,7 @@ const getInitialValue = ({
 	roles: data?.roles ?? defaultUserRoles,
 	name: data?.name ?? '',
 	password: '',
-	username: data?.username ?? '',
+	username: data?.username ?? newUsername ?? '',
 	bio: data?.bio ?? '',
 	nickname: data?.nickname ?? '',
 	email: (data?.emails?.length && data.emails[0].address) || '',
@@ -205,7 +217,7 @@ const AdminUserForm = ({ userData, onReload, context, refetchUserFormData, roleD
 								render={({ field: { onChange } }) => (
 									<UserAvatarEditor
 										currentUsername={userData?.username}
-										username={name}
+										username={username}
 										etag={userData?.avatarETag}
 										setAvatarObj={onChange}
 									/>
@@ -316,10 +328,12 @@ const AdminUserForm = ({ userData, onReload, context, refetchUserFormData, roleD
 									<TextInput
 										{...field}
 										id={usernameId}
+										
 										aria-invalid={errors.username ? 'true' : 'false'}
 										aria-describedby={`${usernameId}-error`}
 										error={errors.username?.message}
 										flexGrow={1}
+										disabled
 									/>
 								)}
 							/>
