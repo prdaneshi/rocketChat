@@ -126,7 +126,7 @@ const ContactInfo = ({ id: contactId, rid: roomId = '', route }: ContactInfoProp
 						<Field>
 							<Label>{`${t('Name')} / ${t('Username')}`}</Label>
 							<Info style={{ display: 'flex' }}>
-								<UserAvatar size='x40' title={name} username={name} />
+								<UserAvatar size='x40' title={name} username={username} />
 								<AgentInfoDetails mis={10} name={name} shortName={name} status={<UserStatus status={status} />} />
 							</Info>
 						</Field>

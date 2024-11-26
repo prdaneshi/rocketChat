@@ -62,7 +62,7 @@ const DeviceManagementInfo = ({ device, sessionId, loginAt, ip, userId, _user, o
 						<InfoPanelField>
 							<InfoPanelLabel>{t('User')}</InfoPanelLabel>
 							<Box>
-								<UserAvatar username={name} etag={userPresence?.avatarETag} />
+								<UserAvatar username={username} etag={userPresence?.avatarETag} />
 								<Box is='span' pi={8}>
 									<StatusBullet status={userPresence?.status} />
 								</Box>

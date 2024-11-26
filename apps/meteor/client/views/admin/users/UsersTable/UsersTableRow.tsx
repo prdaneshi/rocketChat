@@ -118,7 +118,7 @@ const UsersTableRow = ({ user, onClick, onReload, isMobile, isLaptop, tab, isSea
 		>
 			<GenericTableCell withTruncatedText>
 				<Box display='flex' alignItems='center'>
-					{username && <UserAvatar size={isMobile || isLaptop ? 'x28' : 'x40'} username={name} etag={avatarETag} />}
+					{username && <UserAvatar size={isMobile || isLaptop ? 'x28' : 'x40'} username={username} etag={avatarETag} />}
 					<Box display='flex' flexGrow={1} flexShrink={1} flexBasis='0%' alignSelf='center' alignItems='center' withTruncatedText>
 						<Box mi={8}>
 							<UserStatus status={status || Status.OFFLINE} />

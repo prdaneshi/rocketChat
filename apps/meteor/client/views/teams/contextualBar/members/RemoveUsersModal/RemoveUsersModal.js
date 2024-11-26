@@ -18,7 +18,7 @@ const RemoveUsersModal = ({ teamId, userId, onClose, onCancel, onConfirm }) => {
 		return <GenericModalSkeleton />;
 	}
 
-	return <BaseRemoveUsersModal onClose={onClose} username={name} onCancel={onCancel} onConfirm={onConfirm} rooms={value?.rooms} />;
+	return <BaseRemoveUsersModal onClose={onClose} username={username} onCancel={onCancel} onConfirm={onConfirm} rooms={value?.rooms} />;
 };
 
 export default RemoveUsersModal;

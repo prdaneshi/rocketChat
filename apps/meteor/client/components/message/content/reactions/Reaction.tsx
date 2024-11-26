@@ -47,7 +47,7 @@ const Reaction = ({ hasReacted, counter, name, names, messageId, ...props }: Rea
 							mine={mine}
 							messageId={messageId}
 							showRealName={showRealName}
-							username={name}
+							username={username}
 						/>,
 						ref.current,
 					);

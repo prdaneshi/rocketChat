@@ -32,7 +32,7 @@ function ContactHistoryItem({ history, setChatId, ...props }: ContactHistoryItem
 
 	return (
 		<Box pbs={16} is={Message} onClick={onClick} data-qa='chat-history-item' {...props}>
-			<Message.LeftContainer>{username && <UserAvatar username={name} size='x36' />}</Message.LeftContainer>
+			<Message.LeftContainer>{username && <UserAvatar username={username} size='x36' />}</Message.LeftContainer>
 			<Message.Container>
 				<Message.Header>
 					<Message.Name title={name}>{name}</Message.Name>

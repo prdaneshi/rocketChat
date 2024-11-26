@@ -40,7 +40,7 @@ const RoomMembersItem = ({ _id, name, username, federated, onClickView, rid, rel
 	const [nameOrUsername, displayUsername] = getUserDisplayNames(name, username, useRealName);
 
 	return (
-		<Option data-username={name} data-userid={_id} onClick={onClickView} {...handleMenuEvent}>
+		<Option data-username={username} data-userid={_id} onClick={onClickView} {...handleMenuEvent}>
 			<OptionAvatar>
 				<UserAvatar username={username || ''} size='x28' />
 			</OptionAvatar>
@@ -50,7 +50,7 @@ const RoomMembersItem = ({ _id, name, username, federated, onClickView, rid, rel
 			</OptionContent>
 			<OptionMenu onClick={preventPropagation}>
 				{showButton ? (
-					<UserActions username={name} name={name} rid={rid} _id={_id} reload={reload} />
+					<UserActions username={username} name={name} rid={rid} _id={_id} reload={reload} />
 				) : (
 					<IconButton tiny icon='kebab' />
 				)}

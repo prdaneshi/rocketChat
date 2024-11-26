@@ -54,7 +54,7 @@ const BaseRemoveUsersModal = ({
 				onCancel={rooms?.length > 0 ? onReturn : onCancel}
 				deletedRooms={selectedRooms}
 				rooms={rooms}
-				username={name}
+				username={username}
 			/>
 		);
 	}

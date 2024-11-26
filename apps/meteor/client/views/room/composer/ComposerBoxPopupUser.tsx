@@ -26,7 +26,7 @@ function ComposerBoxPopupUser({ _id, system, username, name, nickname, outside, 
 			{!system && (
 				<>
 					<OptionAvatar>
-						<UserAvatar size='x28' username={name} />
+						<UserAvatar size='x28' username={username} />
 					</OptionAvatar>
 					<OptionColumn>
 						<ReactiveUserStatus uid={_id} />

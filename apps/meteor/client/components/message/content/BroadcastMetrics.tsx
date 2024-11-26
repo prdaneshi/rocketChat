@@ -23,7 +23,7 @@ const BroadcastMetrics = ({ username, message }: BroadcastMetricsProps): ReactEl
 	return (
 		<MessageBlock>
 			<MessageMetrics>
-				<MessageMetricsReply data-username={name} data-mid={message._id} onClick={handleReplyButtonClick}>
+				<MessageMetricsReply data-username={username} data-mid={message._id} onClick={handleReplyButtonClick}>
 					{t('Reply')}
 				</MessageMetricsReply>
 			</MessageMetrics>

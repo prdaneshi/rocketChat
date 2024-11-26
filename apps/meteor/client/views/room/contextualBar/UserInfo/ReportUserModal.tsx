@@ -49,7 +49,7 @@ const ReportUserModal = ({ username, displayName, onConfirm, onClose }: ReportUs
 				<Field>
 					<FieldLabel htmlFor={reasonForReportId}>
 						<Box mbe='x12' display='flex' alignItems='center'>
-							<UserAvatar username={name} />
+							<UserAvatar username={username} />
 							<Box mis='x12' fontScale='p1' fontWeight='700'>
 								{displayName}
 							</Box>

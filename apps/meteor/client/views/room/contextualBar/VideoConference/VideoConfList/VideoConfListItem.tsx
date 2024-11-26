@@ -65,7 +65,7 @@ const VideoConfListItem = ({
 			pb={8}
 		>
 			<Message {...props}>
-				<Message.LeftContainer>{username && <UserAvatar username={name} size='x36' />}</Message.LeftContainer>
+				<Message.LeftContainer>{username && <UserAvatar username={username} size='x36' />}</Message.LeftContainer>
 				<Message.Container>
 					<Message.Header>
 						<Message.Name title={name}>{showRealName ? name : username}</Message.Name>

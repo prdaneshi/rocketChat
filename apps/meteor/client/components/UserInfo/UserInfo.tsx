@@ -82,7 +82,7 @@ const UserInfo = ({
 			<InfoPanel>
 				{username && (
 					<InfoPanelAvatar>
-						<UserInfoAvatar username={name} etag={avatarETag} />
+						<UserInfoAvatar username={username} etag={avatarETag} />
 					</InfoPanelAvatar>
 				)}
 

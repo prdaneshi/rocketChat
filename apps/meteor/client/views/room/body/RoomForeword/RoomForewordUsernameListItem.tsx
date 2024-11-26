@@ -15,7 +15,7 @@ const RoomForewordUsernameListItem = ({ username, href, useRealName }: RoomForew
 	const { data, isLoading, isError } = useUserInfoQuery({ username });
 
 	return (
-		<Tag icon={<Icon name='user' size='x20' />} data-username={name} large href={href}>
+		<Tag icon={<Icon name='user' size='x20' />} data-username={username} large href={href}>
 			{isLoading && <Skeleton variant='rect' />}
 			{!isLoading && isError && username}
 			{!isLoading && !isError && getUserDisplayName(data?.user?.name, username, useRealName)}
