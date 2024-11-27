@@ -45,16 +45,7 @@ import AdminUserSetRandomPasswordRadios from './AdminUserSetRandomPasswordRadios
 import PasswordFieldSkeleton from './PasswordFieldSkeleton';
 import { useSmtpQuery } from './hooks/useSmtpQuery';
 
-type AdminUserFormProps = {
-	userData?: Serialized<IUser>;
-	onReload: () => void;
-	context: string;
-	refetchUserFormData?: () => void;
-	roleData: { roles: IRole[] } | undefined;
-	roleError: unknown;
-};
-
-export type UserFormProps = Omit<UserCreateParamsPOST & { avatar: AvatarObject; passwordConfirmation: string }, 'fields'>;
+import { useEffect } from 'react';
 
 function generateRandomUsername(length = 8) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -66,7 +57,23 @@ function generateRandomUsername(length = 8) {
     return result;
 }
 
-const newUsername = generateRandomUsername(20);
+//const newUsername = generateRandomUsername(20);
+
+type AdminUserFormProps = {
+	userData?: Serialized<IUser>;
+	onReload: () => void;
+	
+	context: string;
+	refetchUserFormData?: () => void;
+	roleData: { roles: IRole[] } | undefined;
+	roleError: unknown;
+};
+
+export type UserFormProps = Omit<UserCreateParamsPOST & { avatar: AvatarObject; passwordConfirmation: string }, 'fields'>;
+
+
+
+
 
 const getInitialValue = ({
 	data,
@@ -84,7 +91,7 @@ const getInitialValue = ({
 	roles: data?.roles ?? defaultUserRoles,
 	name: data?.name ?? '',
 	password: '',
-	username: data?.username ?? newUsername ?? '',
+	username: data?.username ?? '',
 	bio: data?.bio ?? '',
 	nickname: data?.nickname ?? '',
 	email: (data?.emails?.length && data.emails[0].address) || '',
@@ -130,6 +137,15 @@ const AdminUserForm = ({ userData, onReload, context, refetchUserFormData, roleD
 		}),
 		mode: 'onBlur',
 	});
+
+	useEffect(() => {
+        if (context === 'new') {
+            // Generate a new username only when creating a new user
+            const newUsername = generateRandomUsername(20);
+            setValue('username', newUsername);
+        }
+    }, [context, setValue]); // Run this effect when context changes
+
 
 	const { avatar, username, setRandomPassword, password } = watch();
 
