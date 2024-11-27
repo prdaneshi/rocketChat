@@ -40,7 +40,7 @@ function ComposerBoxPopupUser({ _id, system, username, name, nickname, outside, 
 
 			{system && (
 				<OptionContent>
-					<strong>{name}</strong> {name}
+					<strong>{name}</strong> {nickname}
 				</OptionContent>
 			)}
 
