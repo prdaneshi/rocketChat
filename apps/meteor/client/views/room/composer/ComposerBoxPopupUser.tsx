@@ -32,7 +32,7 @@ function ComposerBoxPopupUser({ _id, system, username, name, nickname, outside, 
 						<ReactiveUserStatus uid={_id} />
 					</OptionColumn>
 					<OptionContent>
-						<strong>{name ?? username}</strong> {name && name !== username && username}
+						<strong>{name ?? username}</strong>
 						{nickname && <span className='popup-user-nickname'>({nickname})</span>}
 					</OptionContent>
 				</>

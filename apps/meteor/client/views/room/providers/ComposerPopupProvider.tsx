@@ -23,6 +23,7 @@ import ComposerBoxPopupUser from '../composer/ComposerBoxPopupUser';
 import type { ComposerBoxPopupUserProps } from '../composer/ComposerBoxPopupUser';
 import type { ComposerPopupContextValue } from '../contexts/ComposerPopupContext';
 import { ComposerPopupContext, createMessageBoxPopupConfig } from '../contexts/ComposerPopupContext';
+import { allowAgentSkipQueue } from '/app/livechat/server/lib/Helper';
 
 const ComposerPopupProvider = ({ children, room }: { children: ReactNode; room: IRoom }) => {
 	const { _id: rid, encrypted: isRoomEncrypted } = room;
@@ -70,7 +71,7 @@ const ComposerPopupProvider = ({ children, room }: { children: ReactNode; room: 
 							_id: 'all',
 							username: 'all',
 							system: true,
-							name: t('Notify_all_in_this_room'),
+							name: 'all', //t('Notify_all_in_this_room'),  // MAD remember to return this to normal after doing proper works
 							sort: 4,
 						});
 					}
@@ -80,7 +81,7 @@ const ComposerPopupProvider = ({ children, room }: { children: ReactNode; room: 
 							_id: 'here',
 							username: 'here',
 							system: true,
-							name: t('Notify_active_in_this_room'),
+							name: 'here' , //t('Notify_active_in_this_room'), // MAD remember to return this to normal after doing proper works
 							sort: 4,
 						});
 					}
@@ -121,7 +122,7 @@ const ComposerPopupProvider = ({ children, room }: { children: ReactNode; room: 
 						};
 					});
 				},
-				getValue: (item) => item.username,
+				getValue: (item) => item.name,
 				renderItem: ({ item }) => <ComposerBoxPopupUser {...item} />,
 			}),
 			createMessageBoxPopupConfig<ComposerBoxPopupRoomProps>({
