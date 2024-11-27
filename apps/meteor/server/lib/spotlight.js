@@ -24,8 +24,6 @@ export class Spotlight {
 	async searchRooms({ userId, text, includeFederatedRooms = false }) {
 		const regex = new RegExp(trim(escapeRegExp(text)), 'i');
 
-		console.debug("========searchRooms==============");
-
 		const roomOptions = {
 			limit: 5,
 			projection: {
@@ -78,7 +76,7 @@ export class Spotlight {
 		return u;
 	}
 
-	processLimitAndUsernames(options, name, users) {
+	processLimitAndUsernames(options, usernames, users) {
 		// Reduce the results from the limit for the next query
 		options.limit -= users.length;
 
@@ -88,59 +86,50 @@ export class Spotlight {
 		}
 
 		// Prevent the next query to get the same users
-		name.push(...users.map((u) => u.name).filter((u) => !name.includes(u)));
+		usernames.push(...users.map((u) => u.username).filter((u) => !usernames.includes(u)));
 	}
 
-
-	// MAD changed username to name
-	async _searchInsiderUsers({ rid, text, name, options, users, insiderExtraQuery, match = { startsWith: false, endsWith: false } }) {
+	async _searchInsiderUsers({ rid, text, usernames, options, users, insiderExtraQuery, match = { startsWith: false, endsWith: false } }) {
 		// Get insiders first
-
-		console.debug("name=================== " + name );
-		console.debug("================== options ============");
-		console.debug(options);
-
 		if (rid) {
 			const searchFields = settings.get('Accounts_SearchFields').trim().split(',');
 
-			users.push(...(await Users.findByActiveUsersExcept(text, name, options, searchFields, insiderExtraQuery, match).toArray()));
+			users.push(...(await Users.findByActiveUsersExcept(text, usernames, options, searchFields, insiderExtraQuery, match).toArray()));
 
 			// If the limit was reached, return
-			if (this.processLimitAndUsernames(options, name, users)) {
+			if (this.processLimitAndUsernames(options, usernames, users)) {
 				return users;
 			}
 		}
 	}
 
-
-	// MAD username changed to name
-	async _searchConnectedUsers(userId, { text, name, options, users, match = { startsWith: false, endsWith: false } }, roomType) {
+	async _searchConnectedUsers(userId, { text, usernames, options, users, match = { startsWith: false, endsWith: false } }, roomType) {
 		const searchFields = settings.get('Accounts_SearchFields').trim().split(',');
 
 		users.push(
 			...(
-				await SubscriptionsRaw.findConnectedUsersExcept(userId, text, name, searchFields, {}, options.limit || 5, roomType, match, {
+				await SubscriptionsRaw.findConnectedUsersExcept(userId, text, usernames, searchFields, {}, options.limit || 5, roomType, match, {
 					readPreference: options.readPreference,
 				})
 			).map(this.mapOutsiders),
 		);
 
 		// If the limit was reached, return
-		if (this.processLimitAndUsernames(options, name, users)) {
+		if (this.processLimitAndUsernames(options, usernames, users)) {
 			return users;
 		}
 	}
 
-	async _searchOutsiderUsers({ text, name, options, users, canListOutsiders, match = { startsWith: false, endsWith: false } }) {
+	async _searchOutsiderUsers({ text, usernames, options, users, canListOutsiders, match = { startsWith: false, endsWith: false } }) {
 		// Then get the outsiders if allowed
 		if (canListOutsiders) {
 			const searchFields = settings.get('Accounts_SearchFields').trim().split(',');
 			users.push(
-				...(await Users.findByActiveUsersExcept(text, name, options, searchFields, undefined, match).toArray()).map(this.mapOutsiders),
+				...(await Users.findByActiveUsersExcept(text, usernames, options, searchFields, undefined, match).toArray()).map(this.mapOutsiders),
 			);
 
 			// If the limit was reached, return
-			if (this.processLimitAndUsernames(options, name, users)) {
+			if (this.processLimitAndUsernames(options, usernames, users)) {
 				return users;
 			}
 		}
@@ -149,7 +138,7 @@ export class Spotlight {
 	mapTeams(teams) {
 		return teams.map((t) => {
 			t.isTeam = true;
-			t.name = t.name;
+			t.username = t.name;
 			t.status = 'online';
 			return t;
 		});
@@ -173,17 +162,13 @@ export class Spotlight {
 		return users;
 	}
 
-	async searchUsers({ userId, rid, text, usernames,  mentions ,name}) {  // MAD removing username here lead to username not defined
+	async searchUsers({ userId, rid, text, usernames, mentions }) {
 		const users = [];
-
-		console.debug("=============searchUsers start point - printing usernames ===================");
-		console.debug(usernames);
-
 
 		const options = {
 			limit: settings.get('Number_of_users_autocomplete_suggestions'),
 			projection: {
-				//username: 1,
+				username: 1,
 				nickname: 1,
 				name: 1,
 				status: 1,
@@ -191,20 +176,16 @@ export class Spotlight {
 				avatarETag: 1,
 			},
 			sort: {
-				[settings.get('UI_Use_Real_Name') ? 'name' : 'name']: 1,
+				[settings.get('UI_Use_Real_Name') ? 'name' : 'username']: 1,
 			},
 			readPreference: readSecondaryPreferred(Users.col.s.db),
 		};
-
-		console.debug("testing Spotlight ==================1===================== ");
 
 		const room = await Rooms.findOneById(rid, { projection: { ...roomAccessAttributes, _id: 1, t: 1, uids: 1 } });
 
 		if (rid && !room) {
 			return users;
 		}
-
-		console.debug("testing Spotlight ==================2===================== ");
 
 		const canListOutsiders = await hasAllPermissionAsync(userId, ['view-outside-room', 'view-d-room']);
 		const canListInsiders = canListOutsiders || (rid && (await canAccessRoomAsync(room, { _id: userId })));
@@ -236,17 +217,13 @@ export class Spotlight {
 		const searchParams = {
 			rid,
 			text,
-			//usernames,
-			name,
+			usernames,
 			options,
 			users,
 			canListOutsiders,
 			insiderExtraQuery,
 			mentions,
 		};
-
-		console.debug("=================searchParams=================");
-		console.debug(searchParams);
 
 		// Exact match for username only
 		if (rid && canListInsiders) {
@@ -256,11 +233,9 @@ export class Spotlight {
 			});
 			if (exactMatch) {
 				users.push(exactMatch);
-				this.processLimitAndUsernames(options, name, users);
+				this.processLimitAndUsernames(options, usernames, users);
 			}
 		}
-
-		console.debug("testing Spotlight ==================3===================== ");
 
 		if (users.length === 0 && canListOutsiders && text) {
 			const exactMatch = await Users.findOneByUsernameIgnoringCase(text, {
@@ -269,49 +244,35 @@ export class Spotlight {
 			});
 			if (exactMatch) {
 				users.push(this.mapOutsiders(exactMatch));
-				this.processLimitAndUsernames(options, name, users);
+				this.processLimitAndUsernames(options, usernames, users);
 			}
 		}
 
-		console.debug("testing Spotlight ==================3.1===================== ");
-
 		if (canListInsiders && rid) {
 			// Search for insiders
-			console.debug("searchPArams ===================================== ");
-			console.debug(searchParams);
 			if (await this._searchInsiderUsers(searchParams)) {
 				return users;
 			}
 
-			console.debug("testing Spotlight ==================3.2===================== ");
-
 			// Search for users that the requester has DMs with
-			// if (await this._searchConnectedUsers(userId, searchParams, 'd')) {
-			// 	return users;
-			// }
-			return users;
+			if (await this._searchConnectedUsers(userId, searchParams, 'd')) {
+				return users;
+			}
 		}
-
-		console.debug("testing Spotlight ==================4===================== ");
 
 		// If the user can search outsiders, search for any user in the server
 		// Otherwise, search for users that are subscribed to the same rooms as the requester
-		// if (canListOutsiders) {
-		// 	if (await this._searchOutsiderUsers(searchParams)) {
-		// 		return users;
-		// 	}
-		// } else if (await this._searchConnectedUsers(userId, searchParams, 'd')) {
-		// 	return users;
-		// }
-		return users;
-
-		console.debug("testing Spotlight ==================5===================== ");
+		if (canListOutsiders) {
+			if (await this._searchOutsiderUsers(searchParams)) {
+				return users;
+			}
+		} else if (await this._searchConnectedUsers(userId, searchParams, 'd')) {
+			return users;
+		}
 
 		if (await this._searchTeams(userId, searchParams)) {
 			return users;
 		}
-
-		console.debug("testing Spotlight ==================6===================== ");
 
 		return users;
 	}
