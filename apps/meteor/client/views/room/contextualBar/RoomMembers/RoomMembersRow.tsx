@@ -24,7 +24,7 @@ const RoomMembersRow = ({ user, data: { onClickView, rid }, index, reload, useRe
 		<RoomMembersItem
 			key={index}
 			useRealName={useRealName}
-			username={user.name}
+			username={user.username}
 			_id={user._id}
 			rid={rid}
 			name={user.name}
