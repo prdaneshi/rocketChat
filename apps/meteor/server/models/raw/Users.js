@@ -395,6 +395,20 @@ export class UsersRaw extends BaseRaw {
 		});
 	}
 
+	findOneByNameIgnoringCase(name, options) {
+		if (!name) {
+			throw new Error('invalid name');
+		}
+
+		const query = { name };
+
+		return this.findOne(query, {
+			collation: { locale: 'en', strength: 2 }, // Case insensitive
+			...options,
+		});
+	}
+
+
 	findOneWithoutLDAPByUsernameIgnoringCase(username, options) {
 		const expression = new RegExp(`^${escapeRegExp(username)}$`, 'i');
 

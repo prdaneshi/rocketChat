@@ -11,6 +11,7 @@ import { i18n } from '../../../../server/lib/i18n';
 import { Federation } from '../../../../server/services/federation/Federation';
 import { hasPermissionAsync } from '../../../authorization/server/functions/hasPermission';
 import { addUserToRoom } from '../functions/addUserToRoom';
+import { name } from 'i18next-sprintf-postprocessor';
 
 declare module '@rocket.chat/ddp-client' {
 	// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -83,16 +84,17 @@ export const addUsersToRoomMethod = async (userId: string, data: { rid: string; 
 	}
 
 	await Promise.all(
-		data.users.map(async (username) => {
-			const newUser = await Users.findOneByUsernameIgnoringCase(username);
-			if (!newUser && !Federation.isAFederatedUsername(username)) {
+		data.users.map(async (name) => {
+			const newUser = await Users.findOneByNameIgnoringCase(name);
+			//const newUser = await Users.findOneByUsernameIgnoringCase(username);
+			if (!newUser && !Federation.isAFederatedUsername(name)) {
 				throw new Meteor.Error('error-invalid-username', 'Invalid username', {
 					method: 'addUsersToRoom',
 				});
 			}
 			const subscription = newUser && (await Subscriptions.findOneByRoomIdAndUserId(data.rid, newUser._id));
 			if (!subscription) {
-				await addUserToRoom(data.rid, newUser || username, user);
+				await addUserToRoom(data.rid, newUser || name, user);
 			} else {
 				if (!newUser.username) {
 					return;
@@ -102,7 +104,7 @@ export const addUsersToRoomMethod = async (userId: string, data: { rid: string; 
 						'Username_is_already_in_here',
 						{
 							postProcess: 'sprintf',
-							sprintf: [newUser.username],
+							sprintf: [newUser.name],
 						},
 						user?.language,
 					),

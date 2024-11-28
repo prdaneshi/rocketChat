@@ -48,7 +48,7 @@ slashCommands.add({
 				usersFiltered.push(user as IUser);
 				continue;
 			}
-			const usernameStr = user.username as string;
+			const usernameStr = user.name as string;
 			void api.broadcast('notify.ephemeralMessage', userId, message.rid, {
 				msg: i18n.t('Username_is_already_in_here', {
 					postProcess: 'sprintf',
