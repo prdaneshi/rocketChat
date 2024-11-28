@@ -65,7 +65,7 @@ const MultiUsersSelectElement = ({
             <UserAvatar username={value} size='x20' />
           </OptionAvatar>
           <OptionContent>
-            {label} <OptionDescription>({value})</OptionDescription>
+            {label} <OptionDescription></OptionDescription>
           </OptionContent>
         </Option>
       )}

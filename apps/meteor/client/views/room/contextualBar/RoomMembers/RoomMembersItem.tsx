@@ -46,7 +46,7 @@ const RoomMembersItem = ({ _id, name, username, federated, onClickView, rid, rel
 			</OptionAvatar>
 			<OptionColumn>{federated ? <Icon name='globe' size='x16' /> : <ReactiveUserStatus uid={_id} />}</OptionColumn>
 			<OptionContent data-qa={`MemberItem-${name}`}>
-				{nameOrUsername} {displayUsername && <OptionDescription>({displayUsername})</OptionDescription>}
+				{nameOrUsername} {displayUsername && <OptionDescription></OptionDescription>}
 			</OptionContent>
 			<OptionMenu onClick={preventPropagation}>
 				{showButton ? (

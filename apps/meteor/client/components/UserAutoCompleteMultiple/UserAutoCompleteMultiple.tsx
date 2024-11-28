@@ -21,7 +21,7 @@ const UserAutoCompleteMultiple = ({ onChange, ...props }: UserAutoCompleteMultip
 	const usersAutoCompleteEndpoint = useEndpoint('GET', '/v1/users.autocomplete');
 	const { data } = useQuery(['usersAutoComplete', debouncedFilter], async () => usersAutoCompleteEndpoint(query(debouncedFilter)));
 
-	const options = useMemo(() => data?.items.map((user) => ({ value: user.name, label: user.name })) || [], [data]);
+	const options = useMemo(() => data?.items.map((user) => ({ value: user.username, label: user.name})) || [], [data]);
 
 	return (
 		<AutoComplete
@@ -44,7 +44,7 @@ const UserAutoCompleteMultiple = ({ onChange, ...props }: UserAutoCompleteMultip
 						<UserAvatar username={value} size='x20' />
 					</OptionAvatar>
 					<OptionContent>
-						{label} <OptionDescription>({value})</OptionDescription>
+						{label} <OptionDescription></OptionDescription>
 					</OptionContent>
 				</Option>
 			)}
