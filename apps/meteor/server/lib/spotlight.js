@@ -266,7 +266,7 @@ export class Spotlight {
 			if (await this._searchOutsiderUsers(searchParams)) {
 				return users;
 			}
-		} else if (await this._searchConnectedUsers(userId, searchParams, 'd')) {
+		} else if (await this._searchConnectedUsers(userId, searchParams)) {
 			return users;
 		}
 
