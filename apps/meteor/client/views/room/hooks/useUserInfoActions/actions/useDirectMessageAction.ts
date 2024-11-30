@@ -30,6 +30,8 @@ export const useDirectMessageAction = (user: Pick<IUser, '_id' | 'username'>, ri
 		user.username,
 	);
 
+	// MAD here is the problem of direct message from userInfo page
+
 	const openDirectMessage = useMutableCallback(
 		() =>
 			user.username &&
