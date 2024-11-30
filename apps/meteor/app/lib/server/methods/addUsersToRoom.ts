@@ -84,10 +84,10 @@ export const addUsersToRoomMethod = async (userId: string, data: { rid: string; 
 	}
 
 	await Promise.all(
-		data.users.map(async (name) => {
-			const newUser = await Users.findOneByNameIgnoringCase(name);
+		data.users.map(async (username) => {
+			const newUser = await Users.findOneByUsername(username);
 			//const newUser = await Users.findOneByUsernameIgnoringCase(username);
-			if (!newUser && !Federation.isAFederatedUsername(name)) {
+			if (!newUser && !Federation.isAFederatedUsername(username)) {
 				throw new Meteor.Error('error-invalid-username', 'Invalid username', {
 					method: 'addUsersToRoom',
 				});
