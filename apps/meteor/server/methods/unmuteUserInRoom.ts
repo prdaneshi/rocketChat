@@ -73,7 +73,7 @@ export const unmuteUserInRoom = async (fromId: string, data: { rid: IRoom['_id']
 		await Rooms.unmuteMutedUsernameByRoomId(data.rid, unmutedUser.username);
 	}
 
-	await Message.saveSystemMessage('user-unmuted', data.rid, unmutedUser.username, fromUser);
+	await Message.saveSystemMessage('user-unmuted', data.rid, unmutedUser.name || '', fromUser);
 
 	setImmediate(() => {
 		void callbacks.run('afterUnmuteUser', { unmutedUser, fromUser }, room);

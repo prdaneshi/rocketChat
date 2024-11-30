@@ -35,7 +35,7 @@ export const addUserToDefaultChannels = async function (user: IUser, silenced?: 
 
 			// Insert user joined message
 			if (!silenced) {
-				await Message.saveSystemMessage('uj', room._id, user.username || '', user);
+				await Message.saveSystemMessage('uj', room._id, user.name || '', user);
 			}
 		}
 	}

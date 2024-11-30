@@ -25,7 +25,7 @@ export const saveRoomEncrypted = async function (rid: string, encrypted: boolean
 	if (update && sendMessage) {
 		const type = encrypted ? 'room_e2e_enabled' : 'room_e2e_disabled';
 
-		await Message.saveSystemMessage(type, rid, user.username, user);
+		await Message.saveSystemMessage(type, rid, user.name, user);
 	}
 
 	if (encrypted) {

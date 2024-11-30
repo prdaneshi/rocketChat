@@ -192,7 +192,7 @@ Meteor.startup(() => {
 		message: 'set__username__as__role_',
 		data(message) {
 			return {
-				username: message.msg,
+				name: message.msg,
 				role: message.role || '',
 			};
 		},
@@ -203,7 +203,7 @@ Meteor.startup(() => {
 		message: 'removed__username__as__role_',
 		data(message) {
 			return {
-				username: message.msg,
+				name: message.msg,
 				role: message.role || '',
 			};
 		},

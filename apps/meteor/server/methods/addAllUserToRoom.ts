@@ -72,7 +72,7 @@ Meteor.methods<ServerMethods>({
 			if (insertedId) {
 				void notifyOnSubscriptionChangedById(insertedId, 'inserted');
 			}
-			await Message.saveSystemMessage('uj', rid, user.username || '', user, { ts: now });
+			await Message.saveSystemMessage('uj', rid, user.name || '', user, { ts: now });
 			await callbacks.run('afterJoinRoom', user, room);
 		}
 		return true;

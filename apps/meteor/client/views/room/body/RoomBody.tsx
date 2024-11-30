@@ -230,8 +230,8 @@ const RoomBody = (): ReactElement => {
 								{roomLeader ? (
 									<LeaderBar
 										_id={roomLeader._id}
-										username={roomLeader.username}
 										name={roomLeader.name}
+										username={roomLeader.username}
 										visible={!hideLeaderHeader}
 										onAvatarClick={handleOpenUserCard}
 										triggerProps={triggerProps}
