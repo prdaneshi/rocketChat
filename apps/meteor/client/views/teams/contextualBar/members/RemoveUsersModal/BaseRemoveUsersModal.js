@@ -17,6 +17,7 @@ const BaseRemoveUsersModal = ({
 	rooms,
 	currentStep = rooms?.length === 0 ? STEPS.CONFIRM_DELETE : STEPS.LIST_ROOMS,
 	username,
+	name,
 }) => {
 	const [step, setStep] = useState(currentStep);
 
@@ -55,6 +56,7 @@ const BaseRemoveUsersModal = ({
 				deletedRooms={selectedRooms}
 				rooms={rooms}
 				username={username}
+				name={name}
 			/>
 		);
 	}

@@ -2,7 +2,7 @@ import { Apps, AppEvents } from '@rocket.chat/apps';
 import { AppsEngineException } from '@rocket.chat/apps-engine/definition/exceptions';
 import { Message, Team, Room } from '@rocket.chat/core-services';
 import type { IUser } from '@rocket.chat/core-typings';
-import { Subscriptions, Rooms } from '@rocket.chat/models';
+import { Subscriptions, Rooms, Users } from '@rocket.chat/models';
 import { Meteor } from 'meteor/meteor';
 
 import { afterLeaveRoomCallback } from '../../../../lib/callbacks/afterLeaveRoomCallback';
@@ -37,21 +37,24 @@ export const removeUserFromRoom = async function (rid: string, user: IUser, opti
 	});
 
 	if (subscription) {
-		const removedUser = user;
+		const removedUser = await Users.findOneById(user._id) ?? user;
 		if (options?.byUser) {
 			const extraData = {
 				u: options.byUser,
 			};
 
 			if (room.teamMain) {
-				await Message.saveSystemMessage('removed-user-from-team', rid, user.username || '', user, extraData);
+				console.debug(removedUser);
+				console.debug("==========================");
+				console.debug(user);
+				await Message.saveSystemMessage('removed-user-from-team', rid, removedUser.name || 'noname0', user, extraData);
 			} else {
-				await Message.saveSystemMessage('ru', rid, user.username || '', user, extraData);
+				await Message.saveSystemMessage('ru', rid, removedUser.name || 'noname1', user, extraData);
 			}
 		} else if (room.teamMain) {
-			await Message.saveSystemMessage('ult', rid, removedUser.username || '', removedUser);
+			await Message.saveSystemMessage('ult', rid, removedUser.name || 'noname2', removedUser);
 		} else {
-			await Message.saveSystemMessage('ul', rid, removedUser.username || '', removedUser);
+			await Message.saveSystemMessage('ul', rid, removedUser.name || 'noname3', removedUser);
 		}
 	}
 

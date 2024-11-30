@@ -4,7 +4,7 @@ import React from 'react';
 
 import GenericModal from '../../../../../components/GenericModal';
 
-const RemoveUsersSecondStep = ({ onClose, onCancel, onConfirm, deletedRooms = {}, username, rooms = [], ...props }) => {
+const RemoveUsersSecondStep = ({ onClose, onCancel, onConfirm, deletedRooms = {}, username,name, rooms = [], ...props }) => {
 	const t = useTranslation();
 
 	return (
@@ -19,7 +19,7 @@ const RemoveUsersSecondStep = ({ onClose, onCancel, onConfirm, deletedRooms = {}
 			onConfirm={() => onConfirm(deletedRooms)}
 			{...props}
 		>
-			{t('Teams_removing__username__from_team', { username })}
+			{t('Teams_removing__username__from_team', { name })}
 		</GenericModal>
 	);
 };
