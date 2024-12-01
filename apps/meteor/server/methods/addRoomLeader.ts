@@ -70,7 +70,7 @@ Meteor.methods<ServerMethods>({
 			});
 		}
 
-		await Message.saveSystemMessage('subscription-role-added', rid, user.name || 'noname' , fromUser, { role: 'leader' });
+		await Message.saveSystemMessage('subscription-role-added', rid, user.name || '' , fromUser, { role: 'leader' });
 
 		const team = await Team.getOneByMainRoomId(rid);
 		if (team) {

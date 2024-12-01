@@ -38,7 +38,7 @@ const getUserIsMuted = (
 	return room && Array.isArray(room.muted) && room.muted.indexOf(user.username ?? '') > -1;
 };
 
-export const useMuteUserAction = (user: Pick<IUser, '_id' | 'username'>, rid: IRoom['_id']): UserInfoAction | undefined => {
+export const useMuteUserAction = (user: Pick<IUser, '_id' | 'username' | 'name'>, rid: IRoom['_id']): UserInfoAction | undefined => {
 	const t = useTranslation();
 	const room = useUserRoom(rid);
 	const userCanMute = usePermission('mute-user', rid);
@@ -77,7 +77,7 @@ export const useMuteUserAction = (user: Pick<IUser, '_id' | 'username'>, rid: IR
 					return dispatchToastMessage({
 						type: 'success',
 						message: t(mutedMessage, {
-							username: user.username,
+							name: user.name,
 							roomName,
 						}),
 					});
