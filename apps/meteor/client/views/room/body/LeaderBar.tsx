@@ -25,7 +25,7 @@ type LeaderBarProps = {
 const LeaderBar = ({ _id, name, username, visible, onAvatarClick, triggerProps }: LeaderBarProps): ReactElement => {
 	const t = useTranslation();
 
-	const chatNowLink = useMemo(() => roomCoordinator.getRouteLink('d', { name: username }) || undefined, [username]);
+	const chatNowLink = useMemo(() => roomCoordinator.getRouteLink('d', { name: name }) || undefined, [username]);
 
 	const handleAvatarClick = useCallback(
 		(event: UIEvent) => {

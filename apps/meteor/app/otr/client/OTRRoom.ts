@@ -376,7 +376,7 @@ export class OTRRoom implements IOTRRoom {
 								variant: 'warning',
 								title: t('OTR'),
 								children: t('Username_wants_to_start_otr_Do_you_want_to_accept', {
-									username: obj.username,
+									name: obj.name,
 								}),
 								confirmText: t('Yes'),
 								cancelText: t('No'),
@@ -440,7 +440,7 @@ export class OTRRoom implements IOTRRoom {
 							props: {
 								variant: 'warning',
 								title: t('OTR'),
-								children: t('Username_ended_the_OTR_session', { username: obj.username }),
+								children: t('Username_ended_the_OTR_session', { name: obj.name }),
 								confirmText: t('Ok'),
 								onClose: imperativeModal.close,
 								onConfirm: imperativeModal.close,
