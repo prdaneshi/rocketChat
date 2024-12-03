@@ -1,5 +1,5 @@
 import type { IRoom, ISubscription, RoomAdminFieldsType, RoomType } from '@rocket.chat/core-typings';
-import { Rooms, Subscriptions } from '@rocket.chat/models';
+import { Rooms, Subscriptions, Users } from '@rocket.chat/models';
 import type { FindOptions, Sort } from 'mongodb';
 
 import { adminFields } from '../../../../lib/rooms/adminFields';
@@ -36,11 +36,31 @@ export async function findAdminRooms({
 	};
 
 	const result = Rooms.findByNameOrFnameContainingAndTypes(name, showTypes, discussion, includeTeams, options);
-
+	
 	const { cursor, totalCount } = result;
+	
+	const [roomsNoNames, total] = await Promise.all([cursor.sort(sort || { default: -1, name: 1 }).toArray(), totalCount]);
+	
+	// Step 1: Get all usernames from the rooms
+	const allUsernames = roomsNoNames.flatMap(room => room.usernames ?? []);
+	
+	// Step 2: Find user objects by usernames
+	const users = await Users.findByUsernames(allUsernames).toArray();
+	
+	// Step 3: Create a mapping of usernames to names
+	const usernameToNameMap = users.reduce((acc, user) => {
+		acc[user.username] = user.name; // Assuming user has 'username' and 'name' properties
+		return acc;
+	}, {} as Record<string, string>);
 
-	const [rooms, total] = await Promise.all([cursor.sort(sort || { default: -1, name: 1 }).toArray(), totalCount]);
-
+	// Step 4: Add names to each room's member
+	const rooms = roomsNoNames.map(room => {
+		return {
+			...room,
+			memberNames: (room.usernames ?? []).map(username => usernameToNameMap[username] || username) // Use the map to get names
+		};
+	});
+	
 	return {
 		rooms,
 		count: rooms.length,

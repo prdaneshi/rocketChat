@@ -17,8 +17,8 @@ const roomTypeI18nMap = {
 	p: 'Private_Channel',
 } as const;
 
-const getRoomDisplayName = (room: Pick<Serialized<IRoom>, RoomAdminFieldsType>): string | undefined =>
-	room.t === 'd' ? room.usernames?.join(' x ') : roomCoordinator.getRoomName(room.t, room as IRoom);
+const getRoomDisplayName = (room: Pick<Serialized<IRoom>, RoomAdminFieldsType> & {memberNames: string[]}): string | undefined => 
+	room.t === 'd' ? room.memberNames?.join(' x ') : roomCoordinator.getRoomName(room.t, room as IRoom);
 
 const RoomRow = ({ room }: { room: Pick<Serialized<IRoom>, RoomAdminFieldsType> }) => {
 	const t = useTranslation();
