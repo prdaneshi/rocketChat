@@ -23,7 +23,7 @@ type OTRProps = {
 	onClickEnd: () => void;
 	onClickRefresh: () => void;
 	otrState: string;
-	peerUsername: IUser['username'];
+	peerUsername: IUser['name'];
 };
 
 const OTR = ({ isOnline, onClickClose, onClickStart, onClickEnd, onClickRefresh, otrState, peerUsername }: OTRProps): ReactElement => {

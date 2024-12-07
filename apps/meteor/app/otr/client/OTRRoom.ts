@@ -130,7 +130,7 @@ export class OTRRoom implements IOTRRoom {
 			props: {
 				variant: 'warning',
 				title: t('OTR'),
-				children: t('OTR_Session_ended_other_user_went_offline', { username: event.username }),
+				children: t('OTR_Session_ended_other_user_went_offline', { username: event.name }),
 				confirmText: t('Ok'),
 				onClose: imperativeModal.close,
 				onConfirm: imperativeModal.close,
