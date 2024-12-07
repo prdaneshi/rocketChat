@@ -23,10 +23,11 @@ type OTRProps = {
 	onClickEnd: () => void;
 	onClickRefresh: () => void;
 	otrState: string;
-	peerUsername: IUser['name'];
+	peerUsername: IUser['username'];
+	peername: IUser['name'];
 };
 
-const OTR = ({ isOnline, onClickClose, onClickStart, onClickEnd, onClickRefresh, otrState, peerUsername }: OTRProps): ReactElement => {
+const OTR = ({ isOnline, onClickClose, onClickStart, onClickEnd, onClickRefresh, otrState, peerUsername , peername }: OTRProps): ReactElement => {
 	const t = useTranslation();
 	const room = useRoom();
 
@@ -53,7 +54,7 @@ const OTR = ({ isOnline, onClickClose, onClickStart, onClickEnd, onClickRefresh,
 				return (
 					<OTRStates
 						title={t('OTR_Chat_Declined_Title')}
-						description={t('OTR_Chat_Declined_Description', peerUsername || '')}
+						description={t('OTR_Chat_Declined_Description', peername || peerUsername || '')}
 						icon='cross'
 						onClickStart={onClickStart}
 					/>
@@ -62,7 +63,7 @@ const OTR = ({ isOnline, onClickClose, onClickStart, onClickEnd, onClickRefresh,
 				return (
 					<OTRStates
 						title={t('OTR_Chat_Timeout_Title')}
-						description={t('OTR_Chat_Timeout_Description', peerUsername || '')}
+						description={t('OTR_Chat_Timeout_Description', peername || peerUsername || '')}
 						icon='clock'
 						onClickStart={onClickStart}
 					/>

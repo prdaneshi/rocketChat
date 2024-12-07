@@ -13,7 +13,8 @@ const OTRWithData = (): ReactElement => {
 
 	const peerUserPresence = usePresence(otr?.getPeerId());
 	const userStatus = peerUserPresence?.status;
-	const peerUsername = peerUserPresence?.name;
+	const peerUsername = peerUserPresence?.username;
+	const peername = peerUserPresence?.name;
 	const isOnline = !['offline', 'loading'].includes(userStatus || '');
 
 	const handleStart = (): void => {
@@ -52,6 +53,7 @@ const OTRWithData = (): ReactElement => {
 			onClickRefresh={handleReset}
 			otrState={otrState}
 			peerUsername={peerUsername}
+			peername={peername}
 		/>
 	);
 };
